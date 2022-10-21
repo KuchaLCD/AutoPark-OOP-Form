@@ -104,5 +104,10 @@ namespace AutoParkForm
             Form2 gg = new Form2();
             gg.Show();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            label1.Text = "";
+        }
     }
 }

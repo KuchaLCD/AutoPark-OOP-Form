@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\CATAT\\source\\repos\\AutoPark\\AutoPark\\AutoPark.csproj",
+      "projectUniqueName": "C:\\Users\\CATAT\\AutoPark-OOP-Form\\AutoPark\\AutoPark\\AutoPark.csproj",
       "projectName": "AutoPark",
-      "projectPath": "C:\\Users\\CATAT\\source\\repos\\AutoPark\\AutoPark\\AutoPark.csproj",
+      "projectPath": "C:\\Users\\CATAT\\AutoPark-OOP-Form\\AutoPark\\AutoPark\\AutoPark.csproj",
       "packagesPath": "C:\\Users\\CATAT\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\CATAT\\source\\repos\\AutoPark\\AutoPark\\obj\\",
+      "outputPath": "C:\\Users\\CATAT\\AutoPark-OOP-Form\\AutoPark\\AutoPark\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\CATAT\\AppData\\Roaming\\NuGet\\NuGet.Config",

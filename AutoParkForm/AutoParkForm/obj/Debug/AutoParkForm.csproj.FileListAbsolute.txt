@@ -9,3 +9,14 @@ C:\Users\CATAT\source\repos\AutoParkForm\AutoParkForm\obj\Debug\AutoParkForm.csp
 C:\Users\CATAT\source\repos\AutoParkForm\AutoParkForm\obj\Debug\AutoParkForm.exe
 C:\Users\CATAT\source\repos\AutoParkForm\AutoParkForm\obj\Debug\AutoParkForm.pdb
 C:\Users\CATAT\source\repos\AutoParkForm\AutoParkForm\obj\Debug\AutoParkForm.Form2.resources
+C:\Users\CATAT\AutoPark-OOP-Form\AutoParkForm\AutoParkForm\bin\Debug\AutoParkForm.exe.config
+C:\Users\CATAT\AutoPark-OOP-Form\AutoParkForm\AutoParkForm\bin\Debug\AutoParkForm.exe
+C:\Users\CATAT\AutoPark-OOP-Form\AutoParkForm\AutoParkForm\bin\Debug\AutoParkForm.pdb
+C:\Users\CATAT\AutoPark-OOP-Form\AutoParkForm\AutoParkForm\obj\Debug\AutoParkForm.csproj.AssemblyReference.cache
+C:\Users\CATAT\AutoPark-OOP-Form\AutoParkForm\AutoParkForm\obj\Debug\AutoParkForm.Form1.resources
+C:\Users\CATAT\AutoPark-OOP-Form\AutoParkForm\AutoParkForm\obj\Debug\AutoParkForm.Form2.resources
+C:\Users\CATAT\AutoPark-OOP-Form\AutoParkForm\AutoParkForm\obj\Debug\AutoParkForm.Properties.Resources.resources
+C:\Users\CATAT\AutoPark-OOP-Form\AutoParkForm\AutoParkForm\obj\Debug\AutoParkForm.csproj.GenerateResource.cache
+C:\Users\CATAT\AutoPark-OOP-Form\AutoParkForm\AutoParkForm\obj\Debug\AutoParkForm.csproj.CoreCompileInputs.cache
+C:\Users\CATAT\AutoPark-OOP-Form\AutoParkForm\AutoParkForm\obj\Debug\AutoParkForm.exe
+C:\Users\CATAT\AutoPark-OOP-Form\AutoParkForm\AutoParkForm\obj\Debug\AutoParkForm.pdb
