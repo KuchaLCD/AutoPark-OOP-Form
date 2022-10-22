@@ -14,6 +14,7 @@ namespace AutoParkForm
     {
         List<Transport> transport;
         Park park;
+        string FileName;
         public Form1()
         {
             InitializeComponent();
@@ -21,12 +22,14 @@ namespace AutoParkForm
             park = new Park("LuxuryPark", transport);
         }
         
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)  //вывод информации
         {
             for (int i = 0; i < transport.Count; i++)
             {
-                label1.Text = transport[i].InfoString();
+                //label1.Text = transport[i].InfoString();
                 label1.Text = park.About();
+                pictureBox2.ImageLocation = transport[i].Picture;   //показать изображение
+                pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             }
         }
 
@@ -58,15 +61,18 @@ namespace AutoParkForm
             double whidth = Convert.ToDouble(textBox4.Text);
             DateTime timeOfRegistrForPark = Convert.ToDateTime(textBox5.Text);
             DateTime stayTime = Convert.ToDateTime(textBox6.Text);
+            string picture = FileName;
 
-            Transport trans = new Transport(name, registerNumberForPark, mass, whidth, timeOfRegistrForPark, stayTime);
+            Transport trans = new Transport(name, registerNumberForPark, mass, whidth, timeOfRegistrForPark, stayTime, picture);
             transport.Add(trans);
+            //информация внесена, теперь можно очистить поля ввода
             textBox1.Clear();
             textBox2.Clear();
             textBox3.Clear();
             textBox4.Clear();
             textBox5.Clear();
             textBox6.Clear();
+            pictureBox1.Image = null;
         }
 
         private void textBox6_TextChanged(object sender, EventArgs e)
@@ -108,6 +114,32 @@ namespace AutoParkForm
         private void button4_Click(object sender, EventArgs e)
         {
             label1.Text = "";
+            pictureBox2.Image = null;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.ShowDialog();
+            FileName = openFile.FileName;
+            pictureBox1.ImageLocation = FileName;
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            pictureBox2.ImageLocation = FileName;
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
         }
     }
 }

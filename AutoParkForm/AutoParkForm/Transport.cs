@@ -14,12 +14,14 @@ namespace AutoParkForm
         double whidth;
         DateTime timeOfRegistrForPark; //время регистрации транспорта в парке
         DateTime stayTime; //время прибывания(до какого включительно)
+        string picture; //изображение транспорта(путь к файлу с изображением)
         public string Naming { get { return naming; } }
         public int RegisterNumberForPark { get { return registerNumberForPark; } }
         public double Mass { get { return mass; } }
         public double Whidth { get { return whidth; } }
         public DateTime TimeOfRegistrforPark { get { return timeOfRegistrForPark; } }
         public DateTime StayTime { get { return stayTime; } }
+        public string Picture { get { return picture; } }
         public virtual string InfoString()
         {
             string inf = $"\n::::::::::::::::::::::::::::::::::::::::::::::::::::::\n---Транспорт---\nНаименование: {naming}" +
@@ -30,7 +32,7 @@ namespace AutoParkForm
 
             return inf;
         }
-        public Transport(string naming, int registerNumberForPark, double mass, double whidth, DateTime timeOfRegistrForPark, DateTime stayTime)
+        public Transport(string naming, int registerNumberForPark, double mass, double whidth, DateTime timeOfRegistrForPark, DateTime stayTime, string picture)
         {
             this.naming = naming;
             this.registerNumberForPark = registerNumberForPark;
@@ -38,6 +40,7 @@ namespace AutoParkForm
             this.whidth = whidth;
             this.timeOfRegistrForPark = timeOfRegistrForPark;
             this.stayTime = stayTime;
+            this.picture = picture;
         }
     }
 }
