@@ -53,6 +53,10 @@ namespace AutoParkForm
             this.button5 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button6 = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -72,7 +76,7 @@ namespace AutoParkForm
             this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button1.BackColor = System.Drawing.SystemColors.MenuBar;
             this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(484, 46);
+            this.button1.Location = new System.Drawing.Point(558, 46);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(188, 28);
             this.button1.TabIndex = 1;
@@ -84,7 +88,7 @@ namespace AutoParkForm
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.label1.Location = new System.Drawing.Point(481, 177);
+            this.label1.Location = new System.Drawing.Point(558, 177);
             this.label1.MinimumSize = new System.Drawing.Size(487, 220);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(487, 220);
@@ -94,7 +98,7 @@ namespace AutoParkForm
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(481, 150);
+            this.label2.Location = new System.Drawing.Point(558, 150);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(142, 17);
             this.label2.TabIndex = 3;
@@ -243,7 +247,7 @@ namespace AutoParkForm
             // button4
             // 
             this.button4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button4.Location = new System.Drawing.Point(484, 91);
+            this.button4.Location = new System.Drawing.Point(558, 91);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(142, 33);
             this.button4.TabIndex = 19;
@@ -266,7 +270,7 @@ namespace AutoParkForm
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(974, 262);
+            this.pictureBox2.Location = new System.Drawing.Point(1062, 273);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(153, 124);
             this.pictureBox2.TabIndex = 21;
@@ -279,7 +283,7 @@ namespace AutoParkForm
             this.button6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button6.BackColor = System.Drawing.SystemColors.MenuBar;
             this.button6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button6.Location = new System.Drawing.Point(678, 46);
+            this.button6.Location = new System.Drawing.Point(838, 46);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(126, 48);
             this.button6.TabIndex = 22;
@@ -287,12 +291,48 @@ namespace AutoParkForm
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(266, 211);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(265, 22);
+            this.dateTimePicker1.TabIndex = 24;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(266, 262);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(265, 22);
+            this.dateTimePicker2.TabIndex = 25;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(178, 461);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(368, 59);
+            this.richTextBox1.TabIndex = 26;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(316, 441);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(86, 17);
+            this.label10.TabIndex = 27;
+            this.label10.Text = "Замечания:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1226, 541);
+            this.ClientSize = new System.Drawing.Size(1253, 637);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.button5);
@@ -352,6 +392,10 @@ namespace AutoParkForm
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label label10;
     }
 }
 

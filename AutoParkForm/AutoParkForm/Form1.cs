@@ -62,8 +62,9 @@ namespace AutoParkForm
             DateTime timeOfRegistrForPark = Convert.ToDateTime(textBox5.Text);
             DateTime stayTime = Convert.ToDateTime(textBox6.Text);
             string picture = FileName;
+            string notes = Convert.ToString(richTextBox1.Text);
 
-            Transport trans = new Transport(name, registerNumberForPark, mass, whidth, timeOfRegistrForPark, stayTime, picture);
+            Transport trans = new Transport(name, registerNumberForPark, mass, whidth, timeOfRegistrForPark, stayTime, picture, notes);
             transport.Add(trans);
             //информация внесена, теперь можно очистить поля ввода
             textBox1.Clear();
@@ -73,6 +74,7 @@ namespace AutoParkForm
             textBox5.Clear();
             textBox6.Clear();
             pictureBox1.Image = null;
+            richTextBox1.Clear();
         }
 
         private void textBox6_TextChanged(object sender, EventArgs e)
@@ -140,6 +142,16 @@ namespace AutoParkForm
         {
             pictureBox2.ImageLocation = FileName;
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+        }
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
