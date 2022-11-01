@@ -15,7 +15,7 @@ namespace AutoPark
             int random1 = n.Next(100000, 999999);
             int random2 = n.Next(100000, 999999);
             //номер регистрации также можно ввести самому
-            Transport machine = new Transport("BebraMachine", random1, 2000, 130, new DateTime(2022, 10, 12, 12, 0, 0), new DateTime(2022, 10, 19, 12, 0, 0));
+            Transport machine = new Transport("BebraMachine", random1, 2000, 130, new DateTime(2022, 10, 12, 9, 0, 0), new DateTime(2022, 10, 12, 14, 0, 0));
             Console.WriteLine(machine.InfoString());
             Transport car1 = new Car(5000, 215, "1923 AD-2", "Tesla", random2, 2000, 130, new DateTime(2022, 10, 12, 12, 0, 0), new DateTime(2022, 10, 19, 12, 0, 0));
             Console.WriteLine(car1.InfoString());
@@ -26,6 +26,10 @@ namespace AutoPark
             park.About();
             gg.Add(machine);
             park.About();
+            string rentConv = Convert.ToString(machine.StayTime.Subtract(machine.TimeOfRegistrforPark));
+            double rentDouble = Convert.ToInt16(rentConv[1]);
+            Console.WriteLine(rentConv);
+            Console.WriteLine(rentDouble);
             Console.ReadLine();
         }
     }
