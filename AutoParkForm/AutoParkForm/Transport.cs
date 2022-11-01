@@ -20,8 +20,8 @@ namespace AutoParkForm
         public int RegisterNumberForPark { get { return registerNumberForPark; } }
         public double Mass { get { return mass; } }
         public double Whidth { get { return whidth; } }
-        public DateTime TimeOfRegistrforPark { get { return timeOfRegistrForPark; } }
-        public DateTime StayTime { get { return stayTime; } }
+        public DateTime TimeOfRegistrforPark { get; set; }
+        public DateTime StayTime { get; set; }
         public string Picture { get { return picture; } }
         public string Notes { get { return notes; } }
         public virtual string InfoString()
@@ -30,6 +30,8 @@ namespace AutoParkForm
                          $"\nномер регистрации в парке: {registerNumberForPark}" +
                          $"\nвремя регистрации в парке: {timeOfRegistrForPark}" +
                          $"\nВремя пребывания(до): {stayTime}" +
+                         $"\nМасса: {mass} кг." +
+                         $"\nШирина: {whidth} м." +
                          $"\nПримечания: {notes}" +
                          $"\n::::::::::::::::::::::::::::::::::::::::::::::::::::::";
 

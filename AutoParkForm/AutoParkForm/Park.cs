@@ -11,26 +11,26 @@ namespace AutoParkForm
         string name;
         List<Transport> transport;
         public string Name { get { return name; } }
-        public List<Transport> ListTransport { get { return transport; } }
-        public void AddTrasport(int position, Transport t)
+        public List<Transport> ListTransport { get; set; }
+        public void AddTrasport(Transport t)
         {
-            ListTransport.Insert(position, t);
+            transport.Add(t);
         }
         public void RemoveTransport(Transport t)
         {
-            ListTransport.Remove(t);
+            transport.Remove(t);
         }
         public virtual string About()
         {
             string inf = $"\n++++++++++++++++++++++++++++++++++++++++++++++++++\n---Парк---\nНаименование: {name}" +
             "\nСодержание парка:"; 
-            if (ListTransport.Count == 0)
+            if (transport.Count == 0)
             {
                 inf += "Парк пуст";
             }
-            for (int i = 0; i < ListTransport.Count; i++)
+            for (int i = 0; i < transport.Count; i++)
             {
-                inf += ListTransport[i].InfoString();
+                inf += transport[i].InfoString();
             }
             inf += $"\n++++++++++++++++++++++++++++++++++++++++++++++++++";
             return inf;
