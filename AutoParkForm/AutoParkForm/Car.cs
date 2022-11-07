@@ -14,9 +14,9 @@ namespace AutoParkForm
         public override string InfoString()
         {
             string inf = $"\n::::::::::::::::::::::::::::::::::::::::::::::::::::::\n---Машина(Автомобиль)---\nНаименование: {Naming}" +
-                         $"\nномер регистрации в парке: {RegisterNumberForPark}" +
-                         $"\nвремя регистрации в парке: {TimeOfRegistrforPark}" +
-                         $"\nномера: {RoadNumber}" +
+                         $"\nНомер регистрации в парке: {RegisterNumberForPark}" +
+                         $"\nВремя регистрации в парке: {TimeOfRegistrforPark}" +
+                         $"\nНомера: {RoadNumber}" +
                          $"\n---Дополнительная информация---\nОбъём двигателя: {VolumeOfEngine} см. куб." +
                          $"\nМаксимальная скорость: {MaxSpeed} км/ч" +
                          $"\nВес: {Mass} кг." +

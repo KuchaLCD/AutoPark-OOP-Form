@@ -19,20 +19,24 @@ namespace AutoParkForm
             park = new Park("LuxuryPark", transport);
             //новый спосбо задания времени регистрации
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.CustomFormat = "MM/dd/yyyy";
-            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
+            dateTimePicker1.CustomFormat = "dd.MM.yyyy hh:mm";
             //и времени пребывания
             dateTimePicker2.Format = DateTimePickerFormat.Custom;
-            dateTimePicker2.CustomFormat = "MM/dd/yyyy";
-            dateTimePicker2.ValueChanged += dateTimePicker1_ValueChanged;
+            dateTimePicker2.CustomFormat = "dd.MM.yyyy hh:mm";
         }
         //============
         internal static List<Transport> transport { get; set; }
         Park park;
         string FileName;
+        internal static DateTime timeOfRegistrForPark { get; set; }
+        internal static DateTime stayTime { get; set; }
         //============
         private void button1_Click(object sender, EventArgs e)  //вывод информации
         {
+            if (transport.Count == 0)
+            {
+                label1.Text = "Парк пуст";
+            }
             for (int i = 0; i < transport.Count; i++)
             {
                 //label1.Text = transport[i].InfoString();
@@ -64,17 +68,19 @@ namespace AutoParkForm
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //производим запись(регистрацию) транспорта
             string name = Convert.ToString(textBox1.Text);
             int registerNumberForPark = Convert.ToInt32(textBox2.Text);
             double mass = Convert.ToDouble(textBox3.Text);
             double whidth = Convert.ToDouble(textBox4.Text);
-            DateTime timeOfRegistrForPark = Convert.ToDateTime(dateTimePicker1.Value.ToLongTimeString());
-            DateTime stayTime = Convert.ToDateTime(dateTimePicker2.Value.ToLongTimeString());
+            timeOfRegistrForPark = Convert.ToDateTime(dateTimePicker1.Value);
+            stayTime = Convert.ToDateTime(dateTimePicker2.Value);
             string picture = FileName;
             string notes = Convert.ToString(richTextBox1.Text);
 
             Transport trans = new Transport(name, registerNumberForPark, mass, whidth, timeOfRegistrForPark, stayTime, picture, notes);
             transport.Add(trans);
+            listBox1.Items.Add(trans);
             //информация внесена, теперь можно очистить поля ввода
             textBox1.Clear();
             textBox2.Clear();
@@ -128,6 +134,7 @@ namespace AutoParkForm
 
         private void button5_Click(object sender, EventArgs e)
         {
+            //добавляем изображение машины
             OpenFileDialog openFile = new OpenFileDialog();
             openFile.ShowDialog();
             FileName = openFile.FileName;
@@ -180,12 +187,16 @@ namespace AutoParkForm
             gg.Show();
         }
 
-        private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
+        private void button7_Click(object sender, EventArgs e)
         {
-
+            //селективный вывод информации
+            Transport boofer = (Transport)listBox1.SelectedItem;
+            label1.Text = boofer.InfoString();
+            pictureBox2.ImageLocation = boofer.Picture;   //показать изображение
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
-        private void dateTimePicker4_ValueChanged(object sender, EventArgs e)
+        public void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

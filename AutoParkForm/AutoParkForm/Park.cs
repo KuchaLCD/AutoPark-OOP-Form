@@ -24,10 +24,6 @@ namespace AutoParkForm
         {
             string inf = $"\n++++++++++++++++++++++++++++++++++++++++++++++++++\n---Парк---\nНаименование: {name}" +
             "\nСодержание парка:"; 
-            if (transport.Count == 0)
-            {
-                inf += "Парк пуст";
-            }
             for (int i = 0; i < transport.Count; i++)
             {
                 inf += transport[i].InfoString();

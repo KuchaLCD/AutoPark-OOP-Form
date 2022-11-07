@@ -27,8 +27,8 @@ namespace AutoParkForm
         public virtual string InfoString()
         {
             string inf = $"\n::::::::::::::::::::::::::::::::::::::::::::::::::::::\n---Транспорт---\nНаименование: {naming}" +
-                         $"\nномер регистрации в парке: {registerNumberForPark}" +
-                         $"\nвремя регистрации в парке: {timeOfRegistrForPark}" +
+                         $"\nНомер регистрации в парке: {registerNumberForPark}" +
+                         $"\nВремя регистрации в парке: {timeOfRegistrForPark}" +
                          $"\nВремя пребывания(до): {stayTime}" +
                          $"\nМасса: {mass} кг." +
                          $"\nШирина: {whidth} м." +
@@ -36,6 +36,11 @@ namespace AutoParkForm
                          $"\n::::::::::::::::::::::::::::::::::::::::::::::::::::::";
 
             return inf;
+        }
+        public override string ToString()
+        {
+            string st = string.Format("Транспорт {0}", naming);
+            return st;
         }
         public Transport(string naming, int registerNumberForPark, double mass, double whidth, DateTime timeOfRegistrForPark, DateTime stayTime, string picture, string notes)
         {
