@@ -25,7 +25,7 @@ namespace AutoParkForm
             dateTimePicker2.CustomFormat = "dd.MM.yyyy hh:mm";
             //несколько готовых вариантов серийных моделей автомобилей
             comboBox1.Items.Add("Toyota Landcruser Prada");
-            comboBox1.Items.Add("Mersedes S300");
+            comboBox1.Items.Add("Mercedes S300");
             comboBox1.Items.Add("Renault Captur");
             comboBox1.Items.Add("Kia Cerato");
             comboBox1.Items.Add("Honda Civic");
@@ -59,7 +59,7 @@ namespace AutoParkForm
                     textBox5.Text = "1700";     //масса
                     textBox6.Text = "2,5";     //ширина
                     break;
-                case "Mersedes S300":
+                case "Mercedes S300":
                     textBox1.Text = "270";
                     textBox2.Text = "35";
                     textBox5.Text = "1650";
@@ -142,14 +142,18 @@ namespace AutoParkForm
             int registerNumberForPark = Convert.ToInt32(textBox4.Text);
             double mass = Convert.ToDouble(textBox5.Text);
             double whidth = Convert.ToDouble(textBox6.Text);
-            MainRegister.timeOfRegistrForPark = Convert.ToDateTime(dateTimePicker1.Value);      //требует доработок
-            MainRegister.stayTime = Convert.ToDateTime(dateTimePicker2.Value);
+            //сторонние переменные отображаюстя некорректно
+            //поэтому попробуем создать локальные с отсылкой на сторонние
+            DateTime boofer1 = MainRegister.timeOfRegistrForPark;
+            boofer1 = Convert.ToDateTime(dateTimePicker1.Value);
+            DateTime boofer2 = MainRegister.stayTime;
+            boofer2 = Convert.ToDateTime(dateTimePicker2.Value);
             string picture = FileName;
             string notes = Convert.ToString(richTextBox1.Text);
 
-            Transport trans = new Car(volumeOfEngine, maxSpeed, roadNumber, name, registerNumberForPark, mass, whidth, MainRegister.timeOfRegistrForPark, MainRegister.stayTime, picture, notes);
+            Transport trans = MainRegister.Trans;
+            trans = new Car(volumeOfEngine, maxSpeed, roadNumber, name, registerNumberForPark, mass, whidth, boofer1, boofer2, picture, notes);
             MainRegister.transport.Add(trans);
-            //listBox1.Items.Add(trans); требует доработок))
             //информация внесена, теперь можно очистить поля ввода
             comboBox1.Text = null;
             textBox1.Clear();
@@ -166,6 +170,7 @@ namespace AutoParkForm
         {
             //добавляем изображение машины
             OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Filter = "JPG files (*.jpg)|*.jpg";
             openFile.ShowDialog();
             FileName = openFile.FileName;
             pictureBox1.ImageLocation = FileName;
@@ -200,6 +205,11 @@ namespace AutoParkForm
         private void button1_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void CarRegister_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

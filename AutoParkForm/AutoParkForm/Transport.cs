@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoParkForm
 {
-    class Transport
+    public class Transport
     {
         string naming;
         int registerNumberForPark; //номер регистрации в парке

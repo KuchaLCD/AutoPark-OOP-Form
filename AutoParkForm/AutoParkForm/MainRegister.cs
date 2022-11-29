@@ -25,22 +25,22 @@ namespace AutoParkForm
             dateTimePicker2.CustomFormat = "dd.MM.yyyy hh:mm";
         }
         //============
-        internal static List<Transport> transport { get; set; }
+        public static List<Transport> transport { get; set; }
         Park park;
-        string FileName;
-        internal static DateTime timeOfRegistrForPark { get; set; }
-        internal static DateTime stayTime { get; set; }
+        string FileName;        //имя файла для открытия картинки
+        public static Transport Trans;
+        public static DateTime timeOfRegistrForPark { get; set; }
+        public static DateTime stayTime { get; set; }
         //============
         private void button1_Click(object sender, EventArgs e)  //вывод информации
         {
             if (transport.Count == 0)
             {
-                label1.Text = "Парк пуст";
+                richTextBox2.Text = "Парк пуст";
             }
             for (int i = 0; i < transport.Count; i++)
             {
-                //label1.Text = transport[i].InfoString();
-                label1.Text = park.About();
+                richTextBox2.Text = park.About();
                 pictureBox2.ImageLocation = transport[i].Picture;   //показать изображение
                 pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             }
@@ -78,9 +78,9 @@ namespace AutoParkForm
             string picture = FileName;
             string notes = Convert.ToString(richTextBox1.Text);
 
-            Transport trans = new Transport(name, registerNumberForPark, mass, whidth, timeOfRegistrForPark, stayTime, picture, notes);
-            transport.Add(trans);
-            listBox1.Items.Add(trans);
+            Trans = new Transport(name, registerNumberForPark, mass, whidth, timeOfRegistrForPark, stayTime, picture, notes);
+            transport.Add(Trans);
+            listBox1.Items.Add(Trans);
             //информация внесена, теперь можно очистить поля ввода
             textBox1.Clear();
             textBox2.Clear();
@@ -112,7 +112,7 @@ namespace AutoParkForm
 
         private void label1_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -122,13 +122,13 @@ namespace AutoParkForm
 
         private void button3_Click(object sender, EventArgs e)
         {
-            CarRegister gg = new CarRegister();
-            gg.Show();
+            CarRegister carReg = new CarRegister();
+            carReg.ShowDialog();    //вызов модальной формы регистрации машины
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            label1.Text = "";
+            richTextBox2.Text = "";
             pictureBox2.Image = null;
         }
 
@@ -136,6 +136,7 @@ namespace AutoParkForm
         {
             //добавляем изображение машины
             OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Filter = "JPG files (*.jpg)|*.jpg";
             openFile.ShowDialog();
             FileName = openFile.FileName;
             pictureBox1.ImageLocation = FileName;
@@ -191,7 +192,7 @@ namespace AutoParkForm
         {
             //селективный вывод информации
             Transport boofer = (Transport)listBox1.SelectedItem;
-            label1.Text = boofer.InfoString();
+            richTextBox2.Text = boofer.InfoString();
             pictureBox2.ImageLocation = boofer.Picture;   //показать изображение
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
         }
@@ -199,6 +200,11 @@ namespace AutoParkForm
         public void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void richTextBox2_TextChanged(object sender, EventArgs e)
+        {
+            richTextBox1.ScrollBars = (RichTextBoxScrollBars)ScrollBars.Both;
         }
     }
 }
