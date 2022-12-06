@@ -144,16 +144,13 @@ namespace AutoParkForm
             double whidth = Convert.ToDouble(textBox6.Text);
             //сторонние переменные отображаюстя некорректно
             //поэтому попробуем создать локальные с отсылкой на сторонние
-            DateTime boofer1 = MainRegister.timeOfRegistrForPark;
-            boofer1 = Convert.ToDateTime(dateTimePicker1.Value);
-            DateTime boofer2 = MainRegister.stayTime;
-            boofer2 = Convert.ToDateTime(dateTimePicker2.Value);
+            DateTime timeOfRegistrForPark = Convert.ToDateTime(dateTimePicker1.Value);
+            DateTime stayTime = Convert.ToDateTime(dateTimePicker2.Value);
             string picture = FileName;
             string notes = Convert.ToString(richTextBox1.Text);
 
-            Transport trans = MainRegister.Trans;
-            trans = new Car(volumeOfEngine, maxSpeed, roadNumber, name, registerNumberForPark, mass, whidth, boofer1, boofer2, picture, notes);
-            MainRegister.transport.Add(trans);
+            Transport trans = new Car(volumeOfEngine, maxSpeed, roadNumber, name, registerNumberForPark, mass, whidth, timeOfRegistrForPark, stayTime, picture, notes);
+            ListForTransport.transports.Add(trans);
             //информация внесена, теперь можно очистить поля ввода
             comboBox1.Text = null;
             textBox1.Clear();
@@ -210,6 +207,43 @@ namespace AutoParkForm
         private void CarRegister_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Random randomizer = new Random();
+            double randomNumber = randomizer.Next(100000,999999);
+            textBox4.Text = randomNumber.ToString();
         }
     }
 }

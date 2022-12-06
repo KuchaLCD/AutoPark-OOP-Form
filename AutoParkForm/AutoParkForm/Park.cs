@@ -8,33 +8,30 @@ namespace AutoParkForm
 {
     class Park
     {
-        string name;
-        List<Transport> transport;
-        public string Name { get { return name; } }
-        public List<Transport> ListTransport { get; set; }
+        public string Name { get; set; }
         public void AddTrasport(Transport t)
         {
-            transport.Add(t);
+            ListForTransport.transports.Add(t);
         }
         public void RemoveTransport(Transport t)
         {
-            transport.Remove(t);
+            ListForTransport.transports.Remove(t);
         }
         public virtual string About()
         {
-            string inf = $"\n++++++++++++++++++++++++++++++++++++++++++++++++++\n---Парк---\nНаименование: {name}" +
+            string inf = $"\n++++++++++++++++++++++++++++++++++++++++++++++++++\n---Парк---\nНаименование: {Name}" +
             "\nСодержание парка:"; 
-            for (int i = 0; i < transport.Count; i++)
+            for (int i = 0; i < ListForTransport.transports.Count; i++)
             {
-                inf += transport[i].InfoString();
+                inf += ListForTransport.transports[i].InfoString();
             }
             inf += $"\n++++++++++++++++++++++++++++++++++++++++++++++++++";
             return inf;
         }
         public Park(string name, List<Transport> transport)
         {
-            this.name = name;
-            this.transport = transport;
+            this.Name = name;
+            ListForTransport.transports = transport;
         }
     }
 }

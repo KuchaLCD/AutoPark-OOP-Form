@@ -58,6 +58,10 @@ namespace AutoParkForm
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.button7 = new System.Windows.Forms.Button();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -75,11 +79,11 @@ namespace AutoParkForm
             // 
             this.button1.AllowDrop = true;
             this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.button1.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.button1.BackColor = System.Drawing.Color.AliceBlue;
             this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button1.Location = new System.Drawing.Point(558, 46);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(187, 46);
+            this.button1.Size = new System.Drawing.Size(142, 46);
             this.button1.TabIndex = 1;
             this.button1.Text = " Информация о парке";
             this.button1.UseVisualStyleBackColor = false;
@@ -179,6 +183,7 @@ namespace AutoParkForm
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label9.Location = new System.Drawing.Point(12, 250);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(93, 34);
@@ -195,7 +200,7 @@ namespace AutoParkForm
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.Menu;
+            this.button2.BackColor = System.Drawing.Color.AliceBlue;
             this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button2.Location = new System.Drawing.Point(133, 537);
             this.button2.MinimumSize = new System.Drawing.Size(120, 30);
@@ -208,8 +213,8 @@ namespace AutoParkForm
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.button3.Location = new System.Drawing.Point(393, 472);
+            this.button3.BackColor = System.Drawing.Color.AliceBlue;
+            this.button3.Location = new System.Drawing.Point(558, 454);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(157, 59);
             this.button3.TabIndex = 18;
@@ -219,7 +224,7 @@ namespace AutoParkForm
             // 
             // button4
             // 
-            this.button4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button4.BackColor = System.Drawing.Color.AliceBlue;
             this.button4.Location = new System.Drawing.Point(558, 103);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(142, 33);
@@ -230,7 +235,7 @@ namespace AutoParkForm
             // 
             // button5
             // 
-            this.button5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button5.BackColor = System.Drawing.Color.AliceBlue;
             this.button5.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button5.Location = new System.Drawing.Point(12, 334);
             this.button5.MinimumSize = new System.Drawing.Size(120, 30);
@@ -280,7 +285,7 @@ namespace AutoParkForm
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(150, 452);
+            this.label10.Location = new System.Drawing.Point(12, 452);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(95, 17);
             this.label10.TabIndex = 27;
@@ -290,7 +295,7 @@ namespace AutoParkForm
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.SystemColors.MenuBar;
+            this.label11.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label11.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.label11.Location = new System.Drawing.Point(498, 9);
             this.label11.Name = "label11";
@@ -298,11 +303,12 @@ namespace AutoParkForm
             this.label11.TabIndex = 28;
             this.label11.Text = "ВЕРСИЯ ДЛЯ АДМЭНА";
             this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // button6
             // 
-            this.button6.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.button6.Location = new System.Drawing.Point(558, 472);
+            this.button6.BackColor = System.Drawing.Color.GhostWhite;
+            this.button6.Location = new System.Drawing.Point(721, 454);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(156, 59);
             this.button6.TabIndex = 29;
@@ -314,16 +320,16 @@ namespace AutoParkForm
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(751, 46);
+            this.listBox1.Location = new System.Drawing.Point(706, 46);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(294, 116);
+            this.listBox1.Size = new System.Drawing.Size(218, 116);
             this.listBox1.TabIndex = 30;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // button7
             // 
             this.button7.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button7.Location = new System.Drawing.Point(1062, 46);
+            this.button7.Location = new System.Drawing.Point(930, 46);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(109, 46);
             this.button7.TabIndex = 31;
@@ -335,18 +341,66 @@ namespace AutoParkForm
             // 
             this.richTextBox2.Location = new System.Drawing.Point(558, 170);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(487, 260);
+            this.richTextBox2.Size = new System.Drawing.Size(481, 260);
             this.richTextBox2.TabIndex = 32;
             this.richTextBox2.Text = "";
             this.richTextBox2.TextChanged += new System.EventHandler(this.richTextBox2_TextChanged);
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button8.Location = new System.Drawing.Point(930, 107);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(109, 46);
+            this.button8.TabIndex = 33;
+            this.button8.Text = "Обновить список";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.Color.GhostWhite;
+            this.button9.Location = new System.Drawing.Point(883, 454);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(156, 59);
+            this.button9.TabIndex = 34;
+            this.button9.Text = "Зарегистрировать \r\nмотоцикл";
+            this.button9.UseVisualStyleBackColor = false;
+            // 
+            // button10
+            // 
+            this.button10.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button10.Location = new System.Drawing.Point(1096, 523);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(109, 46);
+            this.button10.TabIndex = 47;
+            this.button10.Text = "Выйти";
+            this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // button11
+            // 
+            this.button11.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button11.Location = new System.Drawing.Point(1045, 46);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(109, 72);
+            this.button11.TabIndex = 48;
+            this.button11.Text = "Расчитать стоимость стоянки";
+            this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // MainRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.AutoScroll = true;
+            this.BackColor = System.Drawing.Color.SkyBlue;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1226, 581);
+            this.Controls.Add(this.button11);
+            this.Controls.Add(this.button10);
+            this.Controls.Add(this.button9);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.listBox1);
@@ -378,7 +432,7 @@ namespace AutoParkForm
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainRegister";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Text = "AutoPark";
+            this.Text = "AutoPark-Admin";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -417,6 +471,10 @@ namespace AutoParkForm
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button11;
     }
 }
 

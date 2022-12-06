@@ -16,7 +16,7 @@ namespace AutoParkForm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainRegister());
+            Application.Run(new Connecting());
         }
     }
 }

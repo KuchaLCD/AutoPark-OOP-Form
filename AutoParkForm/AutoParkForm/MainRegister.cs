@@ -7,16 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Data.SqlClient;
 
 namespace AutoParkForm
 {
     public partial class MainRegister : Form
     {
+        DataBase db = new DataBase();
         public MainRegister()
         {
             InitializeComponent();
-            transport = new List<Transport> { };
-            park = new Park("LuxuryPark", transport);
+            park = new Park("LuxuryPark", ListForTransport.transports);
             //новый спосбо задания времени регистрации
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.CustomFormat = "dd.MM.yyyy hh:mm";
@@ -25,23 +26,19 @@ namespace AutoParkForm
             dateTimePicker2.CustomFormat = "dd.MM.yyyy hh:mm";
         }
         //============
-        public static List<Transport> transport { get; set; }
         Park park;
         string FileName;        //имя файла для открытия картинки
-        public static Transport Trans;
-        public static DateTime timeOfRegistrForPark { get; set; }
-        public static DateTime stayTime { get; set; }
         //============
         private void button1_Click(object sender, EventArgs e)  //вывод информации
         {
-            if (transport.Count == 0)
+            if (ListForTransport.transports.Count == 0)
             {
                 richTextBox2.Text = "Парк пуст";
             }
-            for (int i = 0; i < transport.Count; i++)
+            for (int i = 0; i < ListForTransport.transports.Count; i++)
             {
                 richTextBox2.Text = park.About();
-                pictureBox2.ImageLocation = transport[i].Picture;   //показать изображение
+                pictureBox2.ImageLocation = ListForTransport.transports[i].Picture;   //показать изображение
                 pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             }
         }
@@ -73,14 +70,18 @@ namespace AutoParkForm
             int registerNumberForPark = Convert.ToInt32(textBox2.Text);
             double mass = Convert.ToDouble(textBox3.Text);
             double whidth = Convert.ToDouble(textBox4.Text);
+            DateTime timeOfRegistrForPark = Transport.TimeOfRegistrForPark;
+            timeOfRegistrForPark = new DateTime();
             timeOfRegistrForPark = Convert.ToDateTime(dateTimePicker1.Value);
+            DateTime stayTime = new DateTime();
+            Transport.StayTime = stayTime;
             stayTime = Convert.ToDateTime(dateTimePicker2.Value);
             string picture = FileName;
             string notes = Convert.ToString(richTextBox1.Text);
 
-            Trans = new Transport(name, registerNumberForPark, mass, whidth, timeOfRegistrForPark, stayTime, picture, notes);
-            transport.Add(Trans);
-            listBox1.Items.Add(Trans);
+            Transport tr = new Transport(name, registerNumberForPark, mass, whidth, timeOfRegistrForPark, stayTime, picture, notes);
+            ListForTransport.transports.Add(tr);
+            listBox1.Items.Add(tr);
             //информация внесена, теперь можно очистить поля ввода
             textBox1.Clear();
             textBox2.Clear();
@@ -145,7 +146,7 @@ namespace AutoParkForm
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -185,7 +186,7 @@ namespace AutoParkForm
         private void button6_Click(object sender, EventArgs e)
         {
             BusRegister gg = new BusRegister();
-            gg.Show();
+            gg.ShowDialog();
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -205,6 +206,42 @@ namespace AutoParkForm
         private void richTextBox2_TextChanged(object sender, EventArgs e)
         {
             richTextBox1.ScrollBars = (RichTextBoxScrollBars)ScrollBars.Both;
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+            for (int i = 0; i < ListForTransport.transports.Count; i++)
+            {
+                listBox1.Items.Add(ListForTransport.transports[i]);
+            }
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBox.Show("Вы действительно хотите выйти?", "Сообщение", MessageBoxButtons.YesNo,
+            MessageBoxIcon.Information,
+            MessageBoxDefaultButton.Button1,
+            MessageBoxOptions.DefaultDesktopOnly);
+            if (res == DialogResult.Yes)
+            {
+                Hide();
+                Connecting Connect = new Connecting();
+                Connect.ShowDialog();
+                this.Close();
+            }
+            this.TopMost = true;
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            Transport boofer = (Transport)listBox1.SelectedItem;
+            richTextBox2.Text = boofer.Calculate();
         }
     }
 }
