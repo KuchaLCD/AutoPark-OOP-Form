@@ -181,6 +181,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bus.cs" />
     <Compile Include="Car.cs" />
     <Compile Include="Connecting.cs">
       <SubType>Form</SubType>
@@ -203,6 +204,7 @@
     <Compile Include="CarRegister.Designer.cs">
       <DependentUpon>CarRegister.cs</DependentUpon>
     </Compile>
+    <Compile Include="Motocicle.cs" />
     <Compile Include="MotoRegister.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -16,6 +16,7 @@ namespace AutoParkForm
         DataBase db = new DataBase();
         public MainRegister()
         {
+            //Здесь представлены все основные настройки отображения
             InitializeComponent();
             park = new Park("LuxuryPark", ListForTransport.transports);
             //новый спосбо задания времени регистрации
@@ -31,6 +32,7 @@ namespace AutoParkForm
         //============
         private void button1_Click(object sender, EventArgs e)  //вывод информации
         {
+            //По нажатию данной кнопки производится вывод информации об активах парка
             if (ListForTransport.transports.Count == 0)
             {
                 richTextBox2.Text = "Парк пуст";
@@ -38,7 +40,7 @@ namespace AutoParkForm
             for (int i = 0; i < ListForTransport.transports.Count; i++)
             {
                 richTextBox2.Text = park.About();
-                pictureBox2.ImageLocation = ListForTransport.transports[i].Picture;   //показать изображение
+                pictureBox2.ImageLocation = ListForTransport.transports[i].Picture;   //функция - показать изображение
                 pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             }
         }
@@ -65,17 +67,15 @@ namespace AutoParkForm
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //производим запись(регистрацию) транспорта
+            //По нажатию данной кнопки производится запись(регистрация) транспорта в список активов парка и добавление транспорта в селективный список
             string name = Convert.ToString(textBox1.Text);
             int registerNumberForPark = Convert.ToInt32(textBox2.Text);
             double mass = Convert.ToDouble(textBox3.Text);
             double whidth = Convert.ToDouble(textBox4.Text);
-            DateTime timeOfRegistrForPark = Transport.TimeOfRegistrForPark;
-            timeOfRegistrForPark = new DateTime();
-            timeOfRegistrForPark = Convert.ToDateTime(dateTimePicker1.Value);
-            DateTime stayTime = new DateTime();
-            Transport.StayTime = stayTime;
-            stayTime = Convert.ToDateTime(dateTimePicker2.Value);
+
+            DateTime timeOfRegistrForPark = Convert.ToDateTime(dateTimePicker1.Value);
+            DateTime stayTime = Convert.ToDateTime(dateTimePicker2.Value);
+
             string picture = FileName;
             string notes = Convert.ToString(richTextBox1.Text);
 
@@ -123,18 +123,22 @@ namespace AutoParkForm
 
         private void button3_Click(object sender, EventArgs e)
         {
+            //По нажатию данной кнопки производится вызорв формы регистрации машины
+            //Создаём локальную переменную(ссылку) для хранения нового экземпляра формы регистрации машины
             CarRegister carReg = new CarRegister();
             carReg.ShowDialog();    //вызов модальной формы регистрации машины
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            richTextBox2.Text = "";
-            pictureBox2.Image = null;
+            //По нажатию данной кнопки производится очистка вывода
+            richTextBox2.Text = "";     //очищаем поле вывода
+            pictureBox2.Image = null;   //очищаем поле с картинкой
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
+            //По нажатию данной кнопки производится добавление изображения для машины(создаётся ссылка на объект формата .jpg в форме строки(прямой путь к файлу))
             //добавляем изображение машины
             OpenFileDialog openFile = new OpenFileDialog();
             openFile.Filter = "JPG files (*.jpg)|*.jpg";
@@ -185,17 +189,25 @@ namespace AutoParkForm
 
         private void button6_Click(object sender, EventArgs e)
         {
+            //По нажатию данной кнопки производится вызорв формы регистрации автобуса
             BusRegister gg = new BusRegister();
             gg.ShowDialog();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            //селективный вывод информации
+            //По нажатию данной кнопки производится селективный вывод информации
             Transport boofer = (Transport)listBox1.SelectedItem;
-            richTextBox2.Text = boofer.InfoString();
-            pictureBox2.ImageLocation = boofer.Picture;   //показать изображение
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            if (boofer == null)
+            {
+                DialogResult res = MessageBox.Show("В селективном списке отсутсвуют объекты, либо не выбран нужный элемент", "Сообщение");
+            }
+            else
+            {
+                richTextBox2.Text = boofer.InfoString();
+                pictureBox2.ImageLocation = boofer.Picture;   //показать изображение
+                pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            }
         }
 
         public void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -205,11 +217,13 @@ namespace AutoParkForm
 
         private void richTextBox2_TextChanged(object sender, EventArgs e)
         {
+            //если поле с текстом будет статично, то эта функция будет добавлять возможность листать содержимое объекта хранения текста
             richTextBox1.ScrollBars = (RichTextBoxScrollBars)ScrollBars.Both;
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
+            //По нажатию данной кнопки производится обновление группы элементов селективного списка
             listBox1.Items.Clear();
             for (int i = 0; i < ListForTransport.transports.Count; i++)
             {
@@ -224,6 +238,7 @@ namespace AutoParkForm
 
         private void button10_Click(object sender, EventArgs e)
         {
+            //По нажатию данной кнопки производится операция выхода из текущего окна с возможностью выбора
             DialogResult res = MessageBox.Show("Вы действительно хотите выйти?", "Сообщение", MessageBoxButtons.YesNo,
             MessageBoxIcon.Information,
             MessageBoxDefaultButton.Button1,
@@ -240,8 +255,45 @@ namespace AutoParkForm
 
         private void button11_Click(object sender, EventArgs e)
         {
+            //По нажатию данной кнопки производится операция расчёта оплаты стоянки в автопарке для выбранного элемента
             Transport boofer = (Transport)listBox1.SelectedItem;
-            richTextBox2.Text = boofer.Calculate();
+            if (boofer == null)
+            {
+                DialogResult res = MessageBox.Show("В селективном списке отсутсвуют объекты для расчёта оплаты, либо не выбран нужный элемент", "Сообщение");
+            }
+            else
+            {
+                richTextBox2.Text = boofer.Calculate();
+            }
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            //По нажатию данной кнопки производится операция удаления транспорта из селективного списка
+            Transport boofer = (Transport)listBox1.SelectedItem;
+            if (boofer == null)
+            {
+                DialogResult res = MessageBox.Show("В селективном списке отсутсвуют объекты для удаления, либо не выбран нужный элемент", "Сообщение");
+            }
+            else
+            {
+                listBox1.Items.Remove(boofer);
+                ListForTransport.transports.Remove(boofer);
+                richTextBox2.Text = "";
+                pictureBox2.Image = null;
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            //По нажатию данной кнопки производится вызорв формы регистрации мотоцикла
+            MotoRegister gg = new MotoRegister();
+            gg.ShowDialog();
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBox.Show("Поздравляю! Ты выбрал(ла) продвинутую версию)))\nТут ты можешь творить всё что только можно\n(даже создать обыкновенный начальный класс транспорт)", "Сообщение");
         }
     }
 }

@@ -12,8 +12,8 @@ namespace AutoParkForm
         public int RegisterNumberForPark { get; }
         public double Mass { get; }
         public double Whidth { get; }
-        public static DateTime TimeOfRegistrForPark { get; set; }
-        public static DateTime StayTime { get; set; }
+        public DateTime TimeOfRegistrForPark { get; set; }
+        public DateTime StayTime { get; set; }
         public string Picture { get; }
         public string Notes { get; }
         public virtual string InfoString()

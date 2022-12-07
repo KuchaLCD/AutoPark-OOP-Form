@@ -53,6 +53,9 @@ namespace AutoParkForm
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,9 +64,9 @@ namespace AutoParkForm
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(12, 9);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(184, 17);
+            this.label5.Size = new System.Drawing.Size(189, 34);
             this.label5.TabIndex = 9;
-            this.label5.Text = "Выберите модельный ряд:";
+            this.label5.Text = "Выберите модельный ряд:\r\n(Или введите свою модель)";
             // 
             // comboBox1
             // 
@@ -76,7 +79,7 @@ namespace AutoParkForm
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(15, 601);
+            this.richTextBox1.Location = new System.Drawing.Point(15, 661);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(368, 59);
             this.richTextBox1.TabIndex = 62;
@@ -86,7 +89,7 @@ namespace AutoParkForm
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(145, 581);
+            this.label10.Location = new System.Drawing.Point(145, 641);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(95, 17);
             this.label10.TabIndex = 61;
@@ -95,7 +98,7 @@ namespace AutoParkForm
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 270);
+            this.label9.Location = new System.Drawing.Point(12, 330);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(93, 34);
             this.label9.TabIndex = 60;
@@ -104,7 +107,7 @@ namespace AutoParkForm
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 226);
+            this.label8.Location = new System.Drawing.Point(12, 286);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(95, 34);
             this.label8.TabIndex = 59;
@@ -114,7 +117,7 @@ namespace AutoParkForm
             // 
             this.button2.BackColor = System.Drawing.SystemColors.Menu;
             this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button2.Location = new System.Drawing.Point(131, 666);
+            this.button2.Location = new System.Drawing.Point(131, 726);
             this.button2.MinimumSize = new System.Drawing.Size(120, 30);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(120, 30);
@@ -125,7 +128,8 @@ namespace AutoParkForm
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(168, 429);
+            this.pictureBox1.BackColor = System.Drawing.Color.LightCyan;
+            this.pictureBox1.Location = new System.Drawing.Point(168, 489);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(153, 124);
             this.pictureBox1.TabIndex = 57;
@@ -134,9 +138,9 @@ namespace AutoParkForm
             // 
             // button5
             // 
-            this.button5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button5.BackColor = System.Drawing.Color.Lime;
             this.button5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button5.Location = new System.Drawing.Point(12, 455);
+            this.button5.Location = new System.Drawing.Point(12, 515);
             this.button5.MinimumSize = new System.Drawing.Size(120, 30);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(132, 54);
@@ -182,7 +186,7 @@ namespace AutoParkForm
             // dateTimePicker2
             // 
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(113, 282);
+            this.dateTimePicker2.Location = new System.Drawing.Point(113, 342);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(265, 22);
             this.dateTimePicker2.TabIndex = 51;
@@ -191,7 +195,7 @@ namespace AutoParkForm
             // dateTimePicker1
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(113, 238);
+            this.dateTimePicker1.Location = new System.Drawing.Point(113, 298);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(265, 22);
             this.dateTimePicker1.TabIndex = 50;
@@ -200,7 +204,7 @@ namespace AutoParkForm
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 316);
+            this.label4.Location = new System.Drawing.Point(12, 376);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(68, 34);
             this.label4.TabIndex = 49;
@@ -209,7 +213,7 @@ namespace AutoParkForm
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 371);
+            this.label3.Location = new System.Drawing.Point(12, 431);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 34);
             this.label3.TabIndex = 48;
@@ -226,7 +230,7 @@ namespace AutoParkForm
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(96, 328);
+            this.textBox4.Location = new System.Drawing.Point(96, 388);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 22);
             this.textBox4.TabIndex = 46;
@@ -234,7 +238,7 @@ namespace AutoParkForm
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(96, 383);
+            this.textBox3.Location = new System.Drawing.Point(96, 443);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 22);
             this.textBox3.TabIndex = 45;
@@ -265,12 +269,43 @@ namespace AutoParkForm
             this.label1.TabIndex = 42;
             this.label1.Text = "Макс. \r\nскорость:";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(12, 226);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(90, 34);
+            this.label11.TabIndex = 63;
+            this.label11.Text = "Количество \r\nколёс:";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(96, 238);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(100, 22);
+            this.textBox7.TabIndex = 64;
+            this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.AliceBlue;
+            this.button1.Location = new System.Drawing.Point(243, 388);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(140, 29);
+            this.button1.TabIndex = 65;
+            this.button1.Text = "Сгенирировать";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // BusRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Menu;
-            this.ClientSize = new System.Drawing.Size(452, 710);
+            this.BackColor = System.Drawing.Color.Aquamarine;
+            this.ClientSize = new System.Drawing.Size(452, 765);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -297,6 +332,7 @@ namespace AutoParkForm
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BusRegister";
             this.Text = "AutoPark-Bus Register";
+            this.Load += new System.EventHandler(this.BusRegister_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -328,5 +364,8 @@ namespace AutoParkForm
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Button button1;
     }
 }

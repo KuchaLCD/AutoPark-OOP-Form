@@ -50,30 +50,29 @@ namespace AutoParkForm
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             //автозаполнение
-            //Данные написал на рандоме(хз как для этих модеей на самом деле)
             switch (comboBox1.SelectedItem)
             {
                 case "Toyota Landcruser Prada":
                     textBox1.Text = "255";     //макс. скорость 
-                    textBox2.Text = "30";     //объем двигателя
+                    textBox2.Text = "3,5";     //объем двигателя
                     textBox5.Text = "1700";     //масса
                     textBox6.Text = "2,5";     //ширина
                     break;
                 case "Mercedes S300":
                     textBox1.Text = "270";
-                    textBox2.Text = "35";
+                    textBox2.Text = "2,5";
                     textBox5.Text = "1650";
                     textBox6.Text = "2,4";
                     break;
                 case "Renault Captur":
                     textBox1.Text = "250";
-                    textBox2.Text = "25";
+                    textBox2.Text = "1,9";
                     textBox5.Text = "1550";
                     textBox6.Text = "2,1";
                     break;
                 case "Kia Cerato":
                     textBox1.Text = "240";
-                    textBox2.Text = "30";
+                    textBox2.Text = "2,1";
                     textBox5.Text = "1700";
                     textBox6.Text = "2,3";
                     break;
@@ -134,16 +133,14 @@ namespace AutoParkForm
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //производим запись(регистрацию) транспорта
-            double volumeOfEngine = Convert.ToDouble(textBox1.Text);
-            double maxSpeed = Convert.ToDouble(textBox2.Text);
+            //По нажатию данной кнопки производится запись(регистрация) машины
+            double volumeOfEngine = Convert.ToDouble(textBox2.Text);
+            double maxSpeed = Convert.ToDouble(textBox1.Text);
             string roadNumber = Convert.ToString(textBox3.Text);
             string name = comboBox1.Text;
             int registerNumberForPark = Convert.ToInt32(textBox4.Text);
             double mass = Convert.ToDouble(textBox5.Text);
             double whidth = Convert.ToDouble(textBox6.Text);
-            //сторонние переменные отображаюстя некорректно
-            //поэтому попробуем создать локальные с отсылкой на сторонние
             DateTime timeOfRegistrForPark = Convert.ToDateTime(dateTimePicker1.Value);
             DateTime stayTime = Convert.ToDateTime(dateTimePicker2.Value);
             string picture = FileName;
@@ -197,11 +194,6 @@ namespace AutoParkForm
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void CarRegister_Load(object sender, EventArgs e)

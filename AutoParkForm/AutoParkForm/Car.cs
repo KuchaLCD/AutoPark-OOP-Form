@@ -15,10 +15,11 @@ namespace AutoParkForm
         {
             string inf = $"\n::::::::::::::::::::::::::::::::::::::::::::::::::::::\n---Машина(Автомобиль)---\nНаименование: {Naming}" +
                          $"\nНомер регистрации в парке: {RegisterNumberForPark}" +
-                         $"\nВремя регистрации в парке: {Transport.TimeOfRegistrForPark}" +
+                         $"\nВремя регистрации в парке: {TimeOfRegistrForPark}" +
                          $"\nНомера: {RoadNumber}" +
                          $"\n---Дополнительная информация---\nОбъём двигателя: {VolumeOfEngine} см. куб." +
                          $"\nМаксимальная скорость: {MaxSpeed} км/ч" +
+                         $"\nШирина: {Whidth} м." +
                          $"\nВес: {Mass} кг." +
                          $"\nВремя пребывания(до): {StayTime}" +
                          $"\nПримечания: {Notes}" +

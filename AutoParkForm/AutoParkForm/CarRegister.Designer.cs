@@ -134,9 +134,9 @@ namespace AutoParkForm
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(12, 24);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(184, 17);
+            this.label5.Size = new System.Drawing.Size(189, 34);
             this.label5.TabIndex = 8;
-            this.label5.Text = "Выберите модельный ряд:";
+            this.label5.Text = "Выберите модельный ряд:\r\n(Или введите свою модель)";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // comboBox1
@@ -204,7 +204,7 @@ namespace AutoParkForm
             // 
             // button5
             // 
-            this.button5.BackColor = System.Drawing.Color.AliceBlue;
+            this.button5.BackColor = System.Drawing.Color.LemonChiffon;
             this.button5.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button5.Location = new System.Drawing.Point(12, 475);
             this.button5.MinimumSize = new System.Drawing.Size(120, 30);
@@ -217,6 +217,7 @@ namespace AutoParkForm
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.LightCyan;
             this.pictureBox1.Location = new System.Drawing.Point(168, 449);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(153, 124);
@@ -291,7 +292,7 @@ namespace AutoParkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.BackColor = System.Drawing.Color.Linen;
             this.ClientSize = new System.Drawing.Size(453, 744);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.richTextBox1);
