@@ -24,22 +24,9 @@ namespace AutoParkForm
             dateTimePicker2.Format = DateTimePickerFormat.Custom;
             dateTimePicker2.CustomFormat = "dd.MM.yyyy hh:mm";
             //несколько готовых вариантов серийных моделей автомобилей
-            comboBox1.Items.Add("Toyota Landcruser Prada");
-            comboBox1.Items.Add("Mercedes S300");
-            comboBox1.Items.Add("Renault Captur");
-            comboBox1.Items.Add("Kia Cerato");
-            comboBox1.Items.Add("Honda Civic");
-            comboBox1.Items.Add("Ford Mustang");
-            comboBox1.Items.Add("Volksvagen Passat B7");
-            comboBox1.Items.Add("Audi TT");
-            comboBox1.Items.Add("Audi A7");
-            comboBox1.Items.Add("Toyota Camry 3.5");
-            comboBox1.Items.Add("BMW X5");
-            comboBox1.Items.Add("BMW X7");
-            comboBox1.Items.Add("Волга 21");
-            comboBox1.Items.Add("Kia Sportage 4");
-            comboBox1.Items.Add("Kia Rio");
-            comboBox1.Items.Add("Skoda Rapid");
+            comboBox1.Items.Add("Scania");
+            comboBox1.Items.Add("Volvo");
+            comboBox1.Items.Add("Mercedes");
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -47,31 +34,24 @@ namespace AutoParkForm
             //автозаполнение
             switch (comboBox1.SelectedItem)
             {
-                case "Toyota Landcruser Prada":
-                    textBox1.Text = "255";     //макс. скорость 
-                    textBox2.Text = "3,5";     //объем двигателя
+                case "Scania":
+                    textBox1.Text = "155";     //макс. скорость 
+                    textBox2.Text = "12";     //объем двигателя
                     textBox5.Text = "1700";     //масса
-                    textBox6.Text = "2,5";     //ширина
+                    textBox6.Text = "7";     //ширина
                     break;
-                case "Mercedes S300":
-                    textBox1.Text = "270";
-                    textBox2.Text = "2,5";
-                    textBox5.Text = "1650";
-                    textBox6.Text = "2,4";
+                case "Volvo":
+                    textBox1.Text = "170";
+                    textBox2.Text = "13,5";
+                    textBox5.Text = "1900";
+                    textBox6.Text = "8";
                     break;
-                case "Renault Captur":
-                    textBox1.Text = "250";
-                    textBox2.Text = "1,9";
-                    textBox5.Text = "1550";
-                    textBox6.Text = "2,1";
+                case "Mercedes":
+                    textBox1.Text = "150";
+                    textBox2.Text = "19";
+                    textBox5.Text = "2500";
+                    textBox6.Text = "8,5";
                     break;
-                case "Kia Cerato":
-                    textBox1.Text = "240";
-                    textBox2.Text = "2,1";
-                    textBox5.Text = "1700";
-                    textBox6.Text = "2,3";
-                    break;
-
             }
             //это лишь примерный перечень
         }
@@ -118,7 +98,7 @@ namespace AutoParkForm
 
         private void button5_Click(object sender, EventArgs e)
         {
-            //добавляем изображение автобуса
+            //По нажатию данной кнопки производится добавление изображения автобуса
             OpenFileDialog openFile = new OpenFileDialog();
             openFile.Filter = "JPG files (*.jpg)|*.jpg";
             openFile.ShowDialog();
@@ -180,6 +160,7 @@ namespace AutoParkForm
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //По нажатию данной кнопки производится генерация случайного номера регистрации в парке
             Random randomizer = new Random();
             double randomNumber = randomizer.Next(100000, 999999);
             textBox4.Text = randomNumber.ToString();

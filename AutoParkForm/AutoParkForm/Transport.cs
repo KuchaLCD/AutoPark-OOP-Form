@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoParkForm
 {
-    public class Transport
+    public class Transport : ICalc
     {
         public string Naming { get; }
         public int RegisterNumberForPark { get; }
@@ -29,15 +29,34 @@ namespace AutoParkForm
 
             return inf;
         }
-        public string Calculate()
+        public string CalculateOwn()
         {
             double Count1 = TimeOfRegistrForPark.Year * 8760 + TimeOfRegistrForPark.Month * 720 + TimeOfRegistrForPark.Day * 24 + TimeOfRegistrForPark.Hour + TimeOfRegistrForPark.Minute * 0.017 + TimeOfRegistrForPark.Second * 0.00028;
             double Count2 = StayTime.Year * 8760 + StayTime.Month * 720 + StayTime.Day * 24 + StayTime.Hour + StayTime.Minute * 0.017 + StayTime.Second * 0.00028;
             double billForHour = 2;
             double hours = Count2 - Count1;
             double result = billForHour * hours;
-            string inf = $"\nСовокупное количество часов стоянки для выбранного транспорта = {hours} ч." +
+            string inf = $"Совокупное количество часов стоянки для выбранного транспорта = {hours} ч." +
                          $"\nСумма стоянки = {result} BYN";
+            return inf;
+        }
+        public string CalculateIncome()
+        {
+            double k = 0;
+            double billForHour = 2;
+            double Count1 = 0;
+            double Count2 = 0;
+            for (int i = 0; i < ListForTransport.transports.Count; i++)
+            {
+                Count1 += ListForTransport.transports[i].TimeOfRegistrForPark.Year * 8760 + ListForTransport.transports[i].TimeOfRegistrForPark.Month * 720 + ListForTransport.transports[i].TimeOfRegistrForPark.Day * 24 + ListForTransport.transports[i].TimeOfRegistrForPark.Hour + ListForTransport.transports[i].TimeOfRegistrForPark.Minute * 0.017 + ListForTransport.transports[i].TimeOfRegistrForPark.Second * 0.00028;
+                Count2 += ListForTransport.transports[i].StayTime.Year * 8760 + ListForTransport.transports[i].StayTime.Month * 720 + ListForTransport.transports[i].StayTime.Day * 24 + ListForTransport.transports[i].StayTime.Hour + ListForTransport.transports[i].StayTime.Minute * 0.017 + ListForTransport.transports[i].StayTime.Second * 0.00028;
+                k++;
+            }
+            
+            double hours = Count2 - Count1;
+            double result = billForHour * hours;
+            string inf = $"Совокупное количество транспорта в парке = {k}" +
+                         $"\nПрибыль = {result} BYN";
             return inf;
         }
         public override string ToString()

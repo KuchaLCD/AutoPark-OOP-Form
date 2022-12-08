@@ -47,6 +47,7 @@ namespace AutoParkForm
             this.button12 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.button9 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -231,12 +232,24 @@ namespace AutoParkForm
             this.button9.UseVisualStyleBackColor = false;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
+            // button14
+            // 
+            this.button14.BackColor = System.Drawing.Color.Azure;
+            this.button14.Location = new System.Drawing.Point(371, 449);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(117, 52);
+            this.button14.TabIndex = 64;
+            this.button14.Text = "Расчитать \r\nприбыль";
+            this.button14.UseVisualStyleBackColor = false;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
             // UserRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(911, 511);
+            this.Controls.Add(this.button14);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button12);
@@ -283,5 +296,6 @@ namespace AutoParkForm
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button14;
     }
 }

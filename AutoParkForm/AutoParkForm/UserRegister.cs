@@ -106,6 +106,7 @@ namespace AutoParkForm
 
         private void button5_Click(object sender, EventArgs e)
         {
+            //По нажатию данной кнопки можно вернутся к окну одключения
             DialogResult res = MessageBox.Show("Вы действительно хотите выйти?","Сообщение",MessageBoxButtons.YesNo,
             MessageBoxIcon.Information,
             MessageBoxDefaultButton.Button1,
@@ -135,7 +136,7 @@ namespace AutoParkForm
             }
             else
             {
-                richTextBox2.Text = boofer.Calculate();
+                richTextBox2.Text = boofer.CalculateOwn();
             }
         }
 
@@ -163,7 +164,21 @@ namespace AutoParkForm
 
         private void button9_Click(object sender, EventArgs e)
         {
-            DialogResult res = MessageBox.Show("Вау! Ты решил(ла) попробовать обычный пользовательский интерфейс)\nЭта версия разрботана специально под нужды платных атопарков", "Сообщение");
+            //По нажатию данной кнопки отображается сообщение от разработчика
+            DialogResult res = MessageBox.Show("Вау! Ты решил(ла) попробовать обычный пользовательский интерфейс)\nЭта версия разрботана специально под нужды платных автопарков", "Сообщение");
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            //По нажатию данной кнопки можно расчитать прибыль стоянки
+            if (ListForTransport.transports.Count == 0)
+            {
+                richTextBox2.Text = "В парке отсутствует транспорт\nПрибыль парка = 0";
+            }
+            else
+            {
+                richTextBox2.Text = ListForTransport.transports[0].CalculateIncome();
+            }
         }
     }
 }

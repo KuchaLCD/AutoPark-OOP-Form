@@ -24,22 +24,16 @@ namespace AutoParkForm
             dateTimePicker2.Format = DateTimePickerFormat.Custom;
             dateTimePicker2.CustomFormat = "dd.MM.yyyy hh:mm";
             //несколько готовых вариантов серийных моделей автомобилей
-            comboBox1.Items.Add("Toyota Landcruser Prada");
-            comboBox1.Items.Add("Mercedes S300");
-            comboBox1.Items.Add("Renault Captur");
-            comboBox1.Items.Add("Kia Cerato");
-            comboBox1.Items.Add("Honda Civic");
-            comboBox1.Items.Add("Ford Mustang");
-            comboBox1.Items.Add("Volksvagen Passat B7");
-            comboBox1.Items.Add("Audi TT");
-            comboBox1.Items.Add("Audi A7");
-            comboBox1.Items.Add("Toyota Camry 3.5");
-            comboBox1.Items.Add("BMW X5");
-            comboBox1.Items.Add("BMW X7");
-            comboBox1.Items.Add("Волга 21");
-            comboBox1.Items.Add("Kia Sportage 4");
-            comboBox1.Items.Add("Kia Rio");
-            comboBox1.Items.Add("Skoda Rapid");
+            comboBox1.Items.Add("Ducati-1098");
+            comboBox1.Items.Add("Honda Blackbird CBR1100XX");
+            comboBox1.Items.Add("BMW S1000 RR");
+            comboBox1.Items.Add("Yamaha YZF-R1");
+            comboBox1.Items.Add("Ninja ZX-14");
+            comboBox1.Items.Add("MV Agusta F4 CC");
+            comboBox1.Items.Add("Suzuki Hayabusa");
+            comboBox1.Items.Add("МТТ Turbine Superbike");
+            comboBox1.Items.Add("МТТ Street Fighter");
+            comboBox1.Items.Add("Dodge Tomahawk");
         }
 
         private void MotoRegister_Load(object sender, EventArgs e)
@@ -49,6 +43,7 @@ namespace AutoParkForm
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //По нажатию данной кнопки производится генерация случайного номера регистрации в парке
             Random randomizer = new Random();
             double randomNumber = randomizer.Next(100000, 999999);
             textBox4.Text = randomNumber.ToString();
@@ -59,28 +54,64 @@ namespace AutoParkForm
             //автозаполнение
             switch (comboBox1.SelectedItem)
             {
-                case "Toyota Landcruser Prada":
-                    textBox1.Text = "255";     //макс. скорость 
-                    textBox2.Text = "3,5";     //объем двигателя
-                    textBox5.Text = "1700";     //масса
-                    textBox6.Text = "2,5";     //ширина
+                case "Ducati-1098":
+                    textBox1.Text = "200";     //макс. скорость 
+                    textBox2.Text = "1,5";     //объем двигателя
+                    textBox5.Text = "173";     //масса
+                    textBox6.Text = "1,5";     //ширина
                     break;
-                case "Mercedes S300":
-                    textBox1.Text = "270";
-                    textBox2.Text = "2,5";
-                    textBox5.Text = "1650";
-                    textBox6.Text = "2,4";
+                case "Honda Blackbird CBR1100XX":
+                    textBox1.Text = "290";
+                    textBox2.Text = "1,2";
+                    textBox5.Text = "225";
+                    textBox6.Text = "1,4";
                     break;
-                case "Renault Captur":
-                    textBox1.Text = "250";
+                case "BMW S1000 RR":
+                    textBox1.Text = "300";
                     textBox2.Text = "1,9";
-                    textBox5.Text = "1550";
-                    textBox6.Text = "2,1";
+                    textBox5.Text = "270";
+                    textBox6.Text = "1,9";
                     break;
-                case "Kia Cerato":
-                    textBox1.Text = "240";
+                case "Yamaha YZF-R1":
+                    textBox1.Text = "340";
                     textBox2.Text = "2,1";
-                    textBox5.Text = "1700";
+                    textBox5.Text = "269";
+                    textBox6.Text = "1,7";
+                    break;
+                case "Ninja ZX-14":
+                    textBox1.Text = "345";
+                    textBox2.Text = "2,1";
+                    textBox5.Text = "240";
+                    textBox6.Text = "1,5";
+                    break;
+                case "MV Agusta F4 CC":
+                    textBox1.Text = "306";
+                    textBox2.Text = "2,2";
+                    textBox5.Text = "245";
+                    textBox6.Text = "1,3";
+                    break;
+                case "Suzuki Hayabusa":
+                    textBox1.Text = "330";
+                    textBox2.Text = "2,3";
+                    textBox5.Text = "320";
+                    textBox6.Text = "1,2";
+                    break;
+                case "МТТ Turbine Superbike":
+                    textBox1.Text = "365";
+                    textBox2.Text = "2,3";
+                    textBox5.Text = "225";
+                    textBox6.Text = "1,9";
+                    break;
+                case "МТТ Street Fighter":
+                    textBox1.Text = "402";
+                    textBox2.Text = "2,5";
+                    textBox5.Text = "380";
+                    textBox6.Text = "1,7";
+                    break;
+                case "Dodge Tomahawk":
+                    textBox1.Text = "480";
+                    textBox2.Text = "2,3";
+                    textBox5.Text = "680";
                     textBox6.Text = "2,3";
                     break;
 
@@ -130,7 +161,7 @@ namespace AutoParkForm
 
         private void button5_Click(object sender, EventArgs e)
         {
-            //добавляем изображение мотоцикла
+            //По нажатию данной кнопки производится добавление изображения мотоцикла
             OpenFileDialog openFile = new OpenFileDialog();
             openFile.Filter = "JPG files (*.jpg)|*.jpg";
             openFile.ShowDialog();
@@ -151,7 +182,7 @@ namespace AutoParkForm
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //По нажатию данной кнопки производится запись(регистрация) машины
+            //По нажатию данной кнопки производится запись(регистрация) мотоцикла
             double volumeOfEngine = Convert.ToDouble(textBox2.Text);
             double maxSpeed = Convert.ToDouble(textBox1.Text);
             string roadNumber = Convert.ToString(textBox3.Text);

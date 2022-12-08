@@ -191,6 +191,7 @@
     </Compile>
     <Compile Include="DataBase.cs" />
     <Compile Include="EngineTransport.cs" />
+    <Compile Include="ICalc.cs" />
     <Compile Include="ListForTransport.cs" />
     <Compile Include="MainRegister.cs">
       <SubType>Form</SubType>

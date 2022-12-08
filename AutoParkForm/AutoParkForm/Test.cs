@@ -22,6 +22,7 @@ namespace AutoParkForm
         Park park;
         private void button5_Click(object sender, EventArgs e)
         {
+            //По нажатию данной кнопки можно вернутся к окну подключения
             DialogResult res = MessageBox.Show("Вы действительно хотите выйти?", "Сообщение", MessageBoxButtons.YesNo,
             MessageBoxIcon.Information,
             MessageBoxDefaultButton.Button1,
@@ -96,6 +97,7 @@ namespace AutoParkForm
 
         private void button6_Click(object sender, EventArgs e)
         {
+            //По нажатию данной кнопки производится быстрая регистрация автобуса
             double volumeOfEngine = 10;
             double maxSpeed = 255;
             string roadNumber = "AM-2377 EI-1";
@@ -116,6 +118,7 @@ namespace AutoParkForm
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //По нажатию данной кнопки производится быстрая регистрация мотоцикла
             double volumeOfEngine = 1.5;
             double maxSpeed = 255;
             string roadNumber = "MC-9376 EI-1";
@@ -135,6 +138,7 @@ namespace AutoParkForm
 
         private void button3_Click(object sender, EventArgs e)
         {
+            //По нажатию данной кнопки производится быстрая регистрация машины
             double volumeOfEngine = 3.5;
             double maxSpeed = 255;
             string roadNumber = "GR-2344 EI-1";
@@ -183,13 +187,27 @@ namespace AutoParkForm
             }
             else
             {
-                richTextBox2.Text = boofer.Calculate();
+                richTextBox2.Text = boofer.CalculateOwn();
             }
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
+            //По нажатию данной кнопки отображается сообщение от разработчика
             DialogResult res = MessageBox.Show("В данной версии не нужно вводить данные с клавиатуры)) \nДостаточно просто нажимать на кнопки", "Сообщение");
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            //По нажатию данной кнопки можно расчитать прибыль стоянки
+            if (ListForTransport.transports.Count == 0)
+            {
+                richTextBox2.Text = "В парке отсутствует транспорт\nПрибыль парка = 0";
+            }
+            else
+            {
+                richTextBox2.Text = ListForTransport.transports[0].CalculateIncome();
+            }
         }
     }
 }

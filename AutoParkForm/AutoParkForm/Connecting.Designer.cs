@@ -79,7 +79,7 @@ namespace AutoParkForm
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(137, 74);
+            this.label1.Location = new System.Drawing.Point(135, 74);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(397, 17);
             this.label1.TabIndex = 3;
@@ -113,7 +113,7 @@ namespace AutoParkForm
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(243, 9);
+            this.label3.Location = new System.Drawing.Point(233, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(197, 17);
             this.label3.TabIndex = 50;
@@ -122,7 +122,7 @@ namespace AutoParkForm
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(180, 36);
+            this.label4.Location = new System.Drawing.Point(171, 37);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(325, 17);
             this.label4.TabIndex = 51;

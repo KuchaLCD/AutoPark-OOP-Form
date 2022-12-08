@@ -20,6 +20,8 @@ namespace AutoParkForm
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //По нажатию данной кнопки осуществляется переход между версиями приложения
+            //В этом случае мы переходим в тестовую версию
             Hide();
             Test TestVers = new Test();
             TestVers.ShowDialog();
@@ -28,6 +30,8 @@ namespace AutoParkForm
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //По нажатию данной кнопки осуществляется переход между версиями приложения
+            //В этом случае мы переходим в версию администратора 
             Hide();
             MainRegister AdminVers = new MainRegister();
             AdminVers.ShowDialog();
@@ -36,6 +40,8 @@ namespace AutoParkForm
 
         private void button3_Click(object sender, EventArgs e)
         {
+            //По нажатию данной кнопки осуществляется переход между версиями приложения
+            //В этом случае мы переходим в пользовательскую версию
             Hide();
             UserRegister UserVers = new UserRegister();
             UserVers.ShowDialog();
@@ -49,6 +55,7 @@ namespace AutoParkForm
 
         private void button10_Click(object sender, EventArgs e)
         {
+            //По нажатию данной кнопки можно выйти из приложения
             DialogResult res = MessageBox.Show("Вы действительно хотите закрыть приложение?", "Сообщение", MessageBoxButtons.YesNo,
             MessageBoxIcon.Information,
             MessageBoxDefaultButton.Button1,

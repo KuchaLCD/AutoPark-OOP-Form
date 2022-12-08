@@ -263,7 +263,7 @@ namespace AutoParkForm
             }
             else
             {
-                richTextBox2.Text = boofer.Calculate();
+                richTextBox2.Text = boofer.CalculateOwn();
             }
         }
 
@@ -293,7 +293,21 @@ namespace AutoParkForm
 
         private void button13_Click(object sender, EventArgs e)
         {
+            //По нажатию данной кнопки отображается сообщение от разработчика
             DialogResult res = MessageBox.Show("Поздравляю! Ты выбрал(ла) продвинутую версию)))\nТут ты можешь творить всё что только можно\n(даже создать обыкновенный начальный класс транспорт)", "Сообщение");
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            //По нажатию данной кнопки можно расчитать прибыль стоянки
+            if (ListForTransport.transports.Count == 0)
+            {
+                richTextBox2.Text = "В парке отсутствует транспорт\nПрибыль парка = 0";
+            }
+            else
+            {
+                richTextBox2.Text = ListForTransport.transports[0].CalculateIncome();
+            }
         }
     }
 }

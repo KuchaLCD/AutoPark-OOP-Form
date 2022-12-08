@@ -30,16 +30,9 @@ namespace AutoParkForm
             comboBox1.Items.Add("Kia Cerato");
             comboBox1.Items.Add("Honda Civic");
             comboBox1.Items.Add("Ford Mustang");
-            comboBox1.Items.Add("Volksvagen Passat B7");
+            comboBox1.Items.Add("Volkswagen Passat B7");
             comboBox1.Items.Add("Audi TT");
             comboBox1.Items.Add("Audi A7");
-            comboBox1.Items.Add("Toyota Camry 3.5");
-            comboBox1.Items.Add("BMW X5");
-            comboBox1.Items.Add("BMW X7");
-            comboBox1.Items.Add("Волга 21");
-            comboBox1.Items.Add("Kia Sportage 4");
-            comboBox1.Items.Add("Kia Rio");
-            comboBox1.Items.Add("Skoda Rapid");
         }
         
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -76,7 +69,36 @@ namespace AutoParkForm
                     textBox5.Text = "1700";
                     textBox6.Text = "2,3";
                     break;
-
+                case "Honda Civic":
+                    textBox1.Text = "300";
+                    textBox2.Text = "2,8";
+                    textBox5.Text = "1730";
+                    textBox6.Text = "2,4";
+                    break;
+                case "Ford Mustang":
+                    textBox1.Text = "400";
+                    textBox2.Text = "2,6";
+                    textBox5.Text = "1830";
+                    textBox6.Text = "1,9";
+                    break;
+                case "Volkswagen Passat B7":
+                    textBox1.Text = "240";
+                    textBox2.Text = "1,8";
+                    textBox5.Text = "1600";
+                    textBox6.Text = "1,9";
+                    break;
+                case "Audi TT":
+                    textBox1.Text = "290";
+                    textBox2.Text = "1,8";
+                    textBox5.Text = "1600";
+                    textBox6.Text = "1,9";
+                    break;
+                case "Audi A7":
+                    textBox1.Text = "380";
+                    textBox2.Text = "2,1";
+                    textBox5.Text = "1700";
+                    textBox6.Text = "2,3";
+                    break;
             }
             //это лишь примерный перечень
         }
@@ -162,7 +184,7 @@ namespace AutoParkForm
 
         private void button5_Click(object sender, EventArgs e)
         {
-            //добавляем изображение машины
+            //По нажатию данной кнопки производится добавление изображения машины
             OpenFileDialog openFile = new OpenFileDialog();
             openFile.Filter = "JPG files (*.jpg)|*.jpg";
             openFile.ShowDialog();
@@ -233,6 +255,7 @@ namespace AutoParkForm
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            //По нажатию данной кнопки производится генерация случайного номера регистрации в парке
             Random randomizer = new Random();
             double randomNumber = randomizer.Next(100000,999999);
             textBox4.Text = randomNumber.ToString();
