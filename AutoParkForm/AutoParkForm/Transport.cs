@@ -42,17 +42,18 @@ namespace AutoParkForm
         }
         public string CalculateIncome()
         {
-            double k = 0;
+            double k = 0;       // Число для подсчёта транспорта в парке 
             double billForHour = 2;
-            double Count1 = 0;
-            double Count2 = 0;
+            double Count1 = 0;      //промежуточное значение
+            double Count2 = 0;      //и это тоже
+            //Этот "сложный" алгоритм считает общее количество часов 
             for (int i = 0; i < ListForTransport.transports.Count; i++)
             {
                 Count1 += ListForTransport.transports[i].TimeOfRegistrForPark.Year * 8760 + ListForTransport.transports[i].TimeOfRegistrForPark.Month * 720 + ListForTransport.transports[i].TimeOfRegistrForPark.Day * 24 + ListForTransport.transports[i].TimeOfRegistrForPark.Hour + ListForTransport.transports[i].TimeOfRegistrForPark.Minute * 0.017 + ListForTransport.transports[i].TimeOfRegistrForPark.Second * 0.00028;
                 Count2 += ListForTransport.transports[i].StayTime.Year * 8760 + ListForTransport.transports[i].StayTime.Month * 720 + ListForTransport.transports[i].StayTime.Day * 24 + ListForTransport.transports[i].StayTime.Hour + ListForTransport.transports[i].StayTime.Minute * 0.017 + ListForTransport.transports[i].StayTime.Second * 0.00028;
                 k++;
             }
-            
+            //Считаем часы и результат ("дата пребытия в часах" - "дата отъезда")
             double hours = Count2 - Count1;
             double result = billForHour * hours;
             string inf = $"Совокупное количество транспорта в парке = {k}" +

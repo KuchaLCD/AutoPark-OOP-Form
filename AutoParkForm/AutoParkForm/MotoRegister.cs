@@ -183,30 +183,37 @@ namespace AutoParkForm
         private void button2_Click(object sender, EventArgs e)
         {
             //По нажатию данной кнопки производится запись(регистрация) мотоцикла
-            double volumeOfEngine = Convert.ToDouble(textBox2.Text);
-            double maxSpeed = Convert.ToDouble(textBox1.Text);
-            string roadNumber = Convert.ToString(textBox3.Text);
-            string name = comboBox1.Text;
-            int registerNumberForPark = Convert.ToInt32(textBox4.Text);
-            double mass = Convert.ToDouble(textBox5.Text);
-            double whidth = Convert.ToDouble(textBox6.Text);
-            DateTime timeOfRegistrForPark = Convert.ToDateTime(dateTimePicker1.Value);
-            DateTime stayTime = Convert.ToDateTime(dateTimePicker2.Value);
-            string picture = FileName;
-            string notes = Convert.ToString(richTextBox1.Text);
+            try
+            {
+                double volumeOfEngine = Convert.ToDouble(textBox2.Text);
+                double maxSpeed = Convert.ToDouble(textBox1.Text);
+                string roadNumber = Convert.ToString(textBox3.Text);
+                string name = comboBox1.Text;
+                int registerNumberForPark = Convert.ToInt32(textBox4.Text);
+                double mass = Convert.ToDouble(textBox5.Text);
+                double whidth = Convert.ToDouble(textBox6.Text);
+                DateTime timeOfRegistrForPark = Convert.ToDateTime(dateTimePicker1.Value);
+                DateTime stayTime = Convert.ToDateTime(dateTimePicker2.Value);
+                string picture = FileName;
+                string notes = Convert.ToString(richTextBox1.Text);
 
-            Transport trans = new Motocicle(volumeOfEngine, maxSpeed, roadNumber, name, registerNumberForPark, mass, whidth, timeOfRegistrForPark, stayTime, picture, notes);
-            ListForTransport.transports.Add(trans);
-            //информация внесена, теперь можно очистить поля ввода
-            comboBox1.Text = null;
-            textBox1.Clear();
-            textBox2.Clear();
-            textBox3.Clear();
-            textBox4.Clear();
-            textBox5.Clear();
-            textBox6.Clear();
-            pictureBox1.Image = null;
-            richTextBox1.Clear();
+                Transport trans = new Motocicle(volumeOfEngine, maxSpeed, roadNumber, name, registerNumberForPark, mass, whidth, timeOfRegistrForPark, stayTime, picture, notes);
+                ListForTransport.transports.Add(trans);
+                //информация внесена, теперь можно очистить поля ввода
+                comboBox1.Text = null;
+                textBox1.Clear();
+                textBox2.Clear();
+                textBox3.Clear();
+                textBox4.Clear();
+                textBox5.Clear();
+                textBox6.Clear();
+                pictureBox1.Image = null;
+                richTextBox1.Clear();
+            }
+            catch
+            {
+                DialogResult res = MessageBox.Show("Некоторые поля были не заполнены при внесении в базу!", "Сообщение");
+            }
         }
     }
 }

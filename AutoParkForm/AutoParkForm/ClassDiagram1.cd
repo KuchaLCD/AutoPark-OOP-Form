@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AutoParkForm.Bus">
+    <Position X="1" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Bus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoParkForm.BusRegister">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>cCAAIAEAASAgABGSgACACABSYIAYAAAAMGBUAQBAAgA=</HashCode>
+      <FileName>BusRegister.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoParkForm.Car">
+    <Position X="5.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Car.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoParkForm.CarRegister">
+    <Position X="19.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EDAAIAUAASAgARGSgACACABSIIAYAAgAMKBUAABAAgA=</HashCode>
+      <FileName>CarRegister.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoParkForm.Connecting">
+    <Position X="21" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAQAACAAABAAABCAAAACAAA4AAAAAHAAAAAAQAA=</HashCode>
+      <FileName>Connecting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoParkForm.DataBase">
+    <Position X="5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAABAAAAAAAQEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoParkForm.EngineTransport">
+    <Position X="3" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAQAAAAAQAAAEEAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>EngineTransport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoParkForm.ListForTransport">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>ListForTransport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoParkForm.MainRegister">
+    <Position X="17.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>8CAAIAUAACAwABEDhJCEKIRSIMw7AAAg8PRfQABAQgA=</HashCode>
+      <FileName>MainRegister.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoParkForm.Motocicle">
+    <Position X="3" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Motocicle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoParkForm.MotoRegister">
+    <Position X="15.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ECQAIAEAASAgABGSgACACABSIIAYAAAAMGBUAABAAgA=</HashCode>
+      <FileName>MotoRegister.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoParkForm.Park">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAQAABAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Park.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoParkForm.Program">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoParkForm.Test">
+    <Position X="14" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAACABABEBBJCEAIQCAMw7AAAgwHAfAABAAAA=</HashCode>
+      <FileName>Test.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoParkForm.Transport">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAggiAAAAAABEAAEJAAAAAAAAAAAAAAAACAAAACAAAA=</HashCode>
+      <FileName>Transport.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AutoParkForm.UserRegister">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAUAACAAABMBBJCEAIQCAMw7AAAgwHAfAABAAAA=</HashCode>
+      <FileName>UserRegister.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoParkForm.Properties.Resources">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AutoParkForm.Properties.Settings">
+    <Position X="8.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="AutoParkForm.ICalc">
+    <Position X="6.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ICalc.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

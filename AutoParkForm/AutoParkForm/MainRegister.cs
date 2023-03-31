@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
+using System.Data.SqlClient;
 
 namespace AutoParkForm
 {
@@ -68,27 +68,44 @@ namespace AutoParkForm
         private void button2_Click(object sender, EventArgs e)
         {
             //По нажатию данной кнопки производится запись(регистрация) транспорта в список активов парка и добавление транспорта в селективный список
-            string name = Convert.ToString(textBox1.Text);
-            int registerNumberForPark = Convert.ToInt32(textBox2.Text);
-            double mass = Convert.ToDouble(textBox3.Text);
-            double whidth = Convert.ToDouble(textBox4.Text);
+            try
+            {
+                string name = Convert.ToString(textBox1.Text);
+                int registerNumberForPark = Convert.ToInt32(textBox2.Text);
+                double mass = Convert.ToDouble(textBox3.Text);
+                double whidth = Convert.ToDouble(textBox4.Text);
 
-            DateTime timeOfRegistrForPark = Convert.ToDateTime(dateTimePicker1.Value);
-            DateTime stayTime = Convert.ToDateTime(dateTimePicker2.Value);
+                DateTime timeOfRegistrForPark = Convert.ToDateTime(dateTimePicker1.Value);
+                DateTime stayTime = Convert.ToDateTime(dateTimePicker2.Value);
 
-            string picture = FileName;
-            string notes = Convert.ToString(richTextBox1.Text);
+                string picture = FileName;
+                string notes = Convert.ToString(richTextBox1.Text);
 
-            Transport tr = new Transport(name, registerNumberForPark, mass, whidth, timeOfRegistrForPark, stayTime, picture, notes);
-            ListForTransport.transports.Add(tr);
-            listBox1.Items.Add(tr);
-            //информация внесена, теперь можно очистить поля ввода
-            textBox1.Clear();
-            textBox2.Clear();
-            textBox3.Clear();
-            textBox4.Clear();
-            pictureBox1.Image = null;
-            richTextBox1.Clear();
+                Transport tr = new Transport(name, registerNumberForPark, mass, whidth, timeOfRegistrForPark, stayTime, picture, notes);
+                ListForTransport.transports.Add(tr);
+                listBox1.Items.Add(tr);
+
+                string sqlExpression = $"INSERT INTO Log (Name, RegNum, Notes) VALUES ({name}, {registerNumberForPark}, {notes})";
+
+                using (SqlConnection connection = new SqlConnection(DataBase.connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    command.ExecuteNonQuery();
+                }
+
+                //информация внесена, теперь можно очистить поля ввода
+                textBox1.Clear();
+                textBox2.Clear();
+                textBox3.Clear();
+                textBox4.Clear();
+                pictureBox1.Image = null;
+                richTextBox1.Clear();
+            }
+            catch
+            {
+                DialogResult res = MessageBox.Show("Некоторые поля были не заполнены при внесении в базу!", "Сообщение");
+            }
         }
 
         private void textBox6_TextChanged(object sender, EventArgs e)
@@ -308,6 +325,11 @@ namespace AutoParkForm
             {
                 richTextBox2.Text = ListForTransport.transports[0].CalculateIncome();
             }
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

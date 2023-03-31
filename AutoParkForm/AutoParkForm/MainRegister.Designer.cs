@@ -417,6 +417,7 @@ namespace AutoParkForm
             this.label1.Size = new System.Drawing.Size(145, 17);
             this.label1.TabIndex = 50;
             this.label1.Text = "Селективный список";
+            this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // label12
             // 
