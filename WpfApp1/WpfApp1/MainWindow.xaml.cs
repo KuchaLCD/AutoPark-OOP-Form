@@ -28,7 +28,6 @@ namespace WpfApp1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
             string sqlExpression = "SELECT * FROM Users";
 
             using (SqlConnection connection = new SqlConnection(DataBase.connectionString))
@@ -51,6 +50,13 @@ namespace WpfApp1
                     Hide();
                     User UserVers = new User();
                     UserVers.ShowDialog();
+                    this.Close();
+                }
+                else if (PassBox.Password == "lider" && Login.Text == "lider")
+                {
+                    Hide();
+                    LidVersion LidVers = new LidVersion();
+                    LidVers.ShowDialog();
                     this.Close();
                 }
                 else
@@ -94,6 +100,23 @@ namespace WpfApp1
         private void TextBox_TextChanged_2(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void Chiter_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            User UserVers = new User();
+            UserVers.ShowDialog();
+            this.Close();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult Result = MessageBox.Show("Закрыть приложение ?", "Message", MessageBoxButton.YesNo);
+            if (Result == MessageBoxResult.Yes)
+            {
+                Application.Current.Shutdown();
+            }
         }
     }
 }

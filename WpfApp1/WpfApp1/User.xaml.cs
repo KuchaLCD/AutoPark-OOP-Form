@@ -46,5 +46,13 @@ namespace WpfApp1
         {
 
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            Lab2 Lab2 = new Lab2();
+            Lab2.ShowDialog();
+            this.Close();
+        }
     }
 }

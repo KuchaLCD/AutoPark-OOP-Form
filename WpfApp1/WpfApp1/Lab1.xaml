@@ -7,20 +7,26 @@
         mc:Ignorable="d"
         Title="Lab1" Height="450" Width="860.948" Icon="M&amp;A.png">
     <Grid HorizontalAlignment="Left" Width="861" Margin="0,0,-6.6,0">
-        <DataGrid HorizontalAlignment="Left" Height="190" Margin="10,10,0,0" VerticalAlignment="Top" Width="417"/>
-        <Label Content="Имя" HorizontalAlignment="Left" Margin="613,10,0,0" VerticalAlignment="Top"/>
-        <Button Content="Записать" HorizontalAlignment="Left" Margin="699,156,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <DataGrid x:Name="DataGridViewCust" HorizontalAlignment="Left" Height="190" Margin="10,10,0,0" VerticalAlignment="Top" Width="417" SelectionChanged="DataGridViewCust_SelectionChanged"/>
+        <Label Content="Имя" HorizontalAlignment="Left" Margin="612,49,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="Enroll" Content="Записать" HorizontalAlignment="Left" Margin="699,203,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Button Content="Загрузить данные" HorizontalAlignment="Left" Margin="432,10,0,0" VerticalAlignment="Top" Width="114" Click="Button_Click_1"/>
-        <Button Content="Удалить" HorizontalAlignment="Left" Margin="432,34,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_2"/>
-        <Button Content="Обновить" HorizontalAlignment="Left" Margin="432,58,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_3"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="432,82,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_4"/>
-        <Label Content="Фамилия" HorizontalAlignment="Left" Margin="591,44,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.706,2.605"/>
-        <Label Content="Отчество" HorizontalAlignment="Left" Margin="589,72,0,0" VerticalAlignment="Top"/>
-        <Label Content="Ключ" HorizontalAlignment="Left" Margin="607,103,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.314,0.602"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="654,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="654,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged_1"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="654,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged_2"/>
-        <ComboBox HorizontalAlignment="Left" Margin="654,106,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
+        <Button x:Name="Delete" Content="Удалить" HorizontalAlignment="Left" Margin="432,34,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_2"/>
+        <Button x:Name="Update" Content="Обновить" HorizontalAlignment="Left" Margin="432,58,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_3"/>
+        <Button x:Name="Clean" Content="Очистить" HorizontalAlignment="Left" Margin="432,82,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_4"/>
+        <Label Content="Фамилия" HorizontalAlignment="Left" Margin="587,75,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.706,2.605"/>
+        <Label Content="Отчество" HorizontalAlignment="Left" Margin="585,109,0,0" VerticalAlignment="Top"/>
+        <Label Content="Должность" HorizontalAlignment="Left" Margin="576,157,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.314,0.602"/>
+        <TextBox x:Name="FirstName" HorizontalAlignment="Left" Height="23" Margin="654,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="SureName" HorizontalAlignment="Left" Height="23" Margin="654,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged_1"/>
+        <TextBox x:Name="LastName" HorizontalAlignment="Left" Height="23" Margin="654,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged_2"/>
+        <ComboBox x:Name="PositionLogger" HorizontalAlignment="Left" Margin="654,148,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged" Cursor="No">
+            <ComboBox.BindingGroup>
+                <BindingGroup/>
+            </ComboBox.BindingGroup>
+        </ComboBox>
+        <TextBox x:Name="IDPosition" HorizontalAlignment="Left" Height="23" Margin="654,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged_2"/>
+        <Button Content="Выйти" HorizontalAlignment="Left" Margin="747,376,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_5" RenderTransformOrigin="0.508,0.474"/>
 
     </Grid>
 </Window>

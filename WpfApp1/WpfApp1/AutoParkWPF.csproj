@@ -55,14 +55,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Customer.cs" />
     <Compile Include="DataBase.cs" />
     <Compile Include="Lab1.xaml.cs">
       <DependentUpon>Lab1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lab2.xaml.cs">
+      <DependentUpon>Lab2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LidVersion.xaml.cs">
+      <DependentUpon>LidVersion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Positions.cs" />
     <Compile Include="User.xaml.cs">
       <DependentUpon>User.xaml</DependentUpon>
     </Compile>
     <Page Include="Lab1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lab2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LidVersion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

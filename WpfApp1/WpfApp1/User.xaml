@@ -10,12 +10,12 @@
         <Button Content="Войти" HorizontalAlignment="Left" Margin="98,250,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Label Content="Лабораторная работа №1" HorizontalAlignment="Left" Margin="58,0,0,0" VerticalAlignment="Center"/>
         <Label Content="Лабораторная работа №2" HorizontalAlignment="Left" Margin="233,0,0,0" VerticalAlignment="Center"/>
-        <Button Content="Войти" HorizontalAlignment="Left" Margin="273,250,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="Войти" HorizontalAlignment="Left" Margin="440,250,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="Войти" HorizontalAlignment="Left" Margin="607,250,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Label Content="Лабораторная работа №3" HorizontalAlignment="Left" Margin="400,0,0,0" VerticalAlignment="Center"/>
         <Label Content="Лабораторная работа №4" HorizontalAlignment="Left" Margin="567,0,0,0" VerticalAlignment="Center"/>
         <Label Content="Выберите нужную лабораторную, к которой хотите получить доступ" HorizontalAlignment="Center" Margin="0,78,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Button Content="Войти" HorizontalAlignment="Left" Margin="280,250,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+        <Button Content="Войти" HorizontalAlignment="Left" Margin="444,250,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Войти" HorizontalAlignment="Left" Margin="611,250,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>
