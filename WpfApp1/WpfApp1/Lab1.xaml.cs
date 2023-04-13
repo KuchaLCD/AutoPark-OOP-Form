@@ -96,7 +96,7 @@ namespace WpfApp1
                 {
                     MessageBox.Show("Возможно одно из вводимых полей слишком большое. Проверьте все на наличие выхода из ограничений");
                 }
-                MessageBox.Show("Произошла ошибка ввода данных. Нажмите на кнопку Обновить");
+                MessageBox.Show("Произошла ошибка ввода данных. Нажмите на кнопку Загрузить данные");
             }
 
             cn.Close();
@@ -104,6 +104,39 @@ namespace WpfApp1
             // Очищаем поля ввода
             // Перепись объектов Person в dataGridView1
             // dataGridView1.DataSource = persons;
+
+            //---------------Функция автообновления-----------------------
+            DataGridViewCust.ItemsSource = null;
+            cn.Close();
+
+            cn.ConnectionString = DataBase.connectionString;
+            // Открытие подключения
+            cn.Open();
+
+            // Формирование команды на языке SQL для выборки данных из таблицы
+            string strSelectPersons = "Select * From Customer";
+
+            SqlCommand cmdSelectCustomers = new SqlCommand(strSelectPersons, cn);
+
+            SqlDataReader customersDataReader = cmdSelectCustomers.ExecuteReader();
+
+            customers.Clear();    // очистка списка persons
+            while (customersDataReader.Read())
+            {
+                string id = customersDataReader.GetString(0);
+                string firstName = customersDataReader.GetString(1);
+                string sureName = customersDataReader.GetString(2);
+                string lastName = customersDataReader.GetString(3);
+                string pos = customersDataReader.GetString(4);
+
+                // Формирование очередного объекта типа Person и помещение его в коллекцию
+                Customer cs = new Customer(id, firstName, sureName, lastName, pos);
+                customers.Add(cs);
+            }
+            // Закрытие соединения
+            cn.Close();
+            // Перепись объектов Person в dataGridView1
+            DataGridViewCust.ItemsSource = customers;
         }
         //Кнопка Загрузить данные
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -204,8 +237,38 @@ namespace WpfApp1
             {
                 MessageBox.Show("Что-то пошло не так");
             }
-
+            //---------------Функция автообновления-----------------------
+            DataGridViewCust.ItemsSource = null;
             cn.Close();
+
+            cn.ConnectionString = DataBase.connectionString;
+            // Открытие подключения
+            cn.Open();
+
+            // Формирование команды на языке SQL для выборки данных из таблицы
+            string strSelectPersons = "Select * From Customer";
+
+            SqlCommand cmdSelectCustomers = new SqlCommand(strSelectPersons, cn);
+
+            SqlDataReader customersDataReader = cmdSelectCustomers.ExecuteReader();
+
+            customers.Clear();    // очистка списка persons
+            while (customersDataReader.Read())
+            {
+                string id = customersDataReader.GetString(0);
+                string firstName = customersDataReader.GetString(1);
+                string sureName = customersDataReader.GetString(2);
+                string lastName = customersDataReader.GetString(3);
+                string pos = customersDataReader.GetString(4);
+
+                // Формирование очередного объекта типа Person и помещение его в коллекцию
+                Customer cs = new Customer(id, firstName, sureName, lastName, pos);
+                customers.Add(cs);
+            }
+            // Закрытие соединения
+            cn.Close();
+            // Перепись объектов Person в dataGridView1
+            DataGridViewCust.ItemsSource = customers;
         }
         //Кнопка Обновить
         private void Button_Click_3(object sender, RoutedEventArgs e)
