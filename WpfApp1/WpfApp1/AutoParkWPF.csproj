@@ -55,8 +55,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Bus.cs" />
+    <Compile Include="Car.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="DataBase.cs" />
+    <Compile Include="EngineTransport.cs" />
+    <Compile Include="ICalc.cs" />
     <Compile Include="Lab1.xaml.cs">
       <DependentUpon>Lab1.xaml</DependentUpon>
     </Compile>
@@ -66,7 +70,11 @@
     <Compile Include="LidVersion.xaml.cs">
       <DependentUpon>LidVersion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ListForTransport.cs" />
+    <Compile Include="Motocicle.cs" />
+    <Compile Include="Park.cs" />
     <Compile Include="Positions.cs" />
+    <Compile Include="Transport.cs" />
     <Compile Include="User.xaml.cs">
       <DependentUpon>User.xaml</DependentUpon>
     </Compile>

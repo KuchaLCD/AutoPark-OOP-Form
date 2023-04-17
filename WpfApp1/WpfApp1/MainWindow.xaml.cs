@@ -118,5 +118,13 @@ namespace WpfApp1
                 Application.Current.Shutdown();
             }
         }
+
+        private void LidChit_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
+            LidVersion LidVers = new LidVersion();
+            LidVers.ShowDialog();
+            this.Close();
+        }
     }
 }

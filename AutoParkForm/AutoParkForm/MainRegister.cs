@@ -85,14 +85,14 @@ namespace AutoParkForm
                 ListForTransport.transports.Add(tr);
                 listBox1.Items.Add(tr);
 
-                string sqlExpression = $"INSERT INTO Log (Name, RegNum, Notes) VALUES ({name}, {registerNumberForPark}, {notes})";
+                //string sqlExpression = $"INSERT INTO Log (Name, RegNum, Notes) VALUES ({name}, {registerNumberForPark}, {notes})";
 
-                using (SqlConnection connection = new SqlConnection(DataBase.connectionString))
-                {
-                    connection.Open();
-                    SqlCommand command = new SqlCommand(sqlExpression, connection);
-                    command.ExecuteNonQuery();
-                }
+                //using (SqlConnection connection = new SqlConnection(DataBase.connectionString))
+                //{
+                //    connection.Open();
+                //    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                //    command.ExecuteNonQuery();
+                //}
 
                 //информация внесена, теперь можно очистить поля ввода
                 textBox1.Clear();
