@@ -8,8 +8,8 @@ namespace WpfApp1
 {
     public class Transport : ICalc
     {
-        public string Naming { get; }
         public int RegisterNumberForPark { get; }
+        public string Naming { get; }
         public double Mass { get; }
         public double Whidth { get; }
         public DateTime TimeOfRegistrForPark { get; set; }
@@ -62,13 +62,13 @@ namespace WpfApp1
         }
         public override string ToString()
         {
-            string st = string.Format("Транспорт {0}", Naming);
+            string st = string.Format("Транспорт {0}, ID {1}", Naming, RegisterNumberForPark);
             return st;
         }
-        public Transport(string naming, int registerNumberForPark, double mass, double whidth, DateTime timeOfRegistrForPark, DateTime stayTime, string picture, string notes)
+        public Transport(int registerNumberForPark, string naming, double mass, double whidth, DateTime timeOfRegistrForPark, DateTime stayTime, string picture, string notes)
         {
-            this.Naming = naming;
             this.RegisterNumberForPark = registerNumberForPark;
+            this.Naming = naming;
             this.Mass = mass;
             this.Whidth = whidth;
             TimeOfRegistrForPark = timeOfRegistrForPark;

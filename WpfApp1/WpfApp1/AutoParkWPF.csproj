@@ -59,6 +59,9 @@
     <Compile Include="Car.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="DataBase.cs" />
+    <Compile Include="Deleting.xaml.cs">
+      <DependentUpon>Deleting.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EngineTransport.cs" />
     <Compile Include="ICalc.cs" />
     <Compile Include="Lab1.xaml.cs">
@@ -78,6 +81,10 @@
     <Compile Include="User.xaml.cs">
       <DependentUpon>User.xaml</DependentUpon>
     </Compile>
+    <Page Include="Deleting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Lab1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

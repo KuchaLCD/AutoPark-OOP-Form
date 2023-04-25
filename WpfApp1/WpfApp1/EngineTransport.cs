@@ -15,7 +15,7 @@ namespace WpfApp1
         public double VolumeOfEngine { get { return volumeOfEngine; } }
         public double MaxSpeed { get { return maxSpeed; } }
         public EngineTransport(double volumeOfEngine, double maxSpeed, string roadNumber, string naming, int registerNumberForPark, double mass, double whidth, DateTime timeOfRegistrForPark, DateTime stayTime, string picture, string notes)
-            : base(naming, registerNumberForPark, mass, whidth, timeOfRegistrForPark, stayTime, picture, notes)
+            : base(registerNumberForPark, naming, mass, whidth, timeOfRegistrForPark, stayTime, picture, notes)
         {
             this.roadNumber = roadNumber;
             this.maxSpeed = maxSpeed;

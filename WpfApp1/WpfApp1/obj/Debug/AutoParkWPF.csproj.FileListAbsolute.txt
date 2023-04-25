@@ -40,3 +40,5 @@ C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\LidVersion.g.cs
 C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\LidVersion.baml
 C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\Lab2.g.cs
 C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\Lab2.baml
+C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\Deleting.g.cs
+C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\Deleting.baml
