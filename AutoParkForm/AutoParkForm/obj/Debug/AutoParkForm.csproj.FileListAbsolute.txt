@@ -93,3 +93,8 @@ C:\Users\CATAT\AutoPark-OOP-Form\AutoParkForm\AutoParkForm\obj\Debug\AutoParkFor
 C:\Users\CATAT\AutoPark-OOP-Form\AutoParkForm\AutoParkForm\obj\Debug\AutoParkForm.UserRegister.resources
 C:\Users\CATAT\AutoPark-OOP-Form\AutoParkForm\AutoParkForm\obj\Debug\AutoParkForm.Test.resources
 C:\Users\CATAT\AutoPark-OOP-Form\AutoParkForm\AutoParkForm\obj\Debug\AutoParkForm.MotoRegister.resources
+C:\Users\CATAT\AutoPark-OOP-Form\AutoParkForm\AutoParkForm\bin\Debug\EntityFramework.dll
+C:\Users\CATAT\AutoPark-OOP-Form\AutoParkForm\AutoParkForm\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\CATAT\AutoPark-OOP-Form\AutoParkForm\AutoParkForm\bin\Debug\EntityFramework.xml
+C:\Users\CATAT\AutoPark-OOP-Form\AutoParkForm\AutoParkForm\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\CATAT\AutoPark-OOP-Form\AutoParkForm\AutoParkForm\bin\Debug\ru\EntityFramework.resources.dll

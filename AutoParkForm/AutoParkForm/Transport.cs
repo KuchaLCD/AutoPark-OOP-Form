@@ -1,80 +1,83 @@
-Ôªøusing System;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Spatial;
 
-namespace AutoParkForm
-{
-    public class Transport : ICalc
+    namespace AutoParkForm
     {
-        public string Naming { get; }
-        public int RegisterNumberForPark { get; }
-        public double Mass { get; }
-        public double Whidth { get; }
-        public DateTime TimeOfRegistrForPark { get; set; }
-        public DateTime StayTime { get; set; }
-        public string Picture { get; }
-        public string Notes { get; }
-        public virtual string InfoString()
-        {
-            string inf = $"\n::::::::::::::::::::::::::::::::::::::::::::::::::::::\n---–¢—Ä–∞–Ω—Å–ø–æ—Ä—Ç---\n–ù–∞–∏–º–µ–Ω–æ–≤–∞–Ω–∏–µ: {Naming}" +
-                         $"\n–ù–æ–º–µ—Ä —Ä–µ–≥–∏—Å—Ç—Ä–∞—Ü–∏–∏ –≤ –ø–∞—Ä–∫–µ: {RegisterNumberForPark}" +
-                         $"\n–í—Ä–µ–º—è —Ä–µ–≥–∏—Å—Ç—Ä–∞—Ü–∏–∏ –≤ –ø–∞—Ä–∫–µ: {TimeOfRegistrForPark}" +
-                         $"\n–í—Ä–µ–º—è –ø—Ä–µ–±—ã–≤–∞–Ω–∏—è(–¥–æ): {StayTime}" +
-                         $"\n–ú–∞—Å—Å–∞: {Mass} –∫–≥." +
-                         $"\n–®–∏—Ä–∏–Ω–∞: {Whidth} –º." +
-                         $"\n–ü—Ä–∏–º–µ—á–∞–Ω–∏—è: {Notes}" +
-                         $"\n::::::::::::::::::::::::::::::::::::::::::::::::::::::";
+    
 
-            return inf;
-        }
-        public string CalculateOwn()
+        [Table("Transport")]
+        public class Transport : ICalc
         {
-            double Count1 = TimeOfRegistrForPark.Year * 8760 + TimeOfRegistrForPark.Month * 720 + TimeOfRegistrForPark.Day * 24 + TimeOfRegistrForPark.Hour + TimeOfRegistrForPark.Minute * 0.017 + TimeOfRegistrForPark.Second * 0.00028;
-            double Count2 = StayTime.Year * 8760 + StayTime.Month * 720 + StayTime.Day * 24 + StayTime.Hour + StayTime.Minute * 0.017 + StayTime.Second * 0.00028;
-            double billForHour = 2;
-            double hours = Count2 - Count1;
-            double result = billForHour * hours;
-            string inf = $"–°–æ–≤–æ–∫—É–ø–Ω–æ–µ –∫–æ–ª–∏—á–µ—Å—Ç–≤–æ —á–∞—Å–æ–≤ —Å—Ç–æ—è–Ω–∫–∏ –¥–ª—è –≤—ã–±—Ä–∞–Ω–Ω–æ–≥–æ —Ç—Ä–∞–Ω—Å–ø–æ—Ä—Ç–∞ = {hours} —á." +
-                         $"\n–°—É–º–º–∞ —Å—Ç–æ—è–Ω–∫–∏ = {result} BYN";
-            return inf;
-        }
-        public string CalculateIncome()
-        {
-            double k = 0;       // –ß–∏—Å–ª–æ –¥–ª—è –ø–æ–¥—Å—á—ë—Ç–∞ —Ç—Ä–∞–Ω—Å–ø–æ—Ä—Ç–∞ –≤ –ø–∞—Ä–∫–µ 
-            double billForHour = 2;
-            double Count1 = 0;      //–ø—Ä–æ–º–µ–∂—É—Ç–æ—á–Ω–æ–µ –∑–Ω–∞—á–µ–Ω–∏–µ
-            double Count2 = 0;      //–∏ —ç—Ç–æ —Ç–æ–∂–µ
-            //–≠—Ç–æ—Ç "—Å–ª–æ–∂–Ω—ã–π" –∞–ª–≥–æ—Ä–∏—Ç–º —Å—á–∏—Ç–∞–µ—Ç –æ–±—â–µ–µ –∫–æ–ª–∏—á–µ—Å—Ç–≤–æ —á–∞—Å–æ–≤ 
-            for (int i = 0; i < ListForTransport.transports.Count; i++)
+            public int RegisterNumberForPark { get; }
+            public string Naming { get; }
+            public double Mass { get; }
+            public double Whidth { get; }
+            public DateTime TimeOfRegistrForPark { get; set; }
+            public DateTime StayTime { get; set; }
+            public string Picture { get; }
+            public string Notes { get; }
+            public virtual string InfoString()
             {
-                Count1 += ListForTransport.transports[i].TimeOfRegistrForPark.Year * 8760 + ListForTransport.transports[i].TimeOfRegistrForPark.Month * 720 + ListForTransport.transports[i].TimeOfRegistrForPark.Day * 24 + ListForTransport.transports[i].TimeOfRegistrForPark.Hour + ListForTransport.transports[i].TimeOfRegistrForPark.Minute * 0.017 + ListForTransport.transports[i].TimeOfRegistrForPark.Second * 0.00028;
-                Count2 += ListForTransport.transports[i].StayTime.Year * 8760 + ListForTransport.transports[i].StayTime.Month * 720 + ListForTransport.transports[i].StayTime.Day * 24 + ListForTransport.transports[i].StayTime.Hour + ListForTransport.transports[i].StayTime.Minute * 0.017 + ListForTransport.transports[i].StayTime.Second * 0.00028;
-                k++;
+                string inf = $"\n::::::::::::::::::::::::::::::::::::::::::::::::::::::\n---“‡ÌÒÔÓÚ---\nÕ‡ËÏÂÌÓ‚‡ÌËÂ: {Naming}" +
+                             $"\nÕÓÏÂ Â„ËÒÚ‡ˆËË ‚ Ô‡ÍÂ: {RegisterNumberForPark}" +
+                             $"\n¬ÂÏˇ Â„ËÒÚ‡ˆËË ‚ Ô‡ÍÂ: {TimeOfRegistrForPark}" +
+                             $"\n¬ÂÏˇ ÔÂ·˚‚‡ÌËˇ(‰Ó): {StayTime}" +
+                             $"\nÃ‡ÒÒ‡: {Mass} Í„." +
+                             $"\nÿËËÌ‡: {Whidth} Ï." +
+                             $"\nœËÏÂ˜‡ÌËˇ: {Notes}" +
+                             $"\n::::::::::::::::::::::::::::::::::::::::::::::::::::::";
+
+                return inf;
             }
-            //–°—á–∏—Ç–∞–µ–º —á–∞—Å—ã –∏ —Ä–µ–∑—É–ª—å—Ç–∞—Ç ("–¥–∞—Ç–∞ –ø—Ä–µ–±—ã—Ç–∏—è –≤ —á–∞—Å–∞—Ö" - "–¥–∞—Ç–∞ –æ—Ç—ä–µ–∑–¥–∞")
-            double hours = Count2 - Count1;
-            double result = billForHour * hours;
-            string inf = $"–°–æ–≤–æ–∫—É–ø–Ω–æ–µ –∫–æ–ª–∏—á–µ—Å—Ç–≤–æ —Ç—Ä–∞–Ω—Å–ø–æ—Ä—Ç–∞ –≤ –ø–∞—Ä–∫–µ = {k}" +
-                         $"\n–ü—Ä–∏–±—ã–ª—å = {result} BYN";
-            return inf;
-        }
-        public override string ToString()
-        {
-            string st = string.Format("–¢—Ä–∞–Ω—Å–ø–æ—Ä—Ç {0}", Naming);
-            return st;
-        }
-        public Transport(string naming, int registerNumberForPark, double mass, double whidth, DateTime timeOfRegistrForPark, DateTime stayTime, string picture, string notes)
-        {
-            this.Naming = naming;
-            this.RegisterNumberForPark = registerNumberForPark;
-            this.Mass = mass;
-            this.Whidth = whidth;
-            TimeOfRegistrForPark = timeOfRegistrForPark;
-            StayTime = stayTime;
-            this.Picture = picture;
-            this.Notes = notes;
+            public string CalculateOwn()
+            {
+                double Count1 = TimeOfRegistrForPark.Year * 8760 + TimeOfRegistrForPark.Month * 720 + TimeOfRegistrForPark.Day * 24 + TimeOfRegistrForPark.Hour + TimeOfRegistrForPark.Minute * 0.017 + TimeOfRegistrForPark.Second * 0.00028;
+                double Count2 = StayTime.Year * 8760 + StayTime.Month * 720 + StayTime.Day * 24 + StayTime.Hour + StayTime.Minute * 0.017 + StayTime.Second * 0.00028;
+                double billForHour = 2;
+                double hours = Count2 - Count1;
+                double result = billForHour * hours;
+                string inf = $"—Ó‚ÓÍÛÔÌÓÂ ÍÓÎË˜ÂÒÚ‚Ó ˜‡ÒÓ‚ ÒÚÓˇÌÍË ‰Îˇ ‚˚·‡ÌÌÓ„Ó Ú‡ÌÒÔÓÚ‡ = {hours} ˜." +
+                             $"\n—ÛÏÏ‡ ÒÚÓˇÌÍË = {result} BYN";
+                return inf;
+            }
+            public string CalculateIncome()
+            {
+                double k = 0;       // ◊ËÒÎÓ ‰Îˇ ÔÓ‰Ò˜∏Ú‡ Ú‡ÌÒÔÓÚ‡ ‚ Ô‡ÍÂ 
+                double billForHour = 2;
+                double Count1 = 0;      //ÔÓÏÂÊÛÚÓ˜ÌÓÂ ÁÌ‡˜ÂÌËÂ
+                double Count2 = 0;      //Ë ˝ÚÓ ÚÓÊÂ
+                //›ÚÓÚ "ÒÎÓÊÌ˚È" ‡Î„ÓËÚÏ Ò˜ËÚ‡ÂÚ Ó·˘ÂÂ ÍÓÎË˜ÂÒÚ‚Ó ˜‡ÒÓ‚ 
+                for (int i = 0; i < ListForTransport.transports.Count; i++)
+                {
+                    Count1 += ListForTransport.transports[i].TimeOfRegistrForPark.Year * 8760 + ListForTransport.transports[i].TimeOfRegistrForPark.Month * 720 + ListForTransport.transports[i].TimeOfRegistrForPark.Day * 24 + ListForTransport.transports[i].TimeOfRegistrForPark.Hour + ListForTransport.transports[i].TimeOfRegistrForPark.Minute * 0.017 + ListForTransport.transports[i].TimeOfRegistrForPark.Second * 0.00028;
+                    Count2 += ListForTransport.transports[i].StayTime.Year * 8760 + ListForTransport.transports[i].StayTime.Month * 720 + ListForTransport.transports[i].StayTime.Day * 24 + ListForTransport.transports[i].StayTime.Hour + ListForTransport.transports[i].StayTime.Minute * 0.017 + ListForTransport.transports[i].StayTime.Second * 0.00028;
+                    k++;
+                }
+                //—˜ËÚ‡ÂÏ ˜‡Ò˚ Ë ÂÁÛÎ¸Ú‡Ú ("‰‡Ú‡ ÔÂ·˚ÚËˇ ‚ ˜‡Ò‡ı" - "‰‡Ú‡ ÓÚ˙ÂÁ‰‡")
+                double hours = Count2 - Count1;
+                double result = billForHour * hours;
+                string inf = $"—Ó‚ÓÍÛÔÌÓÂ ÍÓÎË˜ÂÒÚ‚Ó Ú‡ÌÒÔÓÚ‡ ‚ Ô‡ÍÂ = {k}" +
+                             $"\nœË·˚Î¸ = {result} BYN";
+                return inf;
+            }
+            public override string ToString()
+            {
+                string st = string.Format("“‡ÌÒÔÓÚ {0}, ID {1}", Naming, RegisterNumberForPark);
+                return st;
+            }
+            public Transport(string naming, int registerNumberForPark, double mass, double whidth, DateTime timeOfRegistrForPark, DateTime stayTime, string picture, string notes)
+            {
+                this.RegisterNumberForPark = registerNumberForPark;
+                this.Naming = naming;
+                this.Mass = mass;
+                this.Whidth = whidth;
+                TimeOfRegistrForPark = timeOfRegistrForPark;
+                StayTime = stayTime;
+                this.Picture = picture;
+                this.Notes = notes;
+            }
         }
     }
-}

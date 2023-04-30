@@ -11,6 +11,11 @@ namespace WpfApp1
         public Motocicle(double volumeOfEngine, double maxSpeed, string roadNumber, string naming, int registerNumberForPark, double mass, double whidth, DateTime timeOfRegistrForPark, DateTime stayTime, string picture, string notes)
           : base(volumeOfEngine, maxSpeed, roadNumber, naming, registerNumberForPark, mass, whidth, timeOfRegistrForPark, stayTime, picture, notes)
         { }
+        public override string ToString()
+        {
+            string st = string.Format("Мотоцикл {0}, ID {1}", Naming, RegisterNumberForPark);
+            return st;
+        }
         public override string InfoString()
         {
             string inf = $"\n::::::::::::::::::::::::::::::::::::::::::::::::::::::\n---Мотоцикл---\nНаименование: {Naming}" +

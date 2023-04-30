@@ -11,19 +11,19 @@ namespace WpfApp1
         public string Name { get; set; }
         public void AddTrasport(Transport t)
         {
-            ListForTransport.transports.Add(t);
+            ListsDB.transports.Add(t);
         }
         public void RemoveTransport(Transport t)
         {
-            ListForTransport.transports.Remove(t);
+            ListsDB.transports.Remove(t);
         }
         public virtual string About()
         {
             string inf = $"\n++++++++++++++++++++++++++++++++++++++++++++++++++\n---Парк---\nНаименование: {Name}" +
             "\nСодержание парка:";
-            for (int i = 0; i < ListForTransport.transports.Count; i++)
+            for (int i = 0; i < ListsDB.transports.Count; i++)
             {
-                inf += ListForTransport.transports[i].InfoString();
+                inf += ListsDB.transports[i].InfoString();
             }
             inf += $"\n++++++++++++++++++++++++++++++++++++++++++++++++++";
             return inf;
@@ -31,8 +31,9 @@ namespace WpfApp1
         public Park(string name, List<Transport> transport)
         {
             this.Name = name;
-            ListForTransport.transports = transport;
+            ListsDB.transports = transport;
         }
+        public static Park park = new Park("LuxuryPark", ListsDB.transports);
     }
 }
 

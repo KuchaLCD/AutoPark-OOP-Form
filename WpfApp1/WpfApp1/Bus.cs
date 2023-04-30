@@ -14,6 +14,11 @@ namespace WpfApp1
         {
             this.CountOfWheels = countOfWhells;
         }
+        public override string ToString()
+        {
+            string st = string.Format("Автобус {0}, ID {1}", Naming, RegisterNumberForPark);
+            return st;
+        }
         public override string InfoString()
         {
             string inf = $"\n::::::::::::::::::::::::::::::::::::::::::::::::::::::\n---Автобус---\nНаименование: {Naming}" +

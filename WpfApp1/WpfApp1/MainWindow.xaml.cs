@@ -21,13 +21,25 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string login = string.Empty;
+        public string password = string.Empty;
+        public string firstName = string.Empty;
+        public string sureName = string.Empty;
+        public string idPos = string.Empty;
         public MainWindow()
         {
             InitializeComponent();
+
+            for (int i = 0; i < ListsDB.users.Count; i++)
+            {
+                UserList.Items.Add(ListsDB.users[i]);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            int controlSum = 0;
+            ListsDB.users.Clear();      //предварительное очищение списка пользователелей
             string sqlExpression = "SELECT * FROM Users";
 
             using (SqlConnection connection = new SqlConnection(DataBase.connectionString))
@@ -37,33 +49,50 @@ namespace WpfApp1
                 SqlCommand command = new SqlCommand(sqlExpression, connection);
                 SqlDataReader reader = command.ExecuteReader();
 
-                string login = string.Empty;
-                string password = string.Empty;
-
-                while(reader.Read())
+                while (reader.Read())
                 {
                     login = reader.GetString(0);
                     password = reader.GetString(1);
+                    firstName = reader.GetString(2);
+                    sureName = reader.GetString(3);
+                    idPos = reader.GetString(4);
+
+                    if (PassBox.Password == "user" && Login.Text == "user")
+                    {
+                        controlSum++;
+                        Hide();
+                        User UserVers = new User();
+                        UserVers.ShowDialog();
+                        this.Close();
+                    }
+                    else if (PassBox.Password == "lider" && Login.Text == "lider")
+                    {
+                        controlSum++;
+                        Hide();
+                        LidVersion LidVers = new LidVersion();
+                        LidVers.ShowDialog();
+                        this.Close();
+                    }
+                    else if (PassBox.Password == password && Login.Text == login)
+                    {
+                        controlSum++;
+                        UserDB newUser = new UserDB(login, password, firstName, sureName, idPos);
+                        ListsDB.users.Add(newUser);
+
+                        Hide();
+                        UserInterface User = new UserInterface();
+                        User.ShowDialog();
+                        this.Close();
+                    }
                 }
-                if (PassBox.Password == password && Login.Text == login)
-                {
-                    Hide();
-                    User UserVers = new User();
-                    UserVers.ShowDialog();
-                    this.Close();
-                }
-                else if (PassBox.Password == "lider" && Login.Text == "lider")
-                {
-                    Hide();
-                    LidVersion LidVers = new LidVersion();
-                    LidVers.ShowDialog();
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Some content was wrong. Check for right input data", "Сообщение");
-                }
+                
                 reader.Close();
+                if (controlSum < 1 || PassBox.Password == null || Login.Text == string.Empty)
+                {
+                    MessageBox.Show("Some content was wrong or input data is nondetected! \nPlease check for right input data or fill the fields for login/password.");
+                    PassBox.Password = null;
+                    Login.Text = string.Empty;
+                }
             }
         }
 
@@ -125,6 +154,13 @@ namespace WpfApp1
             LidVersion LidVers = new LidVersion();
             LidVers.ShowDialog();
             this.Close();
+        }
+
+        private void UserList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UserDB selectedUser = (UserDB)UserList.SelectedItem;
+            Login.Text = selectedUser.Login;
+            PassBox.Password = selectedUser.Password;
         }
     }
 }

@@ -28,14 +28,6 @@ namespace WpfApp1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //string sqlExpression = $"INSERT INTO Log (RegNum) VALUES (gang)";
-
-            //using (SqlConnection connection = new SqlConnection(DataBase.connectionString))
-            //{
-            //    connection.Open();
-            //    SqlCommand command = new SqlCommand(sqlExpression, connection);
-            //    command.ExecuteNonQuery();
-            //}
             Hide();
             Lab1 Lab1 = new Lab1();
             Lab1.ShowDialog();

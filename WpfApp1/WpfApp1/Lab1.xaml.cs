@@ -21,7 +21,6 @@ namespace WpfApp1
     /// </summary>
     public partial class Lab1 : Window
     {
-        List<Customer> customers = new List<Customer>();
         public Lab1()
         {
             InitializeComponent();
@@ -120,7 +119,7 @@ namespace WpfApp1
 
             SqlDataReader customersDataReader = cmdSelectCustomers.ExecuteReader();
 
-            customers.Clear();    // очистка списка persons
+            ListsDB.customers.Clear();    // очистка списка persons
             while (customersDataReader.Read())
             {
                 string id = customersDataReader.GetString(0);
@@ -131,12 +130,12 @@ namespace WpfApp1
 
                 // Формирование очередного объекта типа Person и помещение его в коллекцию
                 Customer cs = new Customer(id, firstName, sureName, lastName, pos);
-                customers.Add(cs);
+                ListsDB.customers.Add(cs);
             }
             // Закрытие соединения
             cn.Close();
             // Перепись объектов Person в dataGridView1
-            DataGridViewCust.ItemsSource = customers;
+            DataGridViewCust.ItemsSource = ListsDB.customers;
         }
         //Кнопка Загрузить данные
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -185,7 +184,7 @@ namespace WpfApp1
               Далее: Считывание данных из потока данных и помещение их в коллекцию persons
             */
 
-            customers.Clear();    // очистка списка 
+            ListsDB.customers.Clear();    // очистка списка 
             while (customersDataReader.Read())
             {
                 string id = customersDataReader.GetString(0);
@@ -196,7 +195,7 @@ namespace WpfApp1
 
                 // Формирование очередного объекта типа Person и помещение его в коллекцию
                 Customer cs = new Customer(id, firstName, sureName, lastName, pos);
-                customers.Add(cs);
+                ListsDB.customers.Add(cs);
             }
 
             // Закрытие соединения
@@ -204,7 +203,7 @@ namespace WpfApp1
 
 
             // Перепись объектов Person в dataGridView
-            DataGridViewCust.ItemsSource = customers;
+            DataGridViewCust.ItemsSource = ListsDB.customers;
         }
 
         private void DataGridViewCust_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -252,7 +251,7 @@ namespace WpfApp1
 
             SqlDataReader customersDataReader = cmdSelectCustomers.ExecuteReader();
 
-            customers.Clear();    // очистка списка persons
+            ListsDB.customers.Clear();    // очистка списка persons
             while (customersDataReader.Read())
             {
                 string id = customersDataReader.GetString(0);
@@ -263,12 +262,12 @@ namespace WpfApp1
 
                 // Формирование очередного объекта типа Person и помещение его в коллекцию
                 Customer cs = new Customer(id, firstName, sureName, lastName, pos);
-                customers.Add(cs);
+                ListsDB.customers.Add(cs);
             }
             // Закрытие соединения
             cn.Close();
             // Перепись объектов Person в dataGridView1
-            DataGridViewCust.ItemsSource = customers;
+            DataGridViewCust.ItemsSource = ListsDB.customers;
         }
         //Кнопка Обновить
         private void Button_Click_3(object sender, RoutedEventArgs e)
@@ -287,7 +286,7 @@ namespace WpfApp1
 
             SqlDataReader customersDataReader = cmdSelectCustomers.ExecuteReader();
 
-            customers.Clear();    // очистка списка persons
+            ListsDB.customers.Clear();    // очистка списка persons
             while (customersDataReader.Read())
             {
                 string id = customersDataReader.GetString(0);
@@ -298,12 +297,12 @@ namespace WpfApp1
 
                 // Формирование очередного объекта типа Person и помещение его в коллекцию
                 Customer cs = new Customer(id, firstName, sureName, lastName, pos);
-                customers.Add(cs);
+                ListsDB.customers.Add(cs);
             }
             // Закрытие соединения
             cn.Close();
             // Перепись объектов Person в dataGridView1
-            DataGridViewCust.ItemsSource = customers;
+            DataGridViewCust.ItemsSource = ListsDB.customers;
         }
         //Кнопка Очистить
         private void Button_Click_4(object sender, RoutedEventArgs e)

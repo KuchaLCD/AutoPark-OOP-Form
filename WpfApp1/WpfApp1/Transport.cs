@@ -47,10 +47,10 @@ namespace WpfApp1
             double Count1 = 0;      //промежуточное значение
             double Count2 = 0;      //и это тоже
             //Этот "сложный" алгоритм считает общее количество часов 
-            for (int i = 0; i < ListForTransport.transports.Count; i++)
+            for (int i = 0; i < ListsDB.transports.Count; i++)
             {
-                Count1 += ListForTransport.transports[i].TimeOfRegistrForPark.Year * 8760 + ListForTransport.transports[i].TimeOfRegistrForPark.Month * 720 + ListForTransport.transports[i].TimeOfRegistrForPark.Day * 24 + ListForTransport.transports[i].TimeOfRegistrForPark.Hour + ListForTransport.transports[i].TimeOfRegistrForPark.Minute * 0.017 + ListForTransport.transports[i].TimeOfRegistrForPark.Second * 0.00028;
-                Count2 += ListForTransport.transports[i].StayTime.Year * 8760 + ListForTransport.transports[i].StayTime.Month * 720 + ListForTransport.transports[i].StayTime.Day * 24 + ListForTransport.transports[i].StayTime.Hour + ListForTransport.transports[i].StayTime.Minute * 0.017 + ListForTransport.transports[i].StayTime.Second * 0.00028;
+                Count1 += ListsDB.transports[i].TimeOfRegistrForPark.Year * 8760 + ListsDB.transports[i].TimeOfRegistrForPark.Month * 720 + ListsDB.transports[i].TimeOfRegistrForPark.Day * 24 + ListsDB.transports[i].TimeOfRegistrForPark.Hour + ListsDB.transports[i].TimeOfRegistrForPark.Minute * 0.017 + ListsDB.transports[i].TimeOfRegistrForPark.Second * 0.00028;
+                Count2 += ListsDB.transports[i].StayTime.Year * 8760 + ListsDB.transports[i].StayTime.Month * 720 + ListsDB.transports[i].StayTime.Day * 24 + ListsDB.transports[i].StayTime.Hour + ListsDB.transports[i].StayTime.Minute * 0.017 + ListsDB.transports[i].StayTime.Second * 0.00028;
                 k++;
             }
             //Считаем часы и результат ("дата пребытия в часах" - "дата отъезда")

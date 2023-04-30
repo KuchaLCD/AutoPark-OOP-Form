@@ -23,12 +23,9 @@ namespace WpfApp1
     /// </summary>
     public partial class LidVersion : Window
     {
-        List<Customer> customers = new List<Customer>();
-        Park park;
         string FileName;
         public LidVersion()
         {
-            park = new Park("LuxuryPark", ListForTransport.transports);
             InitializeComponent();
         }
 
@@ -70,7 +67,11 @@ namespace WpfApp1
             try
             {
                 string name = Convert.ToString(Naming.Text);
-                int registerNumberForPark = Convert.ToInt32(ListForTransport.transports.Count - 1);
+
+                Random randomizer = new Random();
+                double randomNumber = randomizer.Next(100000, 999999);
+
+                int registerNumberForPark = Convert.ToInt32(randomNumber);
                 double mass = Convert.ToDouble(Mass.Text);
                 double whidth = Convert.ToDouble(Width.Text);
 
@@ -87,8 +88,8 @@ namespace WpfApp1
                 string notes = textRange.Text;
 
                 Transport tr = new Transport(registerNumberForPark, name, mass, whidth, timeOfRegistrForPark, stayTime, picture, notes);
-                ListForTransport.transports.Add(tr);
-                
+                ListsDB.transports.Add(tr);
+
             }
             catch
             {
@@ -101,46 +102,10 @@ namespace WpfApp1
             cn.ConnectionString = DataBase.connectionString;
             // Открытие подключения
             cn.Open();
-            //try
-            //{
-            //    // Формирование данных для ввода в таблицу бызы
-            //    int id = Convert.ToInt32(GridInfo.Items.Count);
-            //    string naming = Naming.Text;
-            //    double mass = Convert.ToDouble(Mass.Text);
-            //    double whidth = Convert.ToDouble(Width.Text);
+            Random trandomizer = new Random();
+            double trandomNumber = trandomizer.Next(100000, 999999);
 
-            //    DateTime timeOfRegistrForPark = Convert.ToDateTime(RegDatePicker.SelectedDate);
-            //    DateTime stayTime = Convert.ToDateTime(UpcomingDatePicker.SelectedDate);
-
-            //    string picture = FileName;
-
-            //    TextRange textRange = new TextRange(
-            //    // TextPointer to the start of content in the RichTextBox.
-            //    CommentPicker.Document.ContentStart,
-            //    // TextPointer to the end of content in the RichTextBox.
-            //    CommentPicker.Document.ContentEnd
-            //    );
-            //    string notes = textRange.Text;
-
-            //    // Создание SQL команды ввода
-            //    string strInsertTransport = string.Format("INSERT INTO Transport VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')", id, naming, mass, whidth, timeOfRegistrForPark, stayTime, picture, notes);
-
-            //    // Создание объекта-команды
-            //    SqlCommand cmdInsertTransport = new SqlCommand(strInsertTransport, cn);
-
-            //    // Исполнение команды ввода
-            //    cmdInsertTransport.ExecuteNonQuery();
-            //}
-            //catch
-            //{
-            //    if (Naming.Text.Length > 50)
-            //    {
-            //        MessageBox.Show("Возможно одно из вводимых полей слишком большое. Проверьте все на наличие выхода из ограничений");
-            //    }
-            //    MessageBox.Show("Произошла ошибка ввода данных. Нажмите на кнопку Загрузить данные");
-            //}
-            // Формирование данных для ввода в таблицу бызы
-            int tid = Convert.ToInt32(ListForTransport.transports.Count - 1);
+            int tid = Convert.ToInt32(trandomNumber);
             string tnaming = Naming.Text;
             double tmass = Convert.ToDouble(Mass.Text);
             double twhidth = Convert.ToDouble(Width.Text);
@@ -162,7 +127,7 @@ namespace WpfApp1
             string tnotes = ttextRange.Text;
 
             // Создание SQL команды ввода
-            string strInsertTransport = string.Format("INSERT INTO Transport VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')", tid, tnaming, tmass, twhidth, convStrDateRegistrForPark, convStrDateStayTime, tpicture, tnotes);
+            string strInsertTransport = string.Format("INSERT INTO Transport VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}')", tid, tnaming, 0, 0, tmass, twhidth, 0, convStrDateRegistrForPark, convStrDateStayTime, "0", tpicture, tnotes);
              
             // Создание объекта-команды
             SqlCommand cmdInsertTransport = new SqlCommand(strInsertTransport, cn);
@@ -173,7 +138,7 @@ namespace WpfApp1
             cn.Close();
 
             //---------------Функция автообновления-----------------------
-            ListForTransport.transports.Clear();        //данная опреация необходима на случай пустой таблицы в бд, т.к. если внести элемент без добавления его в бд, то некоторые данные могут быть случайно продублированы(речь идёт об одних и тех же элементах)
+            ListsDB.transports.Clear();        //данная опреация необходима на случай пустой таблицы в бд, т.к. если внести элемент без добавления его в бд, то некоторые данные могут быть случайно продублированы(речь идёт об одних и тех же элементах)
 
             GridInfo.ItemsSource = null;
             SqlConnection con = new SqlConnection();
@@ -187,20 +152,20 @@ namespace WpfApp1
             {
                 int id = transportsDataReader.GetInt32(0);
                 string naming = transportsDataReader.GetString(1);
-                double mass = transportsDataReader.GetDouble(2);
-                double wight = transportsDataReader.GetDouble(3);
-                DateTime timeOfRegistrForPark = Convert.ToDateTime(transportsDataReader.GetString(4));
-                DateTime stayTime = Convert.ToDateTime(transportsDataReader.GetString(5));
-                string picture = transportsDataReader.GetString(6);
-                string notes = transportsDataReader.GetString(7);
+                double mass = transportsDataReader.GetDouble(4);
+                double wight = transportsDataReader.GetDouble(5);
+                DateTime timeOfRegistrForPark = Convert.ToDateTime(transportsDataReader.GetString(7));
+                DateTime stayTime = Convert.ToDateTime(transportsDataReader.GetString(8));
+                string picture = transportsDataReader.GetString(10);
+                string notes = transportsDataReader.GetString(11);
 
                 // Формирование очередного объекта и помещение его в коллекцию
                 Transport tr = new Transport(id, naming, mass, wight, timeOfRegistrForPark, stayTime, picture, notes);
-                ListForTransport.transports.Add(tr);
+                ListsDB.transports.Add(tr);
             }
             // Закрытие соединения
             con.Close();
-            GridInfo.ItemsSource = ListForTransport.transports;
+            GridInfo.ItemsSource = ListsDB.transports;
 
             //Очищаем вводимые поля
             Naming.Clear();
@@ -224,7 +189,6 @@ namespace WpfApp1
             openFile.ShowDialog();
             FileName = openFile.FileName;
 
-            
             ImageSource image = new BitmapImage(new Uri(FileName, UriKind.Absolute));
             ImagePicker.Source = image;
         }
@@ -234,15 +198,15 @@ namespace WpfApp1
             //Вывод инфы и парке
             FlowDocument document = new FlowDocument();
             Paragraph paragraph = new Paragraph();
-            paragraph.Inlines.Add(new Run(park.About()));
+            paragraph.Inlines.Add(new Run(Park.park.About()));
             document.Blocks.Add(paragraph);
             Output.Document = document;
             //ShowingImage.Source = (ImageSource)FileName;      //not work
-            for (int i = 0; i < ListForTransport.transports.Count; i++)
+            for (int i = 0; i < ListsDB.transports.Count; i++)
             {
                 BitmapImage jpg = new BitmapImage();
                 jpg.BeginInit();
-                jpg.UriSource = new Uri(ListForTransport.transports[i].Picture);
+                jpg.UriSource = new Uri(ListsDB.transports[i].Picture);
                 jpg.EndInit();
                 ShowingImage.Source = jpg;   //функция - показать изображение
             }
@@ -255,7 +219,7 @@ namespace WpfApp1
             {
                 FlowDocument document = new FlowDocument();
                 Paragraph paragraph = new Paragraph();
-                paragraph.Inlines.Add(new Run(ListForTransport.transports[GridInfo.SelectedIndex].InfoString()));
+                paragraph.Inlines.Add(new Run(ListsDB.transports[GridInfo.SelectedIndex].InfoString()));
                 document.Blocks.Add(paragraph);
                 Output.Document = document;
             }
@@ -284,7 +248,7 @@ namespace WpfApp1
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
             //Обновление инфы о парке
-            ListForTransport.transports.Clear();        //данная опреация необходима на случай пустой таблицы в бд, т.к. если внести элемент без добавления его в бд, то некоторые данные могут быть случайно продублированы(речь идёт об одних и тех же элементах)
+            ListsDB.transports.Clear();        //данная опреация необходима на случай пустой таблицы в бд, т.к. если внести элемент без добавления его в бд, то некоторые данные могут быть случайно продублированы(речь идёт об одних и тех же элементах)
 
             GridInfo.ItemsSource = null;
             SqlConnection cn = new SqlConnection();
@@ -299,102 +263,26 @@ namespace WpfApp1
             {
                 int id = transportsDataReader.GetInt32(0);
                 string naming = transportsDataReader.GetString(1);
-                double mass = transportsDataReader.GetDouble(2);
-                double wight = transportsDataReader.GetDouble(3);
-                DateTime timeOfRegistrForPark = Convert.ToDateTime(transportsDataReader.GetString(4));
-                DateTime stayTime = Convert.ToDateTime(transportsDataReader.GetString(5));
-                string picture = transportsDataReader.GetString(6);
-                string notes = transportsDataReader.GetString(7);
+                double mass = transportsDataReader.GetDouble(4);
+                double wight = transportsDataReader.GetDouble(5);
+                DateTime timeOfRegistrForPark = Convert.ToDateTime(transportsDataReader.GetString(7));
+                DateTime stayTime = Convert.ToDateTime(transportsDataReader.GetString(8));
+                string picture = transportsDataReader.GetString(10);
+                string notes = transportsDataReader.GetString(11);
 
                 // Формирование очередного объекта и помещение его в коллекцию
                 Transport tr = new Transport(id, naming, mass, wight, timeOfRegistrForPark, stayTime, picture, notes);
-                ListForTransport.transports.Add(tr);
+                ListsDB.transports.Add(tr);
             }
 
             // Закрытие соединения
             cn.Close();
-            GridInfo.ItemsSource = ListForTransport.transports;
+            GridInfo.ItemsSource = ListsDB.transports;
         }
 
         private void Button_Click_6(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        private void Button_Click_7(object sender, RoutedEventArgs e)
-        {
-            //Удаление инфы о парке
-            SqlConnection cn = new SqlConnection();     // Объект-соединение
-
-            cn.ConnectionString = DataBase.connectionString;
-
-            int selectedID = GridInfo.SelectedIndex;        //need some fixes
-            // Открытие подключения
-            cn.Open();
-            string strDeleteTransport = string.Format($"DELETE FROM Transport WHERE (RegisterNumberForPark = '{selectedID}')");
-
-            SqlCommand cmdDeleteTransport = new SqlCommand(strDeleteTransport, cn);
-
-            // Исполнение команды 
-            try
-            {
-                cmdDeleteTransport.ExecuteNonQuery();
-                //MessageBox.Show("Complete!");
-            }
-            catch
-            {
-                MessageBox.Show("Что-то пошло не так");
-            }
-            cn.Close();
-
-            //---------------Функция автообновления-----------------------
-            GridInfo.ItemsSource = null;
-            ListForTransport.transports.Clear();
-
-            cn.ConnectionString = DataBase.connectionString;
-            // Открытие подключения
-            cn.Open();
-
-            // Формирование команды на языке SQL для выборки данных из таблицы
-            string strSelectTransport = "Select * From Transport";
-
-            SqlCommand cmdSelectTransport = new SqlCommand(strSelectTransport, cn);
-
-            SqlDataReader transportsDataReader = cmdSelectTransport.ExecuteReader();
-
-            ListForTransport.transports.Clear();    // очистка списка persons
-            while (transportsDataReader.Read())
-            {
-                int id = transportsDataReader.GetInt32(0);
-                string naming = transportsDataReader.GetString(1);
-                double mass = transportsDataReader.GetDouble(2);
-                double wight = transportsDataReader.GetDouble(3);
-                DateTime timeOfRegistrForPark = Convert.ToDateTime(transportsDataReader.GetString(4));
-                DateTime stayTime = Convert.ToDateTime(transportsDataReader.GetString(5));
-                string picture = transportsDataReader.GetString(6);
-                string notes = transportsDataReader.GetString(7);
-
-                // Формирование очередного объекта и помещение его в коллекцию
-                Transport tr = new Transport(id, naming, mass, wight, timeOfRegistrForPark, stayTime, picture, notes);
-                ListForTransport.transports.Add(tr);
-            }
-            // Закрытие соединения
-            cn.Close();
-            // Перепись объектов в dataGridView
-            GridInfo.ItemsSource = ListForTransport.transports;
-
-            //Очищаем вводимые поля
-            Naming.Clear();
-            Mass.Clear();
-            Width.Clear();
-            ImagePicker.Source = null;
-
-            FlowDocument document = new FlowDocument();
-            Paragraph paragraph = new Paragraph();          //нужно для очистки комментария
-            paragraph.Inlines.Add(new Run(""));
-            document.Blocks.Add(paragraph);
-
-            CommentPicker.Document = document;
         }
 
         private void CommentPicker_TextChanged(object sender, TextChangedEventArgs e)
@@ -404,7 +292,7 @@ namespace WpfApp1
 
         private void Button_Click_8(object sender, RoutedEventArgs e)
         {
-            if (ListForTransport.transports.Count == 0)
+            if (ListsDB.transports.Count == 0)
             {
                 FlowDocument document = new FlowDocument();
                 Paragraph paragraph = new Paragraph();          //нужно для очистки комментария
@@ -417,7 +305,7 @@ namespace WpfApp1
             {
                 FlowDocument document = new FlowDocument();
                 Paragraph paragraph = new Paragraph();          //нужно для очистки комментария
-                paragraph.Inlines.Add(new Run(ListForTransport.transports[0].CalculateIncome()));
+                paragraph.Inlines.Add(new Run(ListsDB.transports[0].CalculateIncome()));
                 document.Blocks.Add(paragraph);
 
                 Output.Document = document;
@@ -451,15 +339,13 @@ namespace WpfApp1
 
         private void Button_Click_10(object sender, RoutedEventArgs e)
         {
-            Hide();
             Deleting Del = new Deleting();
             Del.ShowDialog();
-            this.Close();
         }
 
         private void Button_Click_11(object sender, RoutedEventArgs e)
         {
-            if (ListForTransport.transports.Count == 0)
+            if (ListsDB.transports.Count == 0)
             {
                 MessageBox.Show("В парке отсутствует транспорт");
             }
@@ -467,11 +353,22 @@ namespace WpfApp1
             {
                 FlowDocument document = new FlowDocument();
                 Paragraph paragraph = new Paragraph();          //нужно для очистки комментария
-                paragraph.Inlines.Add(new Run(ListForTransport.transports[GridInfo.SelectedIndex].CalculateOwn()));
+                paragraph.Inlines.Add(new Run(ListsDB.transports[GridInfo.SelectedIndex].CalculateOwn()));
                 document.Blocks.Add(paragraph);
 
                 Output.Document = document;
             }
+        }
+
+        private void Car_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            BusRegister BusReg = new BusRegister();
+            BusReg.ShowDialog();
         }
     }
 }

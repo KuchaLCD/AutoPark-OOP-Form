@@ -91,7 +91,7 @@ namespace WpfApp1
             //// Закрытие соединения
             //cn.Close();
 
-
+            
             // Заполняем список должностей
             //--------------------------------------------------------------------------------            
             // Формируем команду на языке SQL для выборки данных из таблицы
@@ -102,10 +102,10 @@ namespace WpfApp1
             adapter1.Fill(positions);
             // Заполняем список должностей
             //PositionLogger2.ItemsSource = (System.Collections.IEnumerable)positions;
-            PositionLogger2.DisplayMemberPath = "PosName";
+            //PositionLogger2.DisplayMemberPath = "PosName";
             //PositionLogger2.ItemsSource = "IDPos";
             //--------------------------------------------------------------------------------
-
+            
             string strSelectPers = "Select * From Customer";
             // Передаем адаптеру текст запроса и строку подключения
             adapter2 = new SqlDataAdapter(strSelectPers, cn);

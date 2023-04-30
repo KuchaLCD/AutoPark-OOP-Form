@@ -42,3 +42,11 @@ C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\Lab2.g.cs
 C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\Lab2.baml
 C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\Deleting.g.cs
 C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\Deleting.baml
+C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\UserInterface.g.cs
+C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\UserInterface.baml
+C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\BusRegister.g.cs
+C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\BusRegister.baml
+C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\CarRegister.g.cs
+C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\MotoRegister.g.cs
+C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\CarRegister.baml
+C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\MotoRegister.baml
