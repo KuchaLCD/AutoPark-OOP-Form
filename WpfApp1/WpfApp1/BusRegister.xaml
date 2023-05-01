@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="BusRegister" Height="533.89" Width="563.87" Icon="M&amp;A.png" Background="#FFB8FFB9">
+        Title="BusRegister" Height="542.69" Width="592.67" Icon="M&amp;A.png" Background="#FFB8FFB9">
     <Grid>
         <TextBox x:Name="BusNaming" HorizontalAlignment="Left" Height="23" Margin="29,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" TextChanged="TextBox_TextChanged_3"/>
         <Label Content="Название" HorizontalAlignment="Left" Margin="29,86,0,0" VerticalAlignment="Top" Height="26" Width="62"/>
@@ -19,7 +19,7 @@
         <DatePicker x:Name="BusUpcomingDatePicker" HorizontalAlignment="Left" Margin="285,116,0,0" VerticalAlignment="Top" Width="147" Height="23"/>
         <Button x:Name="LoadImage" Content="Загрузить" HorizontalAlignment="Left" Margin="285,189,0,0" VerticalAlignment="Top" Width="76" Height="34" Background="#FFA1F0FF" Click="Button_Click_2" RenderTransformOrigin="0.432,1.247"/>
         <Image x:Name="BusImagePicker" HorizontalAlignment="Left" Height="130" Margin="375,189,0,0" VerticalAlignment="Top" Width="154"/>
-        <Button x:Name="EnterToBase" Content="Внести в базу" HorizontalAlignment="Right" Margin="0,444,127.6,0" Width="149" Background="#FFAAD9FF" Click="Button_Click_1" RenderTransformOrigin="0.371,1.068" Height="34" VerticalAlignment="Top"/>
+        <Button x:Name="EnterToBase" Content="Внести в базу" Margin="281,446,0,33.2" Background="#FFAAD9FF" Click="Button_Click_1" RenderTransformOrigin="0.371,1.068" HorizontalAlignment="Left" Width="143"/>
         <Label Content="Комментарии" HorizontalAlignment="Left" Margin="285,311,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.87,-0.241" Width="85" Height="25"/>
         <RichTextBox x:Name="BusCommentPicker" HorizontalAlignment="Left" Height="100" Margin="281,339,0,0" VerticalAlignment="Top" Width="247" TextChanged="CommentPicker_TextChanged">
             <FlowDocument>

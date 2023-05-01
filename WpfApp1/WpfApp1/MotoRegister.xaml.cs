@@ -25,13 +25,100 @@ namespace WpfApp1
         public MotoRegister()
         {
             InitializeComponent();
+
+            SqlConnection cn = new SqlConnection();     // Объект-соединение
+            cn.ConnectionString = DataBase.connectionString;
+            // Открытие подключения
+            cn.Open();
+            string strSelectTransport = "Select * From Models WHERE IDModel BETWEEN 4000 AND 4999";
+            SqlCommand cmdSelectTransport = new SqlCommand(strSelectTransport, cn);
+            SqlDataReader transportsDataReader = cmdSelectTransport.ExecuteReader();
+
+            while (transportsDataReader.Read())
+            {
+                string model = transportsDataReader.GetString(1);
+                MotoModelRow.Items.Add(model);
+            }
+            // Закрытие соединения
+            cn.Close();
         }
 
         private void BusModelRow_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            switch (MotoModelRow.SelectedItem)
+            {
+                case "Ducati-1098":
+                    MotoNaming.Text = "Ducati-1098";
+                    MotoMaxSpeed.Text = "200";     //макс. скорость 
+                    MotoVolumeOfEngine.Text = "1,5";     //объем двигателя
+                    MotoMass.Text = "173";     //масса
+                    MotoWidth.Text = "1,5";     //ширина
+                    break;
+                case "Honda Blackbird CBR1100XX":
+                    MotoNaming.Text = "Honda Blackbird CBR1100XX";
+                    MotoMaxSpeed.Text = "290";
+                    MotoVolumeOfEngine.Text = "1,2";
+                    MotoMass.Text = "225";
+                    MotoWidth.Text = "1,4";
+                    break;
+                case "BMW S1000 RR":
+                    MotoNaming.Text = "BMW S1000 RR";
+                    MotoMaxSpeed.Text = "300";
+                    MotoVolumeOfEngine.Text = "1,9";
+                    MotoMass.Text = "270";
+                    MotoWidth.Text = "1,9";
+                    break;
+                case "Yamaha YZF-R1":
+                    MotoNaming.Text = "Yamaha YZF-R1";
+                    MotoMaxSpeed.Text = "340";
+                    MotoVolumeOfEngine.Text = "2,1";
+                    MotoMass.Text = "269";
+                    MotoWidth.Text = "1,7";
+                    break;
+                case "Ninja ZX-14":
+                    MotoNaming.Text = "Ninja ZX-14";
+                    MotoMaxSpeed.Text = "345";
+                    MotoVolumeOfEngine.Text = "2,1";
+                    MotoMass.Text = "240";
+                    MotoWidth.Text = "1,5";
+                    break;
+                case "MV Agusta F4 CC":
+                    MotoNaming.Text = "MV Agusta F4 CC";
+                    MotoMaxSpeed.Text = "306";
+                    MotoVolumeOfEngine.Text = "2,2";
+                    MotoMass.Text = "245";
+                    MotoWidth.Text = "1,3";
+                    break;
+                case "Suzuki Hayabusa":
+                    MotoNaming.Text = "Suzuki Hayabusa";
+                    MotoMaxSpeed.Text = "330";
+                    MotoVolumeOfEngine.Text = "2,3";
+                    MotoMass.Text = "320";
+                    MotoWidth.Text = "1,2";
+                    break;
+                case "МТТ Turbine Superbike":
+                    MotoNaming.Text = "МТТ Turbine Superbike";
+                    MotoMaxSpeed.Text = "365";
+                    MotoVolumeOfEngine.Text = "2,3";
+                    MotoMass.Text = "225";
+                    MotoWidth.Text = "1,9";
+                    break;
+                case "МТТ Street Fighter":
+                    MotoNaming.Text = "МТТ Street Fighte";
+                    MotoMaxSpeed.Text = "402";
+                    MotoVolumeOfEngine.Text = "2,5";
+                    MotoMass.Text = "380";
+                    MotoWidth.Text = "1,7";
+                    break;
+                case "Dodge Tomahawk":
+                    MotoNaming.Text = "Dodge Tomahawk";
+                    MotoMaxSpeed.Text = "480";
+                    MotoVolumeOfEngine.Text = "2,3";
+                    MotoMass.Text = "680";
+                    MotoWidth.Text = "2,3";
+                    break;
+            }
         }
-
         private void TextBox_TextChanged_3(object sender, TextChangedEventArgs e)
         {
 

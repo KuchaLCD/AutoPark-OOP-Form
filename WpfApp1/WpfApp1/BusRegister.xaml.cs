@@ -26,6 +26,22 @@ namespace WpfApp1
         public BusRegister()
         {
             InitializeComponent();
+
+            SqlConnection cn = new SqlConnection();     // Объект-соединение
+            cn.ConnectionString = DataBase.connectionString;
+            // Открытие подключения
+            cn.Open();
+            string strSelectTransport = "Select * From Models WHERE IDModel BETWEEN 3000 AND 3999";
+            SqlCommand cmdSelectTransport = new SqlCommand(strSelectTransport, cn);
+            SqlDataReader transportsDataReader = cmdSelectTransport.ExecuteReader();
+
+            while (transportsDataReader.Read())
+            {
+                string model = transportsDataReader.GetString(1);
+                BusModelRow.Items.Add(model);
+            }
+            // Закрытие соединения
+            cn.Close();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -164,7 +180,30 @@ namespace WpfApp1
 
         private void BusModelRow_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            switch (BusModelRow.SelectedItem)
+            {
+                case "Scania":
+                    BusNaming.Text = "Scania";
+                    BusMaxSpeed.Text = "155";     //макс. скорость 
+                    BusVolumeOfEngine.Text = "12";     //объем двигателя
+                    BusMass.Text = "1700";     //масса
+                    BusWidth.Text = "7";     //ширина
+                    break;
+                case "Volvo":
+                    BusNaming.Text = "Volvo";
+                    BusMaxSpeed.Text = "170";
+                    BusVolumeOfEngine.Text = "13,5";
+                    BusMass.Text = "1900";
+                    BusWidth.Text = "8";
+                    break;
+                case "Mercedes":
+                    BusNaming.Text = "Mercedes";
+                    BusMaxSpeed.Text = "150";
+                    BusVolumeOfEngine.Text = "19";
+                    BusMass.Text = "2500";
+                    BusWidth.Text = "8,5";
+                    break;
+            }
         }
 
         private void GoOut_Click(object sender, RoutedEventArgs e)

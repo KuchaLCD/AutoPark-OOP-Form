@@ -19,7 +19,7 @@
         <DatePicker x:Name="CarUpcomingDatePicker" HorizontalAlignment="Left" Margin="285,116,0,0" VerticalAlignment="Top" Width="147" Height="23"/>
         <Button x:Name="LoadImage" Content="Загрузить" HorizontalAlignment="Left" Margin="285,189,0,0" VerticalAlignment="Top" Width="76" Height="34" Background="#FFA1F0FF" Click="Button_Click_2" RenderTransformOrigin="0.432,1.247"/>
         <Image x:Name="CarImagePicker" HorizontalAlignment="Left" Height="130" Margin="375,189,0,0" VerticalAlignment="Top" Width="154"/>
-        <Button x:Name="EnterToBase" Content="Внести в базу" HorizontalAlignment="Right" Margin="0,451,136.4,0" Width="149" Background="#FFAAD9FF" Click="Button_Click_1" RenderTransformOrigin="0.371,1.068" Height="34" VerticalAlignment="Top"/>
+        <Button x:Name="EnterToBase" Content="Внести в базу" HorizontalAlignment="Left" Margin="281,451,0,0" Width="149" Background="#FFAAD9FF" Click="Button_Click_1" RenderTransformOrigin="0.371,1.068" Height="34" VerticalAlignment="Top"/>
         <Label Content="Комментарии" HorizontalAlignment="Left" Margin="285,311,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.87,-0.241" Width="85" Height="25"/>
         <RichTextBox x:Name="CarCommentPicker" HorizontalAlignment="Left" Height="100" Margin="281,339,0,-19" VerticalAlignment="Top" Width="247" TextChanged="CommentPicker_TextChanged">
             <FlowDocument>

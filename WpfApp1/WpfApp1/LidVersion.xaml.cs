@@ -201,7 +201,7 @@ namespace WpfApp1
             paragraph.Inlines.Add(new Run(Park.park.About()));
             document.Blocks.Add(paragraph);
             Output.Document = document;
-            //ShowingImage.Source = (ImageSource)FileName;      //not work
+            //ShowingImage begin
             for (int i = 0; i < ListsDB.transports.Count; i++)
             {
                 BitmapImage jpg = new BitmapImage();
@@ -258,7 +258,6 @@ namespace WpfApp1
             SqlCommand cmdSelectTransport = new SqlCommand(strSelectTransport, cn);
 
             SqlDataReader transportsDataReader = cmdSelectTransport.ExecuteReader();
-            //ListForTransport.transports.Clear();    // очистка списка 
             while (transportsDataReader.Read())
             {
                 int id = transportsDataReader.GetInt32(0);
@@ -274,7 +273,6 @@ namespace WpfApp1
                 Transport tr = new Transport(id, naming, mass, wight, timeOfRegistrForPark, stayTime, picture, notes);
                 ListsDB.transports.Add(tr);
             }
-
             // Закрытие соединения
             cn.Close();
             GridInfo.ItemsSource = ListsDB.transports;
@@ -318,14 +316,7 @@ namespace WpfApp1
         }
         private void Button_Click_9(object sender, RoutedEventArgs e)
         {
-            //var cellInfo = GridInfo.SelectedCells[0];
-            //string selectedID = "gg";
-            //if (cellInfo.IsValid)
-            //{
-            //    selectedID = GridInfo.CurrentCell.Item.ToString();
-            //    OutLine.Text = selectedID;
-            //}
-
+            //Test button. Can be used for searching some bugs or showing some data context
             var cellInfo = GridInfo.SelectedCells[0];
 
             var content = cellInfo.Column.GetCellContent(cellInfo.Item);
