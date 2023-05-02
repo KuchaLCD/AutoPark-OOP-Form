@@ -6,22 +6,49 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="UserInterface" Height="507.6" Width="945.2" Icon="M&amp;A.png">
+    <Window.Background>
+        <ImageBrush ImageSource="milad-fakurian-nY14Fs8pxT8-unsplash.jpg"/>
+    </Window.Background>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Image HorizontalAlignment="Left" Height="58" Margin="10,9,0,0" VerticalAlignment="Top" Width="58" Source="BLANK.jpg"/>
-        <Label x:Name="UserCatcher" Content="" HorizontalAlignment="Left" Margin="73,9,0,0" VerticalAlignment="Top" Width="120" Background="#FFF5FFDB" Height="26"/>
-        <Label x:Name="PositionCatcher" Content="" HorizontalAlignment="Left" Margin="73,40,0,0" VerticalAlignment="Top" Height="26" Width="120" FontStyle="Italic" Background="#FFDBFFE0"/>
-        <Button Content="Exit" HorizontalAlignment="Left" Margin="827,434,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="19" Background="#FF01D0F7"/>
+        <Image x:Name="UserAvatar" HorizontalAlignment="Left" Height="58" Margin="10,9,0,0" VerticalAlignment="Top" Width="58" Source="BLANK.jpg"/>
+        <Label x:Name="UserCatcher" Content="" HorizontalAlignment="Left" Margin="73,9,0,0" VerticalAlignment="Top" Width="120" Background="#FF7053FF" Height="26" Foreground="White"/>
+        <Label x:Name="PositionCatcher" Content="" HorizontalAlignment="Left" Margin="73,40,0,0" VerticalAlignment="Top" Height="26" Width="120" FontStyle="Italic" Background="#FFB994FF"/>
+        <Button Content="Exit" HorizontalAlignment="Left" Margin="844,434,0,0" VerticalAlignment="Top" Width="58" Click="Button_Click" Height="19" Foreground="White" Background="#FF270483">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
         <DataGrid x:Name="UserGridInfo" HorizontalAlignment="Left" Height="189" Margin="214,17,0,0" VerticalAlignment="Top" Width="456" SelectionChanged="GridInfo_SelectionChanged"/>
-        <Button x:Name="UserCar" Content="Машина" HorizontalAlignment="Left" Margin="107,97,0,0" VerticalAlignment="Top" Width="102" Height="33" Background="#FFA8FFFA" Click="UserCar_Click"/>
-        <Button Content="Автобус" HorizontalAlignment="Left" Margin="107,135,0,0" VerticalAlignment="Top" Width="102" Height="33" Background="#FFA8FFFA" Click="Button_Click_1"/>
-        <Button Content="Мотоцикл" HorizontalAlignment="Left" Margin="107,173,0,0" VerticalAlignment="Top" Width="102" Height="33" Background="#FFA8FFFA" Click="Button_Click_6"/>
+        <Button x:Name="UserCar" Content="Машина" HorizontalAlignment="Left" Margin="107,97,0,0" VerticalAlignment="Top" Width="102" Height="33" Background="#FF7300DA" Click="UserCar_Click" Foreground="White"/>
+        <Button Content="Автобус" HorizontalAlignment="Left" Margin="107,135,0,0" VerticalAlignment="Top" Width="102" Height="33" Background="#FF7300DA" Click="Button_Click_1" Foreground="#FFFFFDFD"/>
+        <Button Content="Мотоцикл" HorizontalAlignment="Left" Margin="107,173,0,0" VerticalAlignment="Top" Width="102" Height="33" Background="#FFAF5EF9" Click="Button_Click_6"/>
         <Image x:Name="UserShowingImage" Height="189" Margin="675,208,65.2,0" VerticalAlignment="Top" UseLayoutRounding="True" OpacityMask="White"/>
-        <Button Content="Инф. о парке" HorizontalAlignment="Left" Margin="675,20,0,0" VerticalAlignment="Top" Width="105" Height="30" Click="Button_Click_3" Background="#FFF9F9B8"/>
-        <Button Content="Обновить" HorizontalAlignment="Left" Margin="675,90,0,0" VerticalAlignment="Top" Width="87" Background="#FF0BFF42" Height="26" Click="Button_Click_5"/>
-        <Button Content="Вывести инф." HorizontalAlignment="Left" Margin="675,121,0,0" VerticalAlignment="Top" Width="87" Click="Button_Click_4" Background="#FF31FFCF" Height="40"/>
+        <Button Content="Инф. о парке" HorizontalAlignment="Left" Margin="675,20,0,0" VerticalAlignment="Top" Width="105" Height="30" Click="Button_Click_3" Background="#FFAB39F7">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Обновить" HorizontalAlignment="Left" Margin="675,90,0,0" VerticalAlignment="Top" Width="87" Height="26" Click="Button_Click_5" Foreground="White" Background="#FF6522C2">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Вывести инф." HorizontalAlignment="Left" Margin="675,121,0,0" VerticalAlignment="Top" Width="87" Click="Button_Click_4" Height="40" Foreground="White" Background="#FF390096">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
         <RichTextBox x:Name="UserOutput" HorizontalAlignment="Left" Height="188" Margin="214,211,0,0" VerticalAlignment="Top" Width="456" TextChanged="Output_TextChanged">
             <FlowDocument>
                 <Paragraph>
@@ -29,10 +56,41 @@
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <Button x:Name="UserClearOutput" Content="Очистить вывод" HorizontalAlignment="Left" Margin="555,414,0,0" VerticalAlignment="Top" Width="115" RenderTransformOrigin="0.23,0.379" Background="#FFFFA2A2" Click="ClearOutput_Click"/>
-        <Button Content="Стоимость стоянки" HorizontalAlignment="Left" Margin="214,414,0,0" VerticalAlignment="Top" Width="114" Height="30" Background="#FF79DBFF" Click="Button_Click_11"/>
-        <Button Content="Расчитать прибыль" HorizontalAlignment="Left" Margin="333,414,0,0" VerticalAlignment="Top" Width="128" Height="29" Background="#FF79DBFF" Click="Button_Click_8"/>
-        <Button Content="Удалить" HorizontalAlignment="Left" Margin="675,59,0,0" VerticalAlignment="Top" Width="87" RenderTransformOrigin="0.409,-0.204" Click="Button_Click_10" Background="#FFFF4D4D" Height="26"/>
+        <Button x:Name="UserClearOutput" Content="Очистить вывод" HorizontalAlignment="Left" Margin="555,404,0,0" VerticalAlignment="Top" Width="115" RenderTransformOrigin="0.23,0.379" Click="ClearOutput_Click" Height="22" Background="#FFA8A2FF">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Стоимость стоянки" HorizontalAlignment="Left" Margin="214,404,0,0" VerticalAlignment="Top" Width="114" Height="30" Click="Button_Click_11" Background="#FFC5A1FF">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Расчитать прибыль" HorizontalAlignment="Left" Margin="333,404,0,0" VerticalAlignment="Top" Width="128" Height="29" Click="Button_Click_8" RenderTransformOrigin="0.515,-0.156" Background="#FFC5A1FF">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Удалить" HorizontalAlignment="Left" Margin="675,59,0,0" VerticalAlignment="Top" Width="87" RenderTransformOrigin="0.409,-0.204" Click="Button_Click_10" Height="26" Background="#FFFF4D4D">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Изменить" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="58" FontSize="10" Click="Button_Click_2" Foreground="White" Background="#FF2D00A5">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
 
     </Grid>
 </Window>

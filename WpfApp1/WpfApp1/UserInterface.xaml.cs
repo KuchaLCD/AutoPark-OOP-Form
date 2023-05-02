@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace WpfApp1
 {
@@ -23,22 +24,24 @@ namespace WpfApp1
         public UserInterface()
         {
             InitializeComponent();
-
+            string IDPos = string.Empty;
             UserCatcher.Content = ListsDB.users[0].ToString();      
             string pos = ListsDB.users[0].IDPos;
+            string avt = ListsDB.users[0].AvatarPicture;
+            string defaultImage = @"C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\BLANK.jpg";
 
-            string sqlExpression = "SELECT IDPos, PosName FROM Positions";
+            string sqlExpressionPos = "SELECT IDPos, PosName FROM Positions";
 
             using (SqlConnection connection = new SqlConnection(DataBase.connectionString))
             {
                 connection.Open();
 
-                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                SqlCommand command = new SqlCommand(sqlExpressionPos, connection);
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    string IDPos = reader.GetString(0);
+                    IDPos = reader.GetString(0);
                     string posName = reader.GetString(1);
 
                     if (pos == IDPos)
@@ -48,6 +51,17 @@ namespace WpfApp1
                 }
 
                 reader.Close();
+            }
+            //Выгрузка изображения и ИН пользователя
+            try
+            {
+                ImageSource image = new BitmapImage(new Uri(avt, UriKind.Absolute));
+                UserAvatar.Source = image;
+            }
+            catch
+            {
+                ImageSource image = new BitmapImage(new Uri(defaultImage, UriKind.Absolute));
+                UserAvatar.Source = image;
             }
         }
 
@@ -65,18 +79,25 @@ namespace WpfApp1
 
         private void Button_Click_11(object sender, RoutedEventArgs e)
         {
-            if (ListsDB.transports.Count == 0)
+            try
             {
-                MessageBox.Show("В парке отсутствует транспорт");
-            }
-            else
-            {
-                FlowDocument document = new FlowDocument();
-                Paragraph paragraph = new Paragraph();          //нужно для очистки комментария
-                paragraph.Inlines.Add(new Run(ListsDB.transports[UserGridInfo.SelectedIndex].CalculateOwn()));
-                document.Blocks.Add(paragraph);
+                if (ListsDB.transports.Count == 0)
+                {
+                    MessageBox.Show("В парке отсутствует транспорт");
+                }
+                else
+                {
+                    FlowDocument document = new FlowDocument();
+                    Paragraph paragraph = new Paragraph();          //нужно для очистки комментария
+                    paragraph.Inlines.Add(new Run(ListsDB.transports[UserGridInfo.SelectedIndex].CalculateOwn()));
+                    document.Blocks.Add(paragraph);
 
-                UserOutput.Document = document;
+                    UserOutput.Document = document;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Вами не был выбран элемент для расчёта стоимости стоянки");
             }
         }
 
@@ -243,6 +264,34 @@ namespace WpfApp1
         {
             BusRegister BusReg = new BusRegister();
             BusReg.ShowDialog();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            string pos = ListsDB.users[0].IDPos;
+
+            SqlConnection cn = new SqlConnection();     // Объект-соединение
+            cn.ConnectionString = DataBase.connectionString;
+            // Открытие подключения
+            cn.Open();
+            string userPicture = "";
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Filter = "JPG files (*.jpg)|*.jpg";
+            openFile.ShowDialog();
+            userPicture = openFile.FileName;
+
+            ImageSource image = new BitmapImage(new Uri(userPicture, UriKind.Absolute));
+            UserAvatar.Source = image;
+            // Создание SQL команды ввода
+            string strInsertUser = string.Format($"UPDATE Users SET AvatarPicture = '{userPicture}' WHERE IDPos = {pos}");
+
+            // Создание объекта-команды
+            SqlCommand cmdInsertUser = new SqlCommand(strInsertUser, cn);
+
+            // Исполнение команды ввода
+            cmdInsertUser.ExecuteNonQuery();
+
+            cn.Close();
         }
     }
 }

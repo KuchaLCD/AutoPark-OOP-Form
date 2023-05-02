@@ -178,5 +178,8 @@
   <ItemGroup>
     <Resource Include="BLANK.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="milad-fakurian-nY14Fs8pxT8-unsplash.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -26,6 +26,7 @@ namespace WpfApp1
         public string firstName = string.Empty;
         public string sureName = string.Empty;
         public string idPos = string.Empty;
+        public string avatar = string.Empty;
         public MainWindow()
         {
             InitializeComponent();
@@ -56,6 +57,7 @@ namespace WpfApp1
                     firstName = reader.GetString(2);
                     sureName = reader.GetString(3);
                     idPos = reader.GetString(4);
+                    avatar = reader.GetString(5);
 
                     if (PassBox.Password == "user" && Login.Text == "user")
                     {
@@ -76,7 +78,7 @@ namespace WpfApp1
                     else if (PassBox.Password == password && Login.Text == login)
                     {
                         controlSum++;
-                        UserDB newUser = new UserDB(login, password, firstName, sureName, idPos);
+                        UserDB newUser = new UserDB(login, password, firstName, sureName, idPos, avatar);
                         ListsDB.users.Add(newUser);
 
                         Hide();

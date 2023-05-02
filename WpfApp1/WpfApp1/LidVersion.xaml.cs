@@ -317,10 +317,7 @@ namespace WpfApp1
         private void Button_Click_9(object sender, RoutedEventArgs e)
         {
             //Test button. Can be used for searching some bugs or showing some data context
-            var cellInfo = GridInfo.SelectedCells[0];
-
-            var content = cellInfo.Column.GetCellContent(cellInfo.Item);
-            OutLine.Text = Convert.ToString(content);
+            OutLine.Text = Convert.ToString(FileName);
         }
 
         public void GridInfo_SelectionChanged(object sender, SelectionChangedEventArgs e)
