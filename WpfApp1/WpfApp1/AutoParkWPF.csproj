@@ -84,8 +84,12 @@
     <Compile Include="MotoRegister.xaml.cs">
       <DependentUpon>MotoRegister.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Order.cs" />
     <Compile Include="Park.cs" />
     <Compile Include="Positions.cs" />
+    <Compile Include="StyleUI.xaml.cs">
+      <DependentUpon>StyleUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Transport.cs" />
     <Compile Include="User.xaml.cs">
       <DependentUpon>User.xaml</DependentUpon>
@@ -131,6 +135,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MotoRegister.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StyleUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -180,6 +188,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="milad-fakurian-nY14Fs8pxT8-unsplash.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Burger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="GoBack.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

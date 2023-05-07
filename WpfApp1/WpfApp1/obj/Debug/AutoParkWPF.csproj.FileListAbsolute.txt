@@ -50,3 +50,5 @@ C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\CarRegister.g.cs
 C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\MotoRegister.g.cs
 C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\CarRegister.baml
 C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\MotoRegister.baml
+C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\StyleUI.g.cs
+C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\StyleUI.baml

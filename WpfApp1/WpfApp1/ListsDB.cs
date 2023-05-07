@@ -11,5 +11,6 @@ namespace WpfApp1
         public static List<Transport> transports = new List<Transport> { };
         public static List<Customer> customers = new List<Customer> { };
         public static List<UserDB> users = new List<UserDB> { };
+        public static List<Order> orders = new List<Order> { };
     }
 }

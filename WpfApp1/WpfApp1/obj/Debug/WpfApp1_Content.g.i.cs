@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("milad-fakurian-ny14fs8pxt8-unsplash.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("goback.png")]
 
 

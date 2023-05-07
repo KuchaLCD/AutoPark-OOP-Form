@@ -135,9 +135,15 @@ namespace WpfApp1
             openFile.Filter = "JPG files (*.jpg)|*.jpg";
             openFile.ShowDialog();
             CarFileName = openFile.FileName;
-
-            ImageSource image = new BitmapImage(new Uri(CarFileName, UriKind.Absolute));
-            CarImagePicker.Source = image;
+            try
+            {
+                ImageSource image = new BitmapImage(new Uri(CarFileName, UriKind.Absolute));
+                CarImagePicker.Source = image;
+            }
+            catch
+            {
+                MessageBox.Show("You dont choose a picture");
+            }
         }
 
         private void CommentPicker_TextChanged(object sender, TextChangedEventArgs e)
@@ -190,42 +196,49 @@ namespace WpfApp1
             // Открытие подключения
             cn.Open();
 
-            Random trandomizer = new Random();
-            double trandomNumber = trandomizer.Next(100000, 999999);
+            try
+            {
+                Random trandomizer = new Random();
+                double trandomNumber = trandomizer.Next(100000, 999999);
 
-            int tid = Convert.ToInt32(trandomNumber);
-            string tnaming = CarNaming.Text;
-            double tmaxSpeed = Convert.ToDouble(CarMaxSpeed.Text);
-            double tvolumeOfEngine = Convert.ToDouble(CarVolumeOfEngine.Text);
-            double tmass = Convert.ToDouble(CarMass.Text);
-            double twhidth = Convert.ToDouble(CarWidth.Text);
-            int twheelCount = Convert.ToInt32(4);
-            string troadNumber = CarRoadNumber.Text;
+                int tid = Convert.ToInt32(trandomNumber);
+                string tnaming = CarNaming.Text;
+                string tmaxSpeed = CarMaxSpeed.Text.Replace(",", ".");
+                string tvolumeOfEngine = CarVolumeOfEngine.Text.Replace(",", ".");
+                string tmass = CarMass.Text.Replace(",", ".");
+                string twhidth = CarWidth.Text.Replace(",", ".");
+                int twheelCount = Convert.ToInt32(4);
+                string troadNumber = CarRoadNumber.Text;
 
-            DateTime ttimeOfRegistrForPark = (DateTime)CarRegDatePicker.SelectedDate;
-            DateTime tstayTime = (DateTime)CarUpcomingDatePicker.SelectedDate;
+                DateTime ttimeOfRegistrForPark = (DateTime)CarRegDatePicker.SelectedDate;
+                DateTime tstayTime = (DateTime)CarUpcomingDatePicker.SelectedDate;
 
-            string convStrDateRegistrForPark = Convert.ToString(ttimeOfRegistrForPark);
-            string convStrDateStayTime = Convert.ToString(tstayTime);
+                string convStrDateRegistrForPark = Convert.ToString(ttimeOfRegistrForPark);
+                string convStrDateStayTime = Convert.ToString(tstayTime);
 
-            string tpicture = CarFileName;
+                string tpicture = CarFileName;
 
-            TextRange ttextRange = new TextRange(
-            // TextPointer to the start of content in the RichTextBox.
-            CarCommentPicker.Document.ContentStart,
-            // TextPointer to the end of content in the RichTextBox.
-            CarCommentPicker.Document.ContentEnd
-            );
-            string tnotes = ttextRange.Text;
+                TextRange ttextRange = new TextRange(
+                // TextPointer to the start of content in the RichTextBox.
+                CarCommentPicker.Document.ContentStart,
+                // TextPointer to the end of content in the RichTextBox.
+                CarCommentPicker.Document.ContentEnd
+                );
+                string tnotes = ttextRange.Text;
 
-            // Создание SQL команды ввода
-            string strInsertTransport = string.Format("INSERT INTO Transport VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}')", tid, tnaming, tmaxSpeed, tvolumeOfEngine, tmass, twhidth, twheelCount, convStrDateRegistrForPark, convStrDateStayTime, troadNumber, tpicture, tnotes);
+                // Создание SQL команды ввода
+                string strInsertTransport = string.Format("INSERT INTO Transport VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}')", tid, tnaming, tmaxSpeed, tvolumeOfEngine, tmass, twhidth, twheelCount, convStrDateRegistrForPark, convStrDateStayTime, troadNumber, tpicture, tnotes);
 
-            // Создание объекта-команды
-            SqlCommand cmdInsertTransport = new SqlCommand(strInsertTransport, cn);
+                // Создание объекта-команды
+                SqlCommand cmdInsertTransport = new SqlCommand(strInsertTransport, cn);
 
-            // Исполнение команды ввода
-            cmdInsertTransport.ExecuteNonQuery();
+                // Исполнение команды ввода
+                cmdInsertTransport.ExecuteNonQuery();
+            }
+            catch
+            {
+                MessageBox.Show("Some content was wrong or not input");
+            }
 
             cn.Close();
 

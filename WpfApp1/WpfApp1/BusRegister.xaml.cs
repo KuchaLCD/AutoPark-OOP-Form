@@ -89,43 +89,49 @@ namespace WpfApp1
             cn.ConnectionString = DataBase.connectionString;
             // Открытие подключения
             cn.Open();
-            
-            Random trandomizer = new Random();
-            double trandomNumber = trandomizer.Next(100000, 999999);
+            try
+            {
+                Random trandomizer = new Random();
+                double trandomNumber = trandomizer.Next(100000, 999999);
 
-            int tid = Convert.ToInt32(trandomNumber);
-            string tnaming = BusNaming.Text;
-            double tmaxSpeed = Convert.ToDouble(BusMaxSpeed.Text);
-            double tvolumeOfEngine = Convert.ToDouble(BusVolumeOfEngine.Text);
-            double tmass = Convert.ToDouble(BusMass.Text);
-            double twhidth = Convert.ToDouble(BusWidth.Text);
-            int twheelCount = Convert.ToInt32(BusWheelCount.Text);
-            string troadNumber = BusRoadNumber.Text;
+                int tid = Convert.ToInt32(trandomNumber);
+                string tnaming = BusNaming.Text;
+                string tmaxSpeed = BusMaxSpeed.Text.Replace(",", ".");
+                string tvolumeOfEngine = BusVolumeOfEngine.Text.Replace(",", ".");
+                string tmass = BusMass.Text.Replace(",", ".");
+                string twhidth = BusWidth.Text.Replace(",", ".");
+                int twheelCount = Convert.ToInt32(BusWheelCount.Text);
+                string troadNumber = BusRoadNumber.Text;
 
-            DateTime ttimeOfRegistrForPark = (DateTime)BusRegDatePicker.SelectedDate;
-            DateTime tstayTime = (DateTime)BusUpcomingDatePicker.SelectedDate;
+                DateTime ttimeOfRegistrForPark = (DateTime)BusRegDatePicker.SelectedDate;
+                DateTime tstayTime = (DateTime)BusUpcomingDatePicker.SelectedDate;
 
-            string convStrDateRegistrForPark = Convert.ToString(ttimeOfRegistrForPark);
-            string convStrDateStayTime = Convert.ToString(tstayTime);
+                string convStrDateRegistrForPark = Convert.ToString(ttimeOfRegistrForPark);
+                string convStrDateStayTime = Convert.ToString(tstayTime);
 
-            string tpicture = BusFileName;
+                string tpicture = BusFileName;
 
-            TextRange ttextRange = new TextRange(
-            // TextPointer to the start of content in the RichTextBox.
-            BusCommentPicker.Document.ContentStart,
-            // TextPointer to the end of content in the RichTextBox.
-            BusCommentPicker.Document.ContentEnd
-            );
-            string tnotes = ttextRange.Text;
+                TextRange ttextRange = new TextRange(
+                // TextPointer to the start of content in the RichTextBox.
+                BusCommentPicker.Document.ContentStart,
+                // TextPointer to the end of content in the RichTextBox.
+                BusCommentPicker.Document.ContentEnd
+                );
+                string tnotes = ttextRange.Text;
 
-            // Создание SQL команды ввода
-            string strInsertTransport = string.Format("INSERT INTO Transport VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}')", tid, tnaming, tmaxSpeed, tvolumeOfEngine, tmass, twhidth, twheelCount, convStrDateRegistrForPark, convStrDateStayTime, troadNumber, tpicture, tnotes);
+                // Создание SQL команды ввода
+                string strInsertTransport = string.Format("INSERT INTO Transport VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}')", tid, tnaming, tmaxSpeed, tvolumeOfEngine, tmass, twhidth, twheelCount, convStrDateRegistrForPark, convStrDateStayTime, troadNumber, tpicture, tnotes);
 
-            // Создание объекта-команды
-            SqlCommand cmdInsertTransport = new SqlCommand(strInsertTransport, cn);
+                // Создание объекта-команды
+                SqlCommand cmdInsertTransport = new SqlCommand(strInsertTransport, cn);
 
-            // Исполнение команды ввода
-            cmdInsertTransport.ExecuteNonQuery();
+                // Исполнение команды ввода
+                cmdInsertTransport.ExecuteNonQuery();
+            }
+            catch
+            {
+                MessageBox.Show("Some content was wrong or not input");
+            }
 
             cn.Close();
 
@@ -154,8 +160,15 @@ namespace WpfApp1
             openFile.ShowDialog();
             BusFileName = openFile.FileName;
 
-            ImageSource image = new BitmapImage(new Uri(BusFileName, UriKind.Absolute));
-            BusImagePicker.Source = image;
+            try
+            {
+                ImageSource image = new BitmapImage(new Uri(BusFileName, UriKind.Absolute));
+                BusImagePicker.Source = image;
+            }
+            catch
+            {
+                MessageBox.Show("You dont choose a picture");
+            }
         }
 
         private void CommentPicker_TextChanged(object sender, TextChangedEventArgs e)

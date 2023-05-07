@@ -6,14 +6,20 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="Deleting" Height="269.187" Width="549.097" Icon="M&amp;A.png">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF5E00C0" Offset="0"/>
+            <GradientStop Color="#FFBB79FF" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid Margin="0,0,3.4,3.2">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="269*"/>
             <ColumnDefinition Width="270*"/>
         </Grid.ColumnDefinitions>
-        <ListBox x:Name="ListBoxForTransp" HorizontalAlignment="Left" Height="100" Margin="134,28,0,0" VerticalAlignment="Top" Width="269" Grid.ColumnSpan="2"/>
+        <ListBox x:Name="ListBoxForTransp" HorizontalAlignment="Left" Height="100" Margin="134,28,0,0" VerticalAlignment="Top" Width="269" Grid.ColumnSpan="2" Background="#FFDAA2FF"/>
         <Button x:Name="DeleteElement" Content="Удалить" HorizontalAlignment="Left" Margin="229,133,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Background="#FFFF4D4D" Click="DeleteElement_Click"/>
-        <Button x:Name="GoOut" Content="Выйти" Grid.Column="1" HorizontalAlignment="Left" Margin="170.2,186,0,0" VerticalAlignment="Top" Width="75" Background="#FF9EA6FF" Click="GoOut_Click"/>
+        <Button x:Name="GoOut" Content="Выйти" Grid.Column="1" HorizontalAlignment="Left" Margin="170.2,186,0,0" VerticalAlignment="Top" Width="75" Background="#FF460090" Click="GoOut_Click" Foreground="White"/>
 
     </Grid>
 </Window>

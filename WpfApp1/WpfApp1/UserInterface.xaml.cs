@@ -77,8 +77,9 @@ namespace WpfApp1
             }
         }
 
-        private void Button_Click_11(object sender, RoutedEventArgs e)
+        private void Button_Click_11(object sender, RoutedEventArgs e)      //Кнопка высчитать стоимость стоянки отдельному элементу
         {
+            UserShowingImage.Source = null;
             try
             {
                 if (ListsDB.transports.Count == 0)
@@ -101,8 +102,9 @@ namespace WpfApp1
             }
         }
 
-        private void Button_Click_8(object sender, RoutedEventArgs e)
+        private void Button_Click_8(object sender, RoutedEventArgs e)       //Кнопка расчёт прибыли
         {
+            UserShowingImage.Source = null;
             if (ListsDB.transports.Count == 0)
             {
                 FlowDocument document = new FlowDocument();
@@ -123,9 +125,8 @@ namespace WpfApp1
             }
         }
 
-        private void ClearOutput_Click(object sender, RoutedEventArgs e)
+        private void ClearOutput_Click(object sender, RoutedEventArgs e)        //Очистка вывода
         {
-            //Очистка вывода
             FlowDocument document = new FlowDocument();
             Paragraph paragraph = new Paragraph();
             paragraph.Inlines.Add(new Run(""));
@@ -150,9 +151,8 @@ namespace WpfApp1
             MotoReg.ShowDialog();
         }
 
-        private void Button_Click_4(object sender, RoutedEventArgs e)
+        private void Button_Click_4(object sender, RoutedEventArgs e)       //Вывести информацию об отдельно выбранном элементе
         {
-            //Вывести информацию об отдельно выбранном элементе
             try
             {
                 FlowDocument document = new FlowDocument();
@@ -173,9 +173,8 @@ namespace WpfApp1
             }
         }
 
-        private void Button_Click_5(object sender, RoutedEventArgs e)
+        private void Button_Click_5(object sender, RoutedEventArgs e)       //Обновление инфы о парке
         {
-            //Обновление инфы о парке
             ListsDB.transports.Clear();        //данная опреация необходима на случай пустой таблицы в бд, т.к. если внести элемент без добавления его в бд, то некоторые данные могут быть случайно продублированы(речь идёт об одних и тех же элементах)
 
             UserGridInfo.ItemsSource = null;
@@ -235,9 +234,8 @@ namespace WpfApp1
             Del.ShowDialog();
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private void Button_Click_3(object sender, RoutedEventArgs e)       //Вывод инфы и парке
         {
-            //Вывод инфы и парке
             FlowDocument document = new FlowDocument();
             Paragraph paragraph = new Paragraph();
             paragraph.Inlines.Add(new Run(Park.park.About()));
@@ -266,7 +264,7 @@ namespace WpfApp1
             BusReg.ShowDialog();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void Button_Click_2(object sender, RoutedEventArgs e)   //Кнопка изменить аватарку
         {
             string pos = ListsDB.users[0].IDPos;
 
@@ -280,8 +278,15 @@ namespace WpfApp1
             openFile.ShowDialog();
             userPicture = openFile.FileName;
 
-            ImageSource image = new BitmapImage(new Uri(userPicture, UriKind.Absolute));
-            UserAvatar.Source = image;
+            try
+            {
+                ImageSource image = new BitmapImage(new Uri(userPicture, UriKind.Absolute));
+                UserAvatar.Source = image;
+            }
+            catch
+            {
+                MessageBox.Show("You dont choose a picture");
+            }
             // Создание SQL команды ввода
             string strInsertUser = string.Format($"UPDATE Users SET AvatarPicture = '{userPicture}' WHERE IDPos = {pos}");
 

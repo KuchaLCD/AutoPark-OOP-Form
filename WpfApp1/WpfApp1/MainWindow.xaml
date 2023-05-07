@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Cascade" Height="450" Width="404.681" Icon="M&amp;A.png" Topmost="True">
+        Title="Cascade" Height="450" Width="449.481" Icon="M&amp;A.png" Topmost="True">
     <Window.Background>
         <ImageBrush ImageSource="milad-fakurian-nY14Fs8pxT8-unsplash.jpg"/>
     </Window.Background>
@@ -14,23 +14,23 @@
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="Enter" Content="Enter" HorizontalAlignment="Left" Margin="152,239,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Height="19" Click="Button_Click" IsDefault="True" BorderBrush="#FF7A6D6D" Foreground="White" Background="#FF8100B7">
+        <Button x:Name="Enter" Content="Enter" HorizontalAlignment="Center" Margin="152,239,171.4,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Height="19" Click="Button_Click" IsDefault="True" BorderBrush="#FF7A6D6D" Foreground="White" Background="#FF8100B7">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <TextBox x:Name="Login" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="129,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged_1" Background="White">
+        <TextBox x:Name="Login" Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="23" Margin="129,144,149.4,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged_1" Background="White">
             <TextBox.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="3"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <Label Grid.ColumnSpan="2" Content="Login" HorizontalAlignment="Left" Margin="129,114,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Label Grid.ColumnSpan="2" Content="Password" HorizontalAlignment="Left" Margin="129,173,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Button Grid.ColumnSpan="2" Content="" HorizontalAlignment="Left" Margin="258,193,0,0" VerticalAlignment="Top" Width="32" Click="Button_Click_1" Height="29" RenderTransformOrigin="0.331,-0.007">
+        <Label Grid.ColumnSpan="2" Content="Login" HorizontalAlignment="Center" Margin="129,114,149.4,0" VerticalAlignment="Top" Foreground="White" Width="120"/>
+        <Label Grid.ColumnSpan="2" Content="Password" HorizontalAlignment="Center" Margin="129,175,149.4,0" VerticalAlignment="Top" Foreground="White" Width="120"/>
+        <Button Grid.ColumnSpan="2" Content="" HorizontalAlignment="Center" Margin="259,195,112.4,0" VerticalAlignment="Top" MinWidth="27" MinHeight="27" Width="27" Click="Button_Click_1" Height="26" RenderTransformOrigin="0.331,-0.007" BorderThickness="2" BorderBrush="#FF280349">
             <Button.Background>
                 <ImageBrush ImageSource="eye.png"/>
             </Button.Background>
@@ -40,26 +40,28 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <PasswordBox x:Name="PassBox" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="129,204,0,0" VerticalAlignment="Top" Width="120" Background="White">
+        <PasswordBox x:Name="PassBox" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="129,204,149.4,0" VerticalAlignment="Top" Width="120" Background="White">
             <PasswordBox.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </PasswordBox.Resources>
         </PasswordBox>
-        <TextBox x:Name="ShowingPass" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="18" Margin="129,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged_2" Visibility="Hidden"/>
-        <Button x:Name="Chiter" Grid.ColumnSpan="2" Content="ChitCode" HorizontalAlignment="Left" Margin="10,381,0,0" VerticalAlignment="Top" Width="75" Click="Chiter_Click"/>
-        <Button x:Name="AppCloser" Grid.ColumnSpan="2" Content="Exit" HorizontalAlignment="Left" Margin="318,381,0,0" VerticalAlignment="Top" Width="49" Click="Button_Click_2" RenderTransformOrigin="1.726,0.69" Background="#FF3F0C86" Foreground="White">
+        <TextBox x:Name="ShowingPass" Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="18" Margin="129,204,149.4,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged_2" Visibility="Hidden"/>
+        <Button x:Name="Chiter" Grid.ColumnSpan="2" Content="ChitCode" HorizontalAlignment="Left" Margin="10,0,0,33" VerticalAlignment="Bottom" Width="75" Click="Chiter_Click"/>
+        <Button x:Name="AppCloser" Grid.ColumnSpan="2" Content="Exit" HorizontalAlignment="Right" Margin="0,0,10.4,19" VerticalAlignment="Bottom" Width="49" Click="Button_Click_2" RenderTransformOrigin="1.726,0.69" Background="#FF3F0C86" Foreground="White">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button x:Name="LidChit" Grid.ColumnSpan="2" Content="Button" HorizontalAlignment="Left" Margin="10,357,0,0" VerticalAlignment="Top" Width="75" Click="LidChit_Click"/>
-        <ListBox x:Name="UserList" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="73" Margin="98,36,0,0" VerticalAlignment="Top" Width="209" SelectionChanged="UserList_SelectionChanged"/>
-        <Label Grid.ColumnSpan="2" Content="Ранее вошедшие пользователи" HorizontalAlignment="Left" Margin="110,5,0,0" VerticalAlignment="Top" Width="186" Foreground="White"/>
-        <Label Grid.ColumnSpan="2" Content="DevTools" HorizontalAlignment="Left" Margin="10,326,0,0" VerticalAlignment="Top" Width="186" Foreground="White"/>
+        <Button x:Name="LidChit" Grid.ColumnSpan="2" Content="Button" HorizontalAlignment="Left" Margin="10,0,0,58" VerticalAlignment="Bottom" Width="75" Click="LidChit_Click"/>
+        <ListBox x:Name="UserList" Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="73" Margin="87,36,102.4,0" VerticalAlignment="Top" Width="209" SelectionChanged="UserList_SelectionChanged"/>
+        <Label Grid.ColumnSpan="2" Content="Ранее вошедшие пользователи" HorizontalAlignment="Center" Margin="100,5,112.4,0" VerticalAlignment="Top" Width="186" Foreground="White"/>
+        <Label Grid.ColumnSpan="2" Content="DevTools" HorizontalAlignment="Left" Margin="10,0,0,77" VerticalAlignment="Bottom" Width="75" Foreground="White"/>
+        <Label Grid.ColumnSpan="2" Content="Build 1.1.5909" HorizontalAlignment="Center" Margin="152,0,162.4,16" VerticalAlignment="Bottom" Width="84" Foreground="White"/>
+        <Button Grid.ColumnSpan="2" Content="UI" HorizontalAlignment="Left" Margin="10,0,0,9" VerticalAlignment="Bottom" Width="75" Click="Button_Click_3"/>
 
     </Grid>
 </Window>

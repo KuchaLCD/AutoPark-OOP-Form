@@ -75,6 +75,14 @@ namespace WpfApp1
                         LidVers.ShowDialog();
                         this.Close();
                     }
+                    else if (PassBox.Password == "style" && Login.Text == "style")
+                    {
+                        controlSum++;
+                        Hide();
+                        StyleUI style = new StyleUI();
+                        style.ShowDialog();
+                        this.Close();
+                    }
                     else if (PassBox.Password == password && Login.Text == login)
                     {
                         controlSum++;
@@ -82,8 +90,10 @@ namespace WpfApp1
                         ListsDB.users.Add(newUser);
 
                         Hide();
-                        UserInterface User = new UserInterface();
-                        User.ShowDialog();
+                        //UserInterface User = new UserInterface();
+                        //User.ShowDialog();
+                        StyleUI style = new StyleUI();
+                        style.ShowDialog();
                         this.Close();
                     }
                 }
@@ -163,6 +173,18 @@ namespace WpfApp1
             UserDB selectedUser = (UserDB)UserList.SelectedItem;
             Login.Text = selectedUser.Login;
             PassBox.Password = selectedUser.Password;
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            if (PassBox.Password == null || Login.Text == string.Empty)
+            {
+                ListsDB.users.Clear();
+            }
+            Hide();
+            StyleUI style = new StyleUI();
+            style.ShowDialog();
+            this.Close();
         }
     }
 }
