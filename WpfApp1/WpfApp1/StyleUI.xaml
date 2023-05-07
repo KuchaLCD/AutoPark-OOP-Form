@@ -18,7 +18,7 @@
             <ColumnDefinition Width="236*"/>
             <ColumnDefinition Width="587*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Canvas x:Name="MenuSTYLE" Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF440082" Height="157" Width="236" Grid.RowSpan="2">
+        <Canvas x:Name="MenuSTYLE" Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF440082" Height="157" Width="236" Grid.RowSpan="2" Visibility="Hidden">
             <StackPanel Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" MaxWidth="240" MaxHeight="40" Height="40" Width="236" Background="#FF6000B6">
                 <StackPanel.Resources>
                     <Style TargetType="{x:Type Button}">
@@ -65,7 +65,7 @@
             <Button Grid.Column="0" MinWidth="30" HorizontalAlignment="Left" VerticalAlignment="Top" MaxWidth="300" Background="#FF000086" Content="Customer" Width="236" Height="50" Grid.Row="0" BorderBrush="#FF3900A3" Foreground="White" Click="Button_Click_18" Canvas.Top="107" RenderTransformOrigin="0.496,0.448" />
             <Button Grid.Column="0" MinWidth="30" HorizontalAlignment="Left" VerticalAlignment="Top" MaxWidth="300" Background="#FF000086" Content="Order" Width="236" Height="57" Grid.Row="0" BorderBrush="#FF3900A3" Foreground="White" Click="Button_Click_17" Canvas.Top="45" />
         </Canvas>
-        <Canvas x:Name="MenuBarSTYLE" Grid.Column="0" Grid.Row="0" Background="#FF180063" MaxWidth="300" HorizontalAlignment="Left" Margin="0,0,0,263" Width="236" Grid.RowSpan="2" Visibility="Hidden">
+        <Canvas x:Name="MenuBarSTYLE" Grid.Column="0" Grid.Row="0" Background="#FF180063" MaxWidth="300" HorizontalAlignment="Left" Margin="0,0,0,263" Width="236" Grid.RowSpan="2">
             <StackPanel Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" MaxWidth="240" MaxHeight="40" Background="#FF4E0D91" Height="38" Width="236">
                 <StackPanel.Resources>
                     <Style TargetType="{x:Type Button}">
@@ -191,21 +191,21 @@
                         <GradientStop Color="#FFA752FF" Offset="1"/>
                     </LinearGradientBrush>
                 </StackPanel.Background>
-                <Button Height="27" Width="70" Foreground="White" Content="Our Profit" Background="#FF410068" Margin="3,6,0,5.4" Click="Button_Click_10">
+                <Button Height="27" Width="70" Foreground="White" Content="Our Profit" Background="#FF410068" Margin="3,6,0,5.4" Click="Button_Click_25">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="5"/>
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button Height="27" Width="50" Foreground="White" HorizontalAlignment="Right" Content="Rent" Background="#FF410068" Margin="3,6,0,5.4" Click="Button_Click_8">
+                <Button Height="27" Width="50" Foreground="White" HorizontalAlignment="Right" Content="Rent" Background="#FF410068" Margin="3,6,0,5.4" Click="Button_Click_24">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="5"/>
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button Height="27" Width="55" Foreground="White" Content="Report" Background="#FF410068" Margin="3,6,0,5.4" RenderTransformOrigin="0.5,0.5" Click="Button_Click_9">
+                <Button Height="27" Width="66" Foreground="White" Content="Customers" Background="#FF410068" Margin="3,6,0,5.4" RenderTransformOrigin="0.5,0.5" Click="Button_Click_23">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="5"/>

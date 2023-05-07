@@ -1,0 +1,30 @@
+﻿<Window x:Class="WpfApp1.AddCustomer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="AddCustomer" Height="234" Width="256.8" Icon="M&amp;A.png">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF1F00BD" Offset="0"/>
+            <GradientStop Color="#FF0E0056" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Имя" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="Фамилия" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="Отчество" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox x:Name="FirstName" HorizontalAlignment="Left" Height="23" Margin="85,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="SureName" HorizontalAlignment="Left" Height="23" Margin="85,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="LastName" HorizontalAlignment="Left" Height="23" Margin="85,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Должность" HorizontalAlignment="Left" Margin="10,121,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Button Content="Зарегистрировать" HorizontalAlignment="Left" Margin="10,152,0,0" VerticalAlignment="Top" Width="134" Click="Button_Click" Background="#FF080082" Foreground="White"/>
+        <ComboBox x:Name="PositionCather" HorizontalAlignment="Left" Margin="85,124,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="PositionCather_SelectionChanged"/>
+
+    </Grid>
+</Window>

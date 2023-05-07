@@ -60,7 +60,7 @@
         <ListBox x:Name="UserList" Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="73" Margin="87,36,102.4,0" VerticalAlignment="Top" Width="209" SelectionChanged="UserList_SelectionChanged"/>
         <Label Grid.ColumnSpan="2" Content="Ранее вошедшие пользователи" HorizontalAlignment="Center" Margin="100,5,112.4,0" VerticalAlignment="Top" Width="186" Foreground="White"/>
         <Label Grid.ColumnSpan="2" Content="DevTools" HorizontalAlignment="Left" Margin="10,0,0,77" VerticalAlignment="Bottom" Width="75" Foreground="White"/>
-        <Label Grid.ColumnSpan="2" Content="Build 1.1.5909" HorizontalAlignment="Center" Margin="152,0,162.4,16" VerticalAlignment="Bottom" Width="84" Foreground="White"/>
+        <Label Grid.ColumnSpan="2" Content="Build 1.2.0078" HorizontalAlignment="Center" Margin="152,0,162.4,16" VerticalAlignment="Bottom" Width="84" Foreground="White"/>
         <Button Grid.ColumnSpan="2" Content="UI" HorizontalAlignment="Left" Margin="10,0,0,9" VerticalAlignment="Bottom" Width="75" Click="Button_Click_3"/>
 
     </Grid>

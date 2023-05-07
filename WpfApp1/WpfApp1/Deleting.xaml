@@ -18,8 +18,10 @@
             <ColumnDefinition Width="270*"/>
         </Grid.ColumnDefinitions>
         <ListBox x:Name="ListBoxForTransp" HorizontalAlignment="Left" Height="100" Margin="134,28,0,0" VerticalAlignment="Top" Width="269" Grid.ColumnSpan="2" Background="#FFDAA2FF"/>
-        <Button x:Name="DeleteElement" Content="Удалить" HorizontalAlignment="Left" Margin="229,133,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Background="#FFFF4D4D" Click="DeleteElement_Click"/>
+        <Button x:Name="DeleteElement" Content="Удалить" HorizontalAlignment="Left" Margin="59.2,133,0,0" VerticalAlignment="Top" Width="75" Background="#FFFF4D4D" Click="DeleteElement_Click" Grid.Column="1"/>
         <Button x:Name="GoOut" Content="Выйти" Grid.Column="1" HorizontalAlignment="Left" Margin="170.2,186,0,0" VerticalAlignment="Top" Width="75" Background="#FF460090" Click="GoOut_Click" Foreground="White"/>
+        <Button Content="Заказы" Margin="134,133,59.8,0" VerticalAlignment="Top" Background="#FF6000B6" Foreground="#FFFCFCFC" Click="Button_Click"/>
+        <Button Content="Транспорт" Margin="214,133,250.2,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Foreground="#FFEBEBEB" Background="#FF6000B6" Click="Button_Click_1"/>
 
     </Grid>
 </Window>

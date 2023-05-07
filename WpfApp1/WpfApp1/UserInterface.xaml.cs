@@ -241,7 +241,6 @@ namespace WpfApp1
             paragraph.Inlines.Add(new Run(Park.park.About()));
             document.Blocks.Add(paragraph);
             UserOutput.Document = document;
-            //ShowingImage.Source = (ImageSource)FileName;      //not work
             for (int i = 0; i < ListsDB.transports.Count; i++)
             {
                 BitmapImage jpg = new BitmapImage();

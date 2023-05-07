@@ -21,6 +21,7 @@ namespace WpfApp1
     /// </summary>
     public partial class StyleUI : Window
     {
+        public static int deleteCount = 0;
         public StyleUI()
         {
             try
@@ -223,12 +224,19 @@ namespace WpfApp1
             }
             else
             {
-                FlowDocument document = new FlowDocument();
-                Paragraph paragraph = new Paragraph();          //нужно для очистки комментария
-                paragraph.Inlines.Add(new Run(ListsDB.transports[0].CalculateIncome()));
-                document.Blocks.Add(paragraph);
+                try
+                {
+                    FlowDocument document = new FlowDocument();
+                    Paragraph paragraph = new Paragraph();          //нужно для очистки комментария
+                    paragraph.Inlines.Add(new Run(ListsDB.transports[0].CalculateIncome()));
+                    document.Blocks.Add(paragraph);
 
-                OutputSTYLE.Document = document;
+                    OutputSTYLE.Document = document;
+                }
+                catch
+                {
+                    MessageBox.Show("Some content was wrong!");
+                }
             }
         }
 
@@ -361,32 +369,162 @@ namespace WpfApp1
 
         private void Button_Click_17(object sender, RoutedEventArgs e)
         {
-
+            AddOrder addOrd = new AddOrder();
+            addOrd.ShowDialog();
         }
 
         private void Button_Click_18(object sender, RoutedEventArgs e)
         {
-
+            AddCustomer addCust = new AddCustomer();
+            addCust.ShowDialog();
         }
 
         private void Button_Click_19(object sender, RoutedEventArgs e)
         {
+            ListsDB.orders.Clear();
+            SqlConnection cn = new SqlConnection();     // Объект-соединение
+            cn.ConnectionString = DataBase.connectionString;
+            // Открытие подключения
+            cn.Open();
 
+            // Формирование команды на языке SQL для выборки данных из таблицы
+            string strSelectOrder = "Select * From Orders";
+
+            SqlCommand cmdSelectOrder = new SqlCommand(strSelectOrder, cn);
+
+            SqlDataReader orderDataReader = cmdSelectOrder.ExecuteReader();
+
+            ListsDB.transports.Clear();    // очистка списка persons
+            while (orderDataReader.Read())
+            {
+                int id = orderDataReader.GetInt32(0);
+                string idCust = orderDataReader.GetString(1);
+                DateTime startRent = Convert.ToDateTime(orderDataReader.GetString(2));
+                DateTime endRent = Convert.ToDateTime(orderDataReader.GetString(3));
+                int idTransp = orderDataReader.GetInt32(4);
+                double bill = orderDataReader.GetDouble(5);
+
+                // Формирование очередного объекта и помещение его в коллекцию
+                Order ord = new Order(id, idCust, startRent, endRent, idTransp, bill);
+                ListsDB.orders.Add(ord);
+            }
+            // Закрытие соединения
+            cn.Close();
+            GridSTYLE.ItemsSource = ListsDB.orders;
         }
 
         private void Button_Click_20(object sender, RoutedEventArgs e)
         {
-
+            FlowDocument document = new FlowDocument();
+            Paragraph paragraph = new Paragraph();
+            for (int i = 0; i < ListsDB.orders.Count; i++)
+            {
+                paragraph.Inlines.Add(new Run(ListsDB.orders[i].InfoString()));
+            }
+            document.Blocks.Add(paragraph);
+            OutputSTYLE.Document = document;
         }
 
         private void Button_Click_21(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                FlowDocument document = new FlowDocument();
+                Paragraph paragraph = new Paragraph();
+                paragraph.Inlines.Add(new Run(ListsDB.orders[GridSTYLE.SelectedIndex].InfoString()));
+                document.Blocks.Add(paragraph);
+                OutputSTYLE.Document = document;
+            }
+            catch
+            {
+                MessageBox.Show("Вами не был выбран элемент для вывода информации");
+            }
         }
 
         private void Button_Click_22(object sender, RoutedEventArgs e)
         {
+            deleteCount = 1;
+            Deleting Del = new Deleting();
+            Del.ShowDialog();
+        }
 
+        private void Button_Click_23(object sender, RoutedEventArgs e)
+        {
+            ListsDB.customers.Clear();
+            SqlConnection cn = new SqlConnection();     // Объект-соединение
+            cn.ConnectionString = DataBase.connectionString;
+            // Открытие подключения
+            cn.Open();
+
+            // Формирование команды на языке SQL для выборки данных из таблицы
+            string strSelectCust = "Select * From Customer";
+
+            SqlCommand cmdSelectCust = new SqlCommand(strSelectCust, cn);
+
+            SqlDataReader custDataReader = cmdSelectCust.ExecuteReader();
+
+            ListsDB.transports.Clear();    // очистка списка persons
+            while (custDataReader.Read())
+            {
+                string id = custDataReader.GetString(0);
+                string fname = custDataReader.GetString(1);
+                string sname = custDataReader.GetString(2);
+                string lname = custDataReader.GetString(3);
+                string pos = custDataReader.GetString(4);
+
+                // Формирование очередного объекта и помещение его в коллекцию
+                Customer cust = new Customer(id, fname, sname, lname, pos);
+                ListsDB.customers.Add(cust);
+            }
+            // Закрытие соединения
+            cn.Close();
+            GridSTYLE.ItemsSource = ListsDB.customers;
+        }
+
+        private void Button_Click_24(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                FlowDocument document = new FlowDocument();
+                Paragraph paragraph = new Paragraph();
+                paragraph.Inlines.Add(new Run($"ИН Заказчика: {ListsDB.orders[GridSTYLE.SelectedIndex].IDCustomer}\nИтог к оплате для выбранного элемента = {ListsDB.orders[GridSTYLE.SelectedIndex].Bill}"));
+                document.Blocks.Add(paragraph);
+                OutputSTYLE.Document = document;
+            }
+            catch
+            {
+                MessageBox.Show("Вами не был выбран элемент для вывода информации");
+            }
+        }
+
+        private void Button_Click_25(object sender, RoutedEventArgs e)
+        {
+            ImageSTYLE.Source = null;
+            if (ListsDB.transports.Count == 0 && ListsDB.orders.Count == 0)
+            {
+                FlowDocument document = new FlowDocument();
+                Paragraph paragraph = new Paragraph();          //нужно для очистки комментария
+                paragraph.Inlines.Add(new Run("В парке отсутствует транспорт и заказы\nПрибыль парка = 0"));
+                document.Blocks.Add(paragraph);
+
+                OutputSTYLE.Document = document;
+            }
+            else
+            {
+                try
+                {
+                    FlowDocument document = new FlowDocument();
+                    Paragraph paragraph = new Paragraph();          //нужно для очистки комментария
+                    paragraph.Inlines.Add(new Run(ListsDB.transports[0].OurIncome()));
+                    document.Blocks.Add(paragraph);
+
+                    OutputSTYLE.Document = document;
+                }
+                catch
+                {
+                    MessageBox.Show("Some content was wrong! \nTry to update transport list");
+                }
+            }
         }
     }
 }
