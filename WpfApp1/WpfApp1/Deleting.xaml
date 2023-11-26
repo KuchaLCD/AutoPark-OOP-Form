@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Deleting" Height="269.187" Width="549.097" Icon="M&amp;A.png">
+        Title="Deleting" Height="269.187" Width="549.097" Icon="M&amp;A.png" WindowStartupLocation="CenterScreen">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FF5E00C0" Offset="0"/>
@@ -18,7 +18,7 @@
             <ColumnDefinition Width="270*"/>
         </Grid.ColumnDefinitions>
         <ListBox x:Name="ListBoxForTransp" HorizontalAlignment="Left" Height="100" Margin="134,28,0,0" VerticalAlignment="Top" Width="269" Grid.ColumnSpan="2" Background="#FFDAA2FF"/>
-        <Button x:Name="DeleteElement" Content="Удалить" HorizontalAlignment="Left" Margin="59.2,133,0,0" VerticalAlignment="Top" Width="75" Background="#FFFF4D4D" Click="DeleteElement_Click" Grid.Column="1"/>
+        <Button x:Name="DeleteElement" Content="Удалить" HorizontalAlignment="Left" Margin="59.2,133,0,0" VerticalAlignment="Top" Width="75" Background="#FFFF4D4D" Click="DeleteElement_Click" Grid.Column="1" Foreground="#FFFDFDFD"/>
         <Button x:Name="GoOut" Content="Выйти" Grid.Column="1" HorizontalAlignment="Left" Margin="170.2,186,0,0" VerticalAlignment="Top" Width="75" Background="#FF460090" Click="GoOut_Click" Foreground="White"/>
         <Button Content="Заказы" Margin="134,133,59.8,0" VerticalAlignment="Top" Background="#FF6000B6" Foreground="#FFFCFCFC" Click="Button_Click"/>
         <Button Content="Транспорт" Margin="214,133,250.2,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Foreground="#FFEBEBEB" Background="#FF6000B6" Click="Button_Click_1"/>

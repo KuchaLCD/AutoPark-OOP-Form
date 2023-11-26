@@ -36,5 +36,11 @@ namespace WpfApp1
             this.IDPos = idPos;
             this.AvatarPicture = avatarPicture;
         }
+        //public UserDB(string login, string firstName, string avatarPicture)
+        //{
+        //    this.Login = login;
+        //    this.FirstName = firstName;
+        //    this.AvatarPicture = avatarPicture;
+        //}
     }
 }

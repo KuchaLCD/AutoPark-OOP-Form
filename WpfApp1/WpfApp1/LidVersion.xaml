@@ -5,63 +5,80 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="LidVersion" Height="752.367" Width="1137.246" Icon="M&amp;A.png">
-    <Grid Margin="0,-9.6,0,1.554" HorizontalAlignment="Left" Width="1127.246" UseLayoutRounding="False">
+        Title="LidVersion" Height="752.367" Width="1334.046" Icon="M&amp;A.png">
+    <Grid Margin="0,-9.6,0,1.554" HorizontalAlignment="Left" Width="1324.046" UseLayoutRounding="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="32*"/>
             <RowDefinition Height="723*"/>
             <RowDefinition Height="30*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="31*"/>
-            <ColumnDefinition Width="268*"/>
-            <ColumnDefinition Width="924*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="66*"/>
+            <ColumnDefinition Width="191*"/>
+            <ColumnDefinition Width="69*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="LidVers" HorizontalAlignment="Left" Margin="313.8,1,0,0" VerticalAlignment="Top" Grid.Column="2" RenderTransformOrigin="1.798,0.895" Height="26" Width="48" Grid.Row="1"/>
-        <Button Content="Exit" Grid.Column="2" HorizontalAlignment="Left" Margin="714,629.4,0,0" VerticalAlignment="Top" Width="61" Click="Button_Click" Height="19" Background="#FF9EA6FF" RenderTransformOrigin="1.11,0.441" Grid.Row="1"/>
-        <TextBox x:Name="Naming" HorizontalAlignment="Left" Height="23" Margin="2.8,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" TextChanged="TextBox_TextChanged_3" Grid.Column="1" Grid.Row="1"/>
-        <Label Content="Название" HorizontalAlignment="Left" Margin="2.8,1,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1" Grid.Row="1"/>
-        <TextBox x:Name="Mass" HorizontalAlignment="Left" Height="23" Margin="3.2,90.8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged" Grid.Column="1" Grid.Row="1"/>
-        <TextBox x:Name="Width" HorizontalAlignment="Left" Height="23" Margin="3.2,144.8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged_1" Grid.Column="1" Grid.Row="1"/>
-        <Label Content="Масса" HorizontalAlignment="Left" Margin="3.2,62.8,0,0" VerticalAlignment="Top" Height="26" Width="45" Grid.Column="1" Grid.Row="1" RenderTransformOrigin="0.612,-1.309"/>
-        <Label Content="Ширина" HorizontalAlignment="Left" Margin="3.2,118.8,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1" Grid.Row="1"/>
-        <Label Content="Дата регистрации" HorizontalAlignment="Left" Margin="3.2,194.8,0,0" VerticalAlignment="Top" Height="26" Width="109" Grid.Column="1" Grid.Row="1"/>
-        <DataGrid x:Name="GridInfo" Grid.Column="2" HorizontalAlignment="Left" Height="189" Margin="114.8,32,0,0" VerticalAlignment="Top" Width="456" Grid.Row="1" SelectionChanged="GridInfo_SelectionChanged"/>
-        <DatePicker x:Name="RegDatePicker" HorizontalAlignment="Left" Margin="3.2,225.8,0,0" VerticalAlignment="Top" Width="147" Height="23" Grid.Column="1" Grid.Row="1"/>
-        <Label Content="Дата пребывания" HorizontalAlignment="Left" Margin="3.2,253.8,0,0" VerticalAlignment="Top" Height="26" Width="107" Grid.Column="1" Grid.Row="1"/>
-        <DatePicker x:Name="UpcomingDatePicker" HorizontalAlignment="Left" Margin="3.2,284.8,0,0" VerticalAlignment="Top" Width="147" Height="23" Grid.Column="1" Grid.Row="1"/>
-        <Button x:Name="LoadImage" Content="Загрузить" HorizontalAlignment="Left" Margin="3.2,335.8,0,0" VerticalAlignment="Top" Width="76" Height="34" Background="#FFA1F0FF" Click="Button_Click_2" Grid.Row="1" Grid.Column="1"/>
-        <Image x:Name="ImagePicker" Grid.Column="1" HorizontalAlignment="Left" Height="130" Margin="93.2,335.4,0,0" VerticalAlignment="Top" Width="154" Grid.Row="1"/>
-        <Button x:Name="EnterToBase" Content="Внести в базу" Grid.Column="1" HorizontalAlignment="Right" Margin="0,614.8,97,0" Width="149" Background="#FFAAD9FF" Click="Button_Click_1" RenderTransformOrigin="0.371,1.068" Grid.Row="1" Height="34" VerticalAlignment="Top"/>
-        <Button Content="Машина" Grid.Column="2" HorizontalAlignment="Left" Margin="7.8,32,0,0" VerticalAlignment="Top" Width="102" Height="33" Grid.Row="1"/>
-        <Button x:Name="Car" Content="Машина" Grid.Column="2" HorizontalAlignment="Left" Margin="7.8,32,0,0" VerticalAlignment="Top" Width="102" Height="33" Background="#FFA8FFFA" Grid.Row="1" Click="Car_Click"/>
-        <Button Content="Автобус" Grid.Column="2" HorizontalAlignment="Left" Margin="7.8,81,0,0" VerticalAlignment="Top" Width="102" Height="33" Background="#FFA8FFFA" Grid.Row="1" Click="Button_Click_7"/>
-        <Button Content="Мотоцикл" Grid.Column="2" HorizontalAlignment="Left" Margin="7.8,128,0,0" VerticalAlignment="Top" Width="102" Height="33" Background="#FFA8FFFA" Grid.Row="1" Click="Button_Click_6"/>
-        <Label Content="Комментарии" Grid.Column="1" HorizontalAlignment="Left" Margin="3.2,479.8,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.87,-0.241" Width="85" Grid.Row="1" Height="25"/>
-        <Image x:Name="ShowingImage" Grid.Column="2" Height="189" Margin="576,271.8,76.2,0" VerticalAlignment="Top" Grid.Row="1" UseLayoutRounding="True" OpacityMask="White"/>
-        <Button Content="Инф. о парке" Grid.Column="2" HorizontalAlignment="Left" Margin="575.8,31.8,0,0" VerticalAlignment="Top" Width="105" Height="30" Grid.Row="1" Click="Button_Click_3" Background="#FFF9F9B8"/>
-        <Button Content="Обновить" Grid.Column="2" HorizontalAlignment="Left" Margin="575.8,109.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="87" Background="#FF0BFF42" Height="26" Click="Button_Click_5"/>
-        <Button Content="Вывести инф." Grid.Column="2" HorizontalAlignment="Left" Margin="575.8,147.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="87" Click="Button_Click_4" Background="#FF31FFCF" Height="40"/>
-        <RichTextBox x:Name="Output" Grid.Column="2" HorizontalAlignment="Left" Height="188" Margin="114.8,271.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="456" TextChanged="Output_TextChanged">
+        <Label Content="LidVers" HorizontalAlignment="Left" Margin="311,1.4,0,0" VerticalAlignment="Top" Grid.Column="2" RenderTransformOrigin="1.798,0.895" Height="26" Width="48" Grid.Row="1"/>
+        <Button Content="Exit" Grid.Column="3" HorizontalAlignment="Left" Margin="215,629.4,0,0" VerticalAlignment="Top" Width="61" Click="Button_Click" Height="19" Background="#FF9EA6FF" RenderTransformOrigin="1.11,0.441" Grid.Row="1"/>
+        <TextBox x:Name="Naming" HorizontalAlignment="Left" Height="23" Margin="3,32.4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" TextChanged="TextBox_TextChanged_3" Grid.Column="1" Grid.Row="1"/>
+        <Label Content="Название" HorizontalAlignment="Left" Margin="3,1.4,0,0" VerticalAlignment="Top" Height="26" Width="62" Grid.Column="1" Grid.Row="1"/>
+        <TextBox x:Name="Mass" HorizontalAlignment="Left" Height="23" Margin="3,90.4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged" Grid.Column="1" Grid.Row="1"/>
+        <TextBox x:Name="Width" HorizontalAlignment="Left" Height="23" Margin="3,144.4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged_1" Grid.Column="1" Grid.Row="1"/>
+        <Label Content="Масса" HorizontalAlignment="Left" Margin="3,62.4,0,0" VerticalAlignment="Top" Height="26" Width="45" Grid.Column="1" Grid.Row="1" RenderTransformOrigin="0.612,-1.309"/>
+        <Label Content="Ширина" HorizontalAlignment="Left" Margin="3,118.4,0,0" VerticalAlignment="Top" Height="26" Width="56" Grid.Column="1" Grid.Row="1"/>
+        <Label Content="Дата регистрации" HorizontalAlignment="Left" Margin="3,194.4,0,0" VerticalAlignment="Top" Height="26" Width="109" Grid.Column="1" Grid.Row="1"/>
+        <DataGrid x:Name="GridInfo" Grid.Column="2" HorizontalAlignment="Left" Height="189" Margin="112,32.4,0,0" VerticalAlignment="Top" Width="456" Grid.Row="1" SelectionChanged="GridInfo_SelectionChanged"/>
+        <DatePicker x:Name="RegDatePicker" HorizontalAlignment="Left" Margin="3,225.4,0,0" VerticalAlignment="Top" Width="147" Height="23" Grid.Column="1" Grid.Row="1"/>
+        <Label Content="Дата пребывания" HorizontalAlignment="Left" Margin="3,253.4,0,0" VerticalAlignment="Top" Height="26" Width="107" Grid.Column="1" Grid.Row="1"/>
+        <DatePicker x:Name="UpcomingDatePicker" HorizontalAlignment="Left" Margin="3,284.4,0,0" VerticalAlignment="Top" Width="147" Height="23" Grid.Column="1" Grid.Row="1"/>
+        <Button x:Name="LoadImage" Content="Загрузить" HorizontalAlignment="Left" Margin="3,335.4,0,0" VerticalAlignment="Top" Width="76" Height="34" Background="#FFA1F0FF" Click="Button_Click_2" Grid.Row="1" Grid.Column="1"/>
+        <Image x:Name="ImagePicker" Grid.Column="1" HorizontalAlignment="Left" Height="130" Margin="93,335.4,0,0" VerticalAlignment="Top" Width="131" Grid.Row="1"/>
+        <Button x:Name="EnterToBase" Content="Внести в базу" HorizontalAlignment="Right" Margin="0,614.4,112,0" Width="149" Background="#FFAAD9FF" Click="Button_Click_1" RenderTransformOrigin="0.371,1.068" Grid.Row="1" Height="34" VerticalAlignment="Top" Grid.Column="1"/>
+        <Button Content="Машина" Grid.Column="2" HorizontalAlignment="Left" Margin="5,32.4,0,0" VerticalAlignment="Top" Width="102" Height="33" Grid.Row="1"/>
+        <Button x:Name="Car" Content="Машина" Grid.Column="2" HorizontalAlignment="Left" Margin="5,32.4,0,0" VerticalAlignment="Top" Width="102" Height="33" Background="#FFA8FFFA" Grid.Row="1" Click="Car_Click"/>
+        <Button Content="Автобус" Grid.Column="2" HorizontalAlignment="Left" Margin="5,81.4,0,0" VerticalAlignment="Top" Width="102" Height="33" Background="#FFA8FFFA" Grid.Row="1" Click="Button_Click_7"/>
+        <Button Content="Мотоцикл" Grid.Column="2" HorizontalAlignment="Left" Margin="5,128.4,0,0" VerticalAlignment="Top" Width="102" Height="33" Background="#FFA8FFFA" Grid.Row="1" Click="Button_Click_6"/>
+        <Label Content="Комментарии" Grid.Column="1" HorizontalAlignment="Left" Margin="3,479.4,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.87,-0.241" Width="85" Grid.Row="1" Height="25"/>
+        <Image x:Name="ShowingImage" Grid.Column="2" HorizontalAlignment="Right" Height="189" Margin="0,271.4,0,0" VerticalAlignment="Top" Grid.Row="1" UseLayoutRounding="True" OpacityMask="White" Width="191"/>
+        <Button Content="Инф. о парке" Grid.Column="2" HorizontalAlignment="Right" Margin="0,31.4,3,0" VerticalAlignment="Top" Width="105" Height="30" Grid.Row="1" Click="Button_Click_3" Background="#FFF9F9B8"/>
+        <Button Content="Обновить" Grid.Column="2" HorizontalAlignment="Right" Margin="0,109.4,3,0" Grid.Row="1" VerticalAlignment="Top" Width="87" Background="#FF0BFF42" Height="26" Click="Button_Click_5"/>
+        <Button Content="Вывести инф." Grid.Column="2" HorizontalAlignment="Right" Margin="0,147.4,3,0" Grid.Row="1" VerticalAlignment="Top" Width="87" Click="Button_Click_4" Background="#FF31FFCF" Height="40"/>
+        <RichTextBox x:Name="Output" Grid.Column="2" HorizontalAlignment="Left" Height="188" Margin="112,271.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="456" TextChanged="Output_TextChanged">
             <FlowDocument>
                 <Paragraph>
                     <Run Text=""/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <Button x:Name="ClearOutput" Content="Очистить вывод" Grid.Column="2" HorizontalAlignment="Left" Margin="455.8,482.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="115" RenderTransformOrigin="0.23,0.379" Background="#FFFFA2A2" Click="ClearOutput_Click"/>
-        <Button Content="Стоимость стоянки" Grid.Column="2" HorizontalAlignment="Left" Margin="114.8,481.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="114" Height="30" Background="#FF79DBFF" Click="Button_Click_11"/>
-        <Button Content="Расчитать прибыль" Grid.Column="2" HorizontalAlignment="Left" Margin="233.8,482.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="128" Height="29" Background="#FF79DBFF" Click="Button_Click_8"/>
-        <RichTextBox x:Name="CommentPicker" Grid.Column="1" HorizontalAlignment="Left" Height="100" Margin="0.2,509.8,0,0" Grid.Row="1" VerticalAlignment="Top" Width="247" TextChanged="CommentPicker_TextChanged">
+        <Button x:Name="ClearOutput" Content="Очистить вывод" Grid.Column="2" HorizontalAlignment="Left" Margin="453,482.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="115" RenderTransformOrigin="0.23,0.379" Background="#FFFFA2A2" Click="ClearOutput_Click" Height="20"/>
+        <Button Content="Стоимость стоянки" Grid.Column="2" HorizontalAlignment="Left" Margin="112,481.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="114" Height="30" Background="#FF79DBFF" Click="Button_Click_11"/>
+        <Button Content="Расчитать прибыль" Grid.Column="2" HorizontalAlignment="Left" Margin="231,482.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="128" Height="29" Background="#FF79DBFF" Click="Button_Click_8"/>
+        <RichTextBox x:Name="CommentPicker" Grid.Column="1" HorizontalAlignment="Left" Height="100" Margin="0,509.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="225" TextChanged="CommentPicker_TextChanged">
             <FlowDocument>
                 <Paragraph>
                     <Run Text=""/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <TextBox x:Name="OutLine" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="115,614.4,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="456" TextChanged="OutLine_TextChanged"/>
-        <Button Content="Test" Grid.Column="2" HorizontalAlignment="Left" Margin="314,590.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="48" Click="Button_Click_9"/>
-        <Button Content="Удалить" Grid.Column="2" HorizontalAlignment="Left" Margin="576,71.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="87" RenderTransformOrigin="0.409,-0.204" Click="Button_Click_10" Background="#FFFF4D4D" Height="26"/>
-
+        <TextBox x:Name="OutLine" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="113,614.4,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="456" TextChanged="OutLine_TextChanged"/>
+        <Button Content="Test" Grid.Column="2" HorizontalAlignment="Left" Margin="312,590.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="48" Click="Button_Click_9" Height="19"/>
+        <Button Content="Удалить" Grid.Column="2" HorizontalAlignment="Right" Margin="0,71.4,3,0" Grid.Row="1" VerticalAlignment="Top" Width="87" RenderTransformOrigin="0.409,-0.204" Click="Button_Click_10" Background="#FFFF4D4D" Height="26"/>
+        <ListView x:Name="listviewTransport" Grid.Column="3" Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Naming}" 
+                      Header="Name" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Whidth}" 
+                      Header="Width" Width="64"/>
+                    <GridViewColumn Header="Image" Width="135">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Path=Picture}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

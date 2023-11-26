@@ -69,6 +69,7 @@ namespace WpfApp1
             dataSet.Relations.Add(positionsToPersons);
             //--------------------------------------------------------------------------------
             //--------------------------------------------------------------------------------
+            
         }
 
         private void DataGridViewCust_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -115,6 +116,8 @@ namespace WpfApp1
             DataGridViewCust2.ItemsSource = null;
             // Отображаем таблицу "Persons" на форме в dataGridView
             DataGridViewCust2.ItemsSource = customer.AsDataView();
+
+            PositionLogger2.Items.Add(customer.Rows.ToString());        //need some fixes
             //--------------------------------------------------------------------------------
         }
 

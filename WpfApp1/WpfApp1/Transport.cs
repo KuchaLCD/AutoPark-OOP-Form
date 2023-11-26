@@ -9,13 +9,14 @@ namespace WpfApp1
     public class Transport : ICalc
     {
         public int RegisterNumberForPark { get; }
-        public string Naming { get; }
+        public string Naming { get; set; }
         public double Mass { get; }
-        public double Whidth { get; }
+        public double Whidth { get; set; }
         public DateTime TimeOfRegistrForPark { get; set; }
         public DateTime StayTime { get; set; }
-        public string Picture { get; }
+        public string Picture { get; set; }
         public string Notes { get; }
+        
         public virtual string InfoString()
         {
             string inf = $"\n::::::::::::::::::::::::::::::::::::::::::::::::::::::\n---Транспорт---\nНаименование: {Naming}" +
@@ -99,6 +100,12 @@ namespace WpfApp1
             StayTime = stayTime;
             this.Picture = picture;
             this.Notes = notes;
+        }
+        public Transport(string naming, double whidth, string picture)
+        {
+            this.Naming = naming;
+            this.Whidth = whidth;
+            this.Picture = picture;
         }
     }
 }

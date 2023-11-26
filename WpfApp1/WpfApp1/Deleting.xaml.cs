@@ -31,73 +31,91 @@ namespace WpfApp1
         private void DeleteElement_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult Result = MessageBox.Show("Удалить выделенный элемент?", "Message", MessageBoxButton.YesNo);
-            if (Result == MessageBoxResult.Yes && StyleUI.deleteCount == 0)
+            try
             {
-                Transport boofer = (Transport)ListBoxForTransp.SelectedItem;
-                int selectedID = boofer.RegisterNumberForPark;
-                if (boofer == null)
+                if (Result == MessageBoxResult.Yes && StyleUI.deleteCount == 0)
                 {
-                    MessageBox.Show("В селективном списке отсутсвуют объекты для удаления, либо не выбран нужный элемент", "Сообщение");
+                    Transport boofer = (Transport)ListBoxForTransp.SelectedItem;
+                    int selectedID = 0;
+                    try
+                    {
+                        selectedID = boofer.RegisterNumberForPark;
+                    }
+                    catch { MessageBox.Show("Не были загружены элементы для удаления!", "Сообщение"); }
+
+                    if (boofer == null)
+                    {
+                        MessageBox.Show("В селективном списке отсутсвуют объекты для удаления, либо не выбран нужный элемент", "Сообщение");
+                    }
+                    else
+                    {
+                        ListBoxForTransp.Items.Remove(boofer);
+                        ListsDB.transports.Remove(boofer);
+                    }
+                    //Удаление из БД
+                    SqlConnection cn = new SqlConnection();     // Объект-соединение
+
+                    cn.ConnectionString = DataBase.connectionString;
+                    // Открытие подключения
+                    cn.Open();
+                    string strDeleteTransport = string.Format($"DELETE FROM Transport WHERE (RegisterNumberForPark = '{selectedID}')");
+
+                    SqlCommand cmdDeleteTransport = new SqlCommand(strDeleteTransport, cn);
+
+                    // Исполнение команды 
+                    try
+                    {
+                        cmdDeleteTransport.ExecuteNonQuery();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Что-то пошло не так");
+                    }
+                    cn.Close();
                 }
                 else
                 {
-                    ListBoxForTransp.Items.Remove(boofer);
-                    ListsDB.transports.Remove(boofer);
-                }
-                //Удаление из БД
-                SqlConnection cn = new SqlConnection();     // Объект-соединение
+                    Order boofer = (Order)ListBoxForTransp.SelectedItem;
+                    int selectedID = 0;
+                    try {
+                        selectedID = boofer.IDOrd;
+                    }
+                    catch { MessageBox.Show("е были загружены элементы для удаления!", "Сообщение"); }
+                    
+                    if (boofer == null)
+                    {
+                        MessageBox.Show("В селективном списке отсутсвуют объекты для удаления, либо не выбран нужный элемент", "Сообщение");
+                    }
+                    else
+                    {
+                        ListBoxForTransp.Items.Remove(boofer);
+                        ListsDB.orders.Remove(boofer);
+                    }
+                    //Удаление из БД
+                    SqlConnection cn = new SqlConnection();     // Объект-соединение
 
-                cn.ConnectionString = DataBase.connectionString;
-                // Открытие подключения
-                cn.Open();
-                string strDeleteTransport = string.Format($"DELETE FROM Transport WHERE (RegisterNumberForPark = '{selectedID}')");
+                    cn.ConnectionString = DataBase.connectionString;
+                    // Открытие подключения
+                    cn.Open();
+                    string strDeleteTransport = string.Format($"DELETE FROM Order WHERE (IDOrder = '{selectedID}')");
 
-                SqlCommand cmdDeleteTransport = new SqlCommand(strDeleteTransport, cn);
+                    SqlCommand cmdDeleteTransport = new SqlCommand(strDeleteTransport, cn);
 
-                // Исполнение команды 
-                try
-                {
-                    cmdDeleteTransport.ExecuteNonQuery();
+                    // Исполнение команды 
+                    try
+                    {
+                        cmdDeleteTransport.ExecuteNonQuery();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Что-то пошло не так");
+                    }
+                    cn.Close();
                 }
-                catch
-                {
-                    MessageBox.Show("Что-то пошло не так");
-                }
-                cn.Close();
             }
-            else
+            catch
             {
-                Order boofer = (Order)ListBoxForTransp.SelectedItem;
-                int selectedID = boofer.IDOrd;
-                if (boofer == null)
-                {
-                    MessageBox.Show("В селективном списке отсутсвуют объекты для удаления, либо не выбран нужный элемент", "Сообщение");
-                }
-                else
-                {
-                    ListBoxForTransp.Items.Remove(boofer);
-                    ListsDB.orders.Remove(boofer);
-                }
-                //Удаление из БД
-                SqlConnection cn = new SqlConnection();     // Объект-соединение
-
-                cn.ConnectionString = DataBase.connectionString;
-                // Открытие подключения
-                cn.Open();
-                string strDeleteTransport = string.Format($"DELETE FROM Order WHERE (IDOrder = '{selectedID}')");
-
-                SqlCommand cmdDeleteTransport = new SqlCommand(strDeleteTransport, cn);
-
-                // Исполнение команды 
-                try
-                {
-                    cmdDeleteTransport.ExecuteNonQuery();
-                }
-                catch
-                {
-                    MessageBox.Show("Что-то пошло не так");
-                }
-                cn.Close();
+                MessageBox.Show("Удаление прекращено!");
             }
         }
 

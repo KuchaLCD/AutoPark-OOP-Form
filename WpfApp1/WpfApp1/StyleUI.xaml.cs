@@ -245,6 +245,7 @@ namespace WpfApp1
             ListsDB.transports.Clear();        //данная опреация необходима на случай пустой таблицы в бд, т.к. если внести элемент без добавления его в бд, то некоторые данные могут быть случайно продублированы(речь идёт об одних и тех же элементах)
 
             GridSTYLE.ItemsSource = null;
+            listviewTransport.ItemsSource = null;
             SqlConnection cn = new SqlConnection();
             cn.ConnectionString = DataBase.connectionString;
             cn.Open();
@@ -293,6 +294,7 @@ namespace WpfApp1
             // Закрытие соединения
             cn.Close();
             GridSTYLE.ItemsSource = ListsDB.transports;
+            listviewTransport.ItemsSource = ListsDB.transports;
         }
 
         private void Button_Click_12(object sender, RoutedEventArgs e)
@@ -301,7 +303,7 @@ namespace WpfApp1
             {
                 FlowDocument document = new FlowDocument();
                 Paragraph paragraph = new Paragraph();
-                paragraph.Inlines.Add(new Run(ListsDB.transports[GridSTYLE.SelectedIndex].InfoString()));
+                paragraph.Inlines.Add(new Run(ListsDB.transports[listviewTransport.SelectedIndex].InfoString()));
                 document.Blocks.Add(paragraph);
                 OutputSTYLE.Document = document;
                 try
@@ -310,7 +312,7 @@ namespace WpfApp1
                     {
                         BitmapImage jpg = new BitmapImage();
                         jpg.BeginInit();
-                        jpg.UriSource = new Uri(ListsDB.transports[GridSTYLE.SelectedIndex].Picture);
+                        jpg.UriSource = new Uri(ListsDB.transports[listviewTransport.SelectedIndex].Picture);
                         jpg.EndInit();
                         ImageSTYLE.Source = jpg;   //функция - показать изображение
                     }
@@ -339,32 +341,8 @@ namespace WpfApp1
 
         private void Button_Click_14(object sender, RoutedEventArgs e)
         {
-            FlowDocument document = new FlowDocument();
-            Paragraph paragraph = new Paragraph();
-            paragraph.Inlines.Add(new Run(Park.park.About()));
-            document.Blocks.Add(paragraph);
-            OutputSTYLE.Document = document;
-            //ShowingImage.Source = (ImageSource)FileName;      //not work
-            try
-            {
-                for (int i = 0; i < ListsDB.transports.Count; i++)
-                {
-                    BitmapImage jpg = new BitmapImage();
-                    jpg.BeginInit();
-                    jpg.UriSource = new Uri(ListsDB.transports[i].Picture);
-                    jpg.EndInit();
-                    ImageSTYLE.Source = jpg;   //функция - показать изображение
-                }
-            }
-            catch
-            {
-                string defaultImage = @"C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\BLANK.jpg";
-                BitmapImage jpg = new BitmapImage();
-                jpg.BeginInit();
-                jpg.UriSource = new Uri(defaultImage);
-                jpg.EndInit();
-                ImageSTYLE.Source = jpg;   //функция - показать изображение
-            }
+            Chat chat = new Chat();
+            chat.Show();
         }
 
         private void Button_Click_17(object sender, RoutedEventArgs e)
@@ -394,7 +372,7 @@ namespace WpfApp1
 
             SqlDataReader orderDataReader = cmdSelectOrder.ExecuteReader();
 
-            ListsDB.transports.Clear();    // очистка списка persons
+            ListsDB.orders.Clear();    // очистка списка 
             while (orderDataReader.Read())
             {
                 int id = orderDataReader.GetInt32(0);

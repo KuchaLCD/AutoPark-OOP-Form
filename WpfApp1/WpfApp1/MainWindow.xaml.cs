@@ -101,7 +101,7 @@ namespace WpfApp1
                 reader.Close();
                 if (controlSum < 1 || PassBox.Password == null || Login.Text == string.Empty)
                 {
-                    MessageBox.Show("Some content was wrong or input data is nondetected! \nPlease check for right input data or fill the fields for login/password.");
+                    MessageBox.Show("Some content was wrong or input data is nondetected! \nPlease check out for right input data or fill the fields for login/password.");
                     PassBox.Password = null;
                     Login.Text = string.Empty;
                 }
@@ -110,7 +110,7 @@ namespace WpfApp1
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            // TextBox_TextChanged.PasswordChar = '*';
+
         }
 
         private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
@@ -134,6 +134,7 @@ namespace WpfApp1
             else if (ShowingPass.Text != null)
             {
                 ShowingPass.Visibility = Visibility.Hidden;
+                PassBox.Password = ShowingPass.Text;
             }
             
         }

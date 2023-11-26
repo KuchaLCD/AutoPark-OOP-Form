@@ -5,18 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="StyleUI" Height="450" Width="829.6" Icon="M&amp;A.png" FontFamily="Dubai">
+        Title="StyleUI" Height="464.4" Width="829.6" Icon="M&amp;A.png" FontFamily="Dubai" WindowStartupLocation="CenterScreen">
     <Grid RenderTransformOrigin="0.502,0.553">
         <Grid.Background>
             <ImageBrush ImageSource="milad-fakurian-nY14Fs8pxT8-unsplash.jpg"/>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="157*"></RowDefinition>
-            <RowDefinition Height="263*"></RowDefinition>
+            <RowDefinition Height="140*"></RowDefinition>
+            <RowDefinition Height="123*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="236*"/>
-            <ColumnDefinition Width="587*"></ColumnDefinition>
+            <ColumnDefinition Width="587*">
+            </ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Canvas x:Name="MenuSTYLE" Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF440082" Height="157" Width="236" Grid.RowSpan="2" Visibility="Hidden">
             <StackPanel Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" MaxWidth="240" MaxHeight="40" Height="40" Width="236" Background="#FF6000B6">
@@ -65,7 +67,7 @@
             <Button Grid.Column="0" MinWidth="30" HorizontalAlignment="Left" VerticalAlignment="Top" MaxWidth="300" Background="#FF000086" Content="Customer" Width="236" Height="50" Grid.Row="0" BorderBrush="#FF3900A3" Foreground="White" Click="Button_Click_18" Canvas.Top="107" RenderTransformOrigin="0.496,0.448" />
             <Button Grid.Column="0" MinWidth="30" HorizontalAlignment="Left" VerticalAlignment="Top" MaxWidth="300" Background="#FF000086" Content="Order" Width="236" Height="57" Grid.Row="0" BorderBrush="#FF3900A3" Foreground="White" Click="Button_Click_17" Canvas.Top="45" />
         </Canvas>
-        <Canvas x:Name="MenuBarSTYLE" Grid.Column="0" Grid.Row="0" Background="#FF180063" MaxWidth="300" HorizontalAlignment="Left" Margin="0,0,0,263" Width="236" Grid.RowSpan="2">
+        <Canvas x:Name="MenuBarSTYLE" Grid.Column="0" Grid.Row="0" Background="#FF180063" MaxWidth="300" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0.8" Width="236">
             <StackPanel Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" MaxWidth="240" MaxHeight="40" Background="#FF4E0D91" Height="38" Width="236">
                 <StackPanel.Resources>
                     <Style TargetType="{x:Type Button}">
@@ -84,7 +86,7 @@
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button Height="27" Canvas.Left="83" Width="40" Canvas.Top="4" Foreground="White" Content="Info" Background="#FF410068" Margin="5,6,0,5.4" Click="Button_Click_14">
+                <Button Height="27" Canvas.Left="83" Width="40" Canvas.Top="4" Foreground="White" Content="Chat" Background="#FF410068" Margin="5,6,0,5.4" Click="Button_Click_14">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="5"/>
@@ -112,7 +114,7 @@
             <Button x:Name="ChangeAvatarSTYLE" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" MinWidth="30" MaxWidth="300" Background="#FF000086" Content="Change" Margin="1,120,0,0" Width="72" Height="29" BorderBrush="#FF3900A3" Foreground="White" Click="Button_Click_1"/>
         </Canvas>
 
-        <Canvas Grid.Column="0" Grid.Row="1" MaxWidth="300" HorizontalAlignment="Left" Margin="0,0.2,0,0" Width="236">
+        <Canvas Grid.Column="0" Grid.Row="1" MaxWidth="300" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0.2,0,0" Width="236" Grid.RowSpan="2">
             <Canvas.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF180063"/>
@@ -122,6 +124,7 @@
             <Button Grid.Column="0" MinWidth="30" HorizontalAlignment="Left" VerticalAlignment="Top" MaxWidth="300" Background="#FF000086" Content="Car" Width="236" Height="64" Grid.Row="1" BorderBrush="#FF3900A3" Foreground="White" Click="Button_Click_2" Canvas.Top="43" />
             <Button Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" MinWidth="30" MaxWidth="300" Background="#FF000086" Content="Bus" Width="236" Height="56" BorderBrush="#FF3900A3" Foreground="White" Click="Button_Click_3" Canvas.Top="112" />
             <Button Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" MinWidth="30" MaxWidth="300" Background="#FF000086" Content="Motocicle" Width="236" Height="56" BorderBrush="#FF3900A3" Foreground="White" Click="Button_Click_4" Canvas.Top="173" />
+            <Button Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" MinWidth="30" MaxWidth="300" Background="#FF000086" Content="Exit" Width="236" Height="24" BorderBrush="#FF3900A3" Foreground="White" Click="Button_Click" Canvas.Top="239" />
             <StackPanel Name="AdditTool" Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" MaxWidth="240" MaxHeight="40" Height="38" Width="236">
                 <StackPanel.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -238,11 +241,27 @@
             </StackPanel>
         </Canvas>
 
-        <Button Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" MinWidth="30" MaxWidth="186" Background="#FF000086" Content="Exit" Margin="0,0,0.2,0" Width="186" Height="40" BorderBrush="#FF3900A3" Foreground="White" Click="Button_Click" />
-
-        <DataGrid x:Name="GridSTYLE" Grid.Column="1" Margin="5,0,4.2,9.8" Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#FF7A00D9"/>
-        <Image x:Name="ImageSTYLE" Grid.Column="1" HorizontalAlignment="Right" Height="175" Margin="0,10.2,4.2,0" Grid.Row="1" VerticalAlignment="Top" Width="186" OpacityMask="White"/>
-        <RichTextBox x:Name="OutputSTYLE" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5,0.2,195.2,0" Grid.Row="1" VerticalAlignment="Stretch" BorderBrush="{x:Null}" Background="#CC1E0873" SelectionBrush="White" Foreground="White">
+        <DataGrid x:Name="GridSTYLE" Grid.Column="1" Margin="5,0,4.2,9.8" Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#FF7A00D9" ScrollViewer.CanContentScroll="False"/>
+        <ListView x:Name="listviewTransport" Grid.Column="1" Grid.Row="1" Margin="5,0.2,4.2,3.8" Background="White" BorderBrush="#FF25114A" Foreground="Black" ScrollViewer.CanContentScroll="False">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Naming}" Header="Наименование" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Mass}" Header="Масса(кг)" Width="64"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Whidth}" Header="Ширина(м)" Width="74"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=MaxSpeed}" Header="Скорость(км/ч)" Width="94"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=VolumeOfEngine}" Header="Объём двигателя(л)" Width="120"/>
+                    <GridViewColumn Header="Изображение" Width="135">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Path=Picture}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Image x:Name="ImageSTYLE" Grid.Column="1" HorizontalAlignment="Right" Height="118" Margin="0,5.2,10.2,0" Grid.Row="2" VerticalAlignment="Top" Width="276" OpacityMask="White"/>
+        <RichTextBox x:Name="OutputSTYLE" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5,5.2,291.2,0" Grid.Row="2" VerticalAlignment="Stretch" BorderBrush="{x:Null}" Background="#CC1E0873" SelectionBrush="White" Foreground="White" VerticalScrollBarVisibility="Visible" IsReadOnly="True">
             <FlowDocument>
                 <Paragraph>
                     <Run Text=""/>

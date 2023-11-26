@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="CarRegister" Height="541.077" Width="572.83" Icon="M&amp;A.png">
+        Title="CarRegister" Height="541.077" Width="572.83" Icon="M&amp;A.png" WindowStartupLocation="CenterScreen">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FF7B52FF" Offset="0"/>
@@ -14,16 +14,16 @@
     </Window.Background>
     <Grid>
         <TextBox x:Name="CarNaming" HorizontalAlignment="Left" Height="23" Margin="29,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" TextChanged="TextBox_TextChanged_3"/>
-        <Label Content="Название" HorizontalAlignment="Left" Margin="29,86,0,0" VerticalAlignment="Top" Height="26" Width="62"/>
+        <Label Content="Название" HorizontalAlignment="Left" Margin="29,86,0,0" VerticalAlignment="Top" Height="26" Width="62" Foreground="#FFFDFDFD"/>
         <TextBox x:Name="CarMass" HorizontalAlignment="Left" Height="23" Margin="29,296,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
         <TextBox x:Name="CarWidth" HorizontalAlignment="Left" Height="23" Margin="29,352,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged_1"/>
         <Label Content="Масса" HorizontalAlignment="Left" Margin="29,269,0,0" VerticalAlignment="Top" Height="26" Width="45" RenderTransformOrigin="0.612,-1.309" Foreground="White"/>
         <Label Content="Ширина" HorizontalAlignment="Left" Margin="29,325,0,0" VerticalAlignment="Top" Height="26" Width="56" Foreground="White"/>
-        <Label Content="Дата регистрации" HorizontalAlignment="Left" Margin="285,26,0,0" VerticalAlignment="Top" Height="26" Width="109"/>
+        <Label Content="Дата регистрации" HorizontalAlignment="Left" Margin="285,26,0,0" VerticalAlignment="Top" Height="26" Width="109" Foreground="#FFFDFDFD"/>
         <DatePicker x:Name="CarRegDatePicker" HorizontalAlignment="Left" Margin="285,57,0,0" VerticalAlignment="Top" Width="147" Height="23"/>
-        <Label Content="Дата пребывания" HorizontalAlignment="Left" Margin="285,85,0,0" VerticalAlignment="Top" Height="26" Width="107"/>
+        <Label Content="Дата пребывания" HorizontalAlignment="Left" Margin="285,85,0,0" VerticalAlignment="Top" Height="26" Width="107" Foreground="#FFFDFDFD"/>
         <DatePicker x:Name="CarUpcomingDatePicker" HorizontalAlignment="Left" Margin="285,116,0,0" VerticalAlignment="Top" Width="147" Height="23"/>
-        <Button x:Name="LoadImage" Content="Загрузить" HorizontalAlignment="Left" Margin="285,189,0,0" VerticalAlignment="Top" Width="76" Height="34" Background="#FF8094FF" Click="Button_Click_2" RenderTransformOrigin="0.432,1.247"/>
+        <Button x:Name="LoadImage" Content="Загрузить" HorizontalAlignment="Left" Margin="285,189,0,0" VerticalAlignment="Top" Width="76" Height="34" Background="#FF8094FF" Click="Button_Click_2" RenderTransformOrigin="0.432,1.247" Foreground="#FFFDFDFD"/>
         <Image x:Name="CarImagePicker" HorizontalAlignment="Left" Height="130" Margin="375,189,0,0" VerticalAlignment="Top" Width="154"/>
         <Button x:Name="EnterToBase" Content="Внести в базу" HorizontalAlignment="Left" Margin="281,451,0,0" Width="149" Background="#FF3E4EFF" Click="Button_Click_1" RenderTransformOrigin="0.371,1.068" Height="34" VerticalAlignment="Top" Foreground="White"/>
         <Label Content="Комментарии" HorizontalAlignment="Left" Margin="285,311,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.87,-0.241" Width="85" Height="25" Foreground="White"/>
@@ -35,7 +35,7 @@
             </FlowDocument>
         </RichTextBox>
         <ComboBox x:Name="CarModelRow" HorizontalAlignment="Left" Margin="29,59,0,0" VerticalAlignment="Top" Width="224" SelectionChanged="BusModelRow_SelectionChanged"/>
-        <Label Content="Модельный ряд" HorizontalAlignment="Left" Margin="29,28,0,0" VerticalAlignment="Top" Height="26" Width="110"/>
+        <Label Content="Модельный ряд" HorizontalAlignment="Left" Margin="29,28,0,0" VerticalAlignment="Top" Height="26" Width="110" Foreground="#FFFDFDFD"/>
         <TextBox x:Name="CarRoadNumber" HorizontalAlignment="Left" Height="23" Margin="29,411,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged_1"/>
         <Label Content="Дорожные номера" HorizontalAlignment="Left" Margin="29,380,0,0" VerticalAlignment="Top" Height="26" Width="120" Foreground="White"/>
         <TextBox x:Name="CarVolumeOfEngine" HorizontalAlignment="Left" Height="23" Margin="29,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged_1"/>

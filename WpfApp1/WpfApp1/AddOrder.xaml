@@ -17,12 +17,12 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Button Content="Зарегистрировать" HorizontalAlignment="Left" Margin="26,167,0,0" VerticalAlignment="Top" Width="131" Click="Button_Click" Background="#FF230065" Foreground="White" Height="23"/>
-        <Label Content="Начало аренды" HorizontalAlignment="Left" Margin="26,59,0,0" VerticalAlignment="Top" Height="26" Width="109"/>
+        <Label Content="Начало аренды" HorizontalAlignment="Left" Margin="26,59,0,0" VerticalAlignment="Top" Height="26" Width="109" Foreground="#FFFDFDFD"/>
         <DatePicker x:Name="startRentPicker" HorizontalAlignment="Left" Margin="154,62,0,0" VerticalAlignment="Top" Width="147" Height="23"/>
-        <Label Content="Конец аренды" HorizontalAlignment="Left" Margin="26,90,0,0" VerticalAlignment="Top" Height="26" Width="107"/>
+        <Label Content="Конец аренды" HorizontalAlignment="Left" Margin="26,90,0,0" VerticalAlignment="Top" Height="26" Width="107" Foreground="#FFFDFDFD"/>
         <DatePicker x:Name="endRentPicker" HorizontalAlignment="Left" Margin="154,93,0,0" VerticalAlignment="Top" Width="147" Height="23"/>
-        <Label Content="ИН Заказчика" HorizontalAlignment="Left" Margin="26,28,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.073,0.203"/>
-        <Label Content="Транспорт" HorizontalAlignment="Left" Margin="26,121,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.073,0.203"/>
+        <Label Content="ИН Заказчика" HorizontalAlignment="Left" Margin="26,28,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.073,0.203" Foreground="#FFFDFDFD"/>
+        <Label Content="Транспорт" HorizontalAlignment="Left" Margin="26,121,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.073,0.203" Foreground="#FFFDFDFD"/>
         <ComboBox x:Name="IDCustPicker" HorizontalAlignment="Left" Margin="154,31,0,0" VerticalAlignment="Top" Width="147" SelectionChanged="IDCustPicker_SelectionChanged"/>
         <ComboBox x:Name="TransportPicker" Margin="154,121,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="147" SelectionChanged="TransportPicker_SelectionChanged"/>
 

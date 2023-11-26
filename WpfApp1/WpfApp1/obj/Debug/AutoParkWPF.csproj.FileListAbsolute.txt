@@ -56,3 +56,5 @@ C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\AddCustomer.g.cs
 C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\AddOrder.g.cs
 C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\AddCustomer.baml
 C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\AddOrder.baml
+C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\Chat.g.cs
+C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\obj\Debug\Chat.baml

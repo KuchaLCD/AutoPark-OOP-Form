@@ -314,10 +314,32 @@ namespace WpfApp1
         {
 
         }
+
         private void Button_Click_9(object sender, RoutedEventArgs e)
         {
-            //Test button. Can be used for searching some bugs or showing some data context
-            OutLine.Text = Convert.ToString(FileName);
+            //Test button. Can be used for searching some bugs or showing some data context || Naming, Whidth, Picture
+            ListsDB.transports.Clear();        //данная опреация необходима на случай пустой таблицы в бд, т.к. если внести элемент без добавления его в бд, то некоторые данные могут быть случайно продублированы(речь идёт об одних и тех же элементах)
+
+            GridInfo.ItemsSource = null;
+            SqlConnection cn = new SqlConnection();
+            cn.ConnectionString = DataBase.connectionString;
+            cn.Open();
+            string strSelectTransport = "Select Naming, Whidth, Picture From Transport";
+            SqlCommand cmdSelectTransport = new SqlCommand(strSelectTransport, cn);
+
+            SqlDataReader transportsDataReader = cmdSelectTransport.ExecuteReader();
+            while (transportsDataReader.Read())
+            {
+                string naming = transportsDataReader.GetString(0);
+                double wight = transportsDataReader.GetDouble(1);
+                string picture = transportsDataReader.GetString(2);
+                // Формирование очередного объекта и помещение его в коллекцию
+                Transport tr = new Transport(naming, wight, picture);
+                ListsDB.transports.Add(tr);
+            }
+            // Закрытие соединения
+            cn.Close();
+            listviewTransport.ItemsSource = ListsDB.transports;
         }
 
         public void GridInfo_SelectionChanged(object sender, SelectionChangedEventArgs e)

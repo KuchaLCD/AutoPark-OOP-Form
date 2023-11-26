@@ -35,38 +35,27 @@ namespace WpfApp1
 
         private void Button_Click(object sender, RoutedEventArgs e)     //need some fixes
         {
-            //try
-            //{
-            //    Random randomizer = new Random();
-            //    double randomNumber = randomizer.Next(10000, 99999);
+            try
+            {
+                Random randomizer = new Random();
+                double randomNumber = randomizer.Next(10000, 99999);
 
-            //    int idOrd = Convert.ToInt32(randomNumber);
-            //    string idCust = Convert.ToString(IDCustPicker.SelectedItem);
-            //    DateTime startRent = (DateTime)startRentPicker.SelectedDate;
-            //    DateTime endRent = (DateTime)endRentPicker.SelectedDate;
-            //    int idTransp = Convert.ToInt32(ListsDB.transports[Convert.ToInt32(TransportPicker.SelectedItem)].RegisterNumberForPark);
-            //    double bill = ListsDB.orders[0].CalculateBill();
+                int idOrd = Convert.ToInt32(randomNumber);
+                string idCust = Convert.ToString(IDCustPicker.SelectedItem);
+                DateTime startRent = (DateTime)startRentPicker.SelectedDate;
+                DateTime endRent = (DateTime)endRentPicker.SelectedDate;
+                int idTransp = Convert.ToInt32(ListsDB.transports[TransportPicker.SelectedIndex].RegisterNumberForPark);
+                double bill = ListsDB.orders[0].CalculateBill(startRent, endRent);
 
-            //    Order ord = new Order(idOrd, idCust, startRent, endRent, idTransp, bill);
-            //    ListsDB.orders.Add(ord);
+                Order ord = new Order(idOrd, idCust, startRent, endRent, idTransp, bill);
+                ListsDB.orders.Add(ord);
 
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("Некоторые поля были не заполнены при внесении в базу!", "Сообщение");
-            //}
-            Random randomizer = new Random();
-            double randomNumber = randomizer.Next(10000, 99999);
+            }
+            catch
+            {
+                MessageBox.Show("Некоторые поля были не заполнены при внесении в базу!", "Сообщение");
+            }
 
-            int idOrd = Convert.ToInt32(randomNumber);
-            string idCust = Convert.ToString(IDCustPicker.SelectedItem);
-            DateTime startRent = (DateTime)startRentPicker.SelectedDate;
-            DateTime endRent = (DateTime)endRentPicker.SelectedDate;
-            int idTransp = Convert.ToInt32(ListsDB.transports[TransportPicker.SelectedIndex].RegisterNumberForPark);
-            double bill = ListsDB.orders[0].CalculateBill(startRent, endRent);
-
-            Order ord = new Order(idOrd, idCust, startRent, endRent, idTransp, bill);
-            ListsDB.orders.Add(ord);
 
             //Теперь начинаем внесение в базу данных
 
@@ -78,9 +67,9 @@ namespace WpfApp1
             try
             {
                 Random qrandomizer = new Random();
-                double qrandomNumber = randomizer.Next(10000, 99999);
+                double qrandomNumber = qrandomizer.Next(10000, 99999);
 
-                int qidOrd = Convert.ToInt32(randomNumber);
+                int qidOrd = Convert.ToInt32(qrandomNumber);
                 string qidCust = Convert.ToString(IDCustPicker.SelectedItem);
                 DateTime qstartRent = (DateTime)startRentPicker.SelectedDate;
                 DateTime qendRent = (DateTime)endRentPicker.SelectedDate;
