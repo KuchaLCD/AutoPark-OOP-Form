@@ -14,6 +14,7 @@ namespace WpfApp1
         public string SureName { get; }
         public string IDPos { get; }
         public string AvatarPicture { get; }
+        public int LocalPort { get; }
         public override string ToString()
         {
             string st = string.Format("{0} {1}", FirstName, SureName);
@@ -36,11 +37,15 @@ namespace WpfApp1
             this.IDPos = idPos;
             this.AvatarPicture = avatarPicture;
         }
-        //public UserDB(string login, string firstName, string avatarPicture)
-        //{
-        //    this.Login = login;
-        //    this.FirstName = firstName;
-        //    this.AvatarPicture = avatarPicture;
-        //}
+        public UserDB(string login, string password, string firstName, string sureName, string idPos, string avatarPicture, int localPort)
+        {
+            this.Login = login;
+            this.Password = password;
+            this.FirstName = firstName;
+            this.SureName = sureName;
+            this.IDPos = idPos;
+            this.AvatarPicture = avatarPicture;
+            this.LocalPort = localPort;
+        }
     }
 }

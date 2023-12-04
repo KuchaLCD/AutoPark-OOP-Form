@@ -47,7 +47,14 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn TextOptions.TextFormattingMode="Ideal" DisplayMemberBinding="{Binding Path=message}" Header="" Width="850"/>
+                    <GridViewColumn Header="" Width="800">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=message}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="" Width="0"/>
                 </GridView>
             </ListView.View>
         </ListView>

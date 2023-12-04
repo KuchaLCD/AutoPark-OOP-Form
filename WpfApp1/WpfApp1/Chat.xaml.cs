@@ -21,6 +21,7 @@ using System.Windows.Navigation;
 
 namespace WpfApp1
 {
+    //MAIN VERSION
     /// <summary>
     /// Логика взаимодействия для Chat.xaml
     /// </summary>
@@ -48,8 +49,7 @@ namespace WpfApp1
                 //Считываем конфигурационный файл приложения
                 //NameValueCollection configuration = ConfigurationSettings.AppSettings;
                 groupAddress = IPAddress.Parse("235.5.5.11");
-                localPort = int.Parse("8002");
-                remotePort = int.Parse("8002");
+                localPort = ListsDB.users[0].LocalPort;
                 ttl = int.Parse("32");
             }
             catch
@@ -58,55 +58,49 @@ namespace WpfApp1
                 StartChatButton.IsEnabled = false;
             }
 
+            //Getting members of chat
+            ListsDB.members.Clear();      //предварительное очищение списка пользователелей
+            string sqlExpression = "SELECT * FROM Users";
+
+            using (SqlConnection connection = new SqlConnection(DataBase.connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string login = reader.GetString(0);
+                    string password = reader.GetString(1);
+                    string firstName = reader.GetString(2);
+                    string sureName = reader.GetString(3);
+                    string idPos = reader.GetString(4);
+                    string avatar = reader.GetString(5);
+                    int port = reader.GetInt32(8);
+
+                    UserDB newUser = new UserDB(login, password, firstName, sureName, idPos, avatar, port);
+                    ListsDB.members.Add(newUser);
+                }
+
+                reader.Close();
+            }
+            //All is done. Page starting properties now
+            FullNameUserSTYLE.Content = ListsDB.users[0].ToString();
+
+            listviewMembers.ItemsSource = ListsDB.members;
+            string avt = ListsDB.users[0].AvatarPicture;
+            string defaultImage = @"C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\BLANK.jpg";
+            //Выгрузка изображения и ИН пользователя
             try
             {
-                //Getting members of chat
-                ListsDB.members.Clear();      //предварительное очищение списка пользователелей
-                string sqlExpression = "SELECT * FROM Users";
-
-                using (SqlConnection connection = new SqlConnection(DataBase.connectionString))
-                {
-                    connection.Open();
-
-                    SqlCommand command = new SqlCommand(sqlExpression, connection);
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        string login = reader.GetString(0);
-                        string password = reader.GetString(1);
-                        string firstName = reader.GetString(2);
-                        string sureName = reader.GetString(3);
-                        string idPos = reader.GetString(4);
-                        string avatar = reader.GetString(5);
-
-                        UserDB newUser = new UserDB(login, password, firstName, sureName, idPos, avatar);
-                        ListsDB.members.Add(newUser);
-                    }
-
-                    reader.Close();
-                }
-                //All is done. Page starting properties now
-                FullNameUserSTYLE.Content = ListsDB.users[0].ToString();
-
-                listviewMembers.ItemsSource = ListsDB.members;
-                string avt = ListsDB.users[0].AvatarPicture;
-                string defaultImage = @"C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\BLANK.jpg";
-                //Выгрузка изображения и ИН пользователя
-                try
-                {
-                    ImageSource image = new BitmapImage(new Uri(avt, UriKind.Absolute));
-                    StyleAvatar.Source = image;
-                }
-                catch
-                {
-                    ImageSource image = new BitmapImage(new Uri(defaultImage, UriKind.Absolute));
-                    StyleAvatar.Source = image;
-                }
+                ImageSource image = new BitmapImage(new Uri(avt, UriKind.Absolute));
+                StyleAvatar.Source = image;
             }
             catch
             {
-                InitializeComponent();
+                ImageSource image = new BitmapImage(new Uri(defaultImage, UriKind.Absolute));
+                StyleAvatar.Source = image;
             }
         }
 
@@ -148,8 +142,46 @@ namespace WpfApp1
                 {
                     byte[] data = encoding.GetBytes(name + ": " + answer);
                     client.Send(data, data.Length, remoteEP);
+                    ChatView.ItemsSource = null;
                     MessageField.Clear();
                     MessageField.Focus();
+
+                    //теперь это сообщение нужно добавить в БД
+                    SqlConnection cn = new SqlConnection();     // Объект-соединение
+                    cn.ConnectionString = DataBase.connectionString;
+                    // Открытие подключения
+                    cn.Open();
+
+                    try
+                    {
+                        Random qrandomizer = new Random();
+                        double qrandomNumber = qrandomizer.Next(8000, 8999);
+
+                        int qidMes = Convert.ToInt32(qrandomNumber);
+                        string avatarPicture = Convert.ToString(ListsDB.users[0].AvatarPicture);
+                        string message = Convert.ToString(answer);
+
+                        string timeChart = DateTime.Now.ToString("T");
+                        string time = timeChart;
+
+                        // Создание SQL команды ввода
+                        string strInsertChat = string.Format("INSERT INTO Chart VALUES ('{0}','{1}','{2}','{3}')", qidMes, avatarPicture, message, time);
+
+                        // Создание объекта-команды
+                        SqlCommand cmdInsertChat = new SqlCommand(strInsertChat, cn);
+
+                        // Исполнение команды ввода
+                        cmdInsertChat.ExecuteNonQuery();
+
+                        string userMessage = ListsDB.users[0].FirstName + "\n" + timeChart + " " + answer;
+                        ChatGroupMes newChart = new ChatGroupMes(qidMes, avatarPicture, userMessage);
+                        ListsDB.chart.Add(newChart);
+                        ChatView.ItemsSource = ListsDB.chart;
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Some content was wrong or not input");
+                    }
                 }
                 //Отправляем сообщение группе
             }
@@ -157,25 +189,53 @@ namespace WpfApp1
             {
                 MessageBox.Show(this, ex.Message, "Ошибка!");
             }
-
         }
-
         private void EndChatButton_Click(object sender, RoutedEventArgs e)
         {
-            StopListener();
+            MessageBoxResult Result = MessageBox.Show("Прекратить общение?", "Message", MessageBoxButton.YesNo);
+            if (Result == MessageBoxResult.Yes)
+            {
+                //Отправляем группе сообщение о выходе
+                byte[] data = encoding.GetBytes(ListsDB.users[0].FirstName + " покинул чат");
+                client.Send(data, data.Length, remoteEP);
+                //Покидаем группу
+                client.DropMulticastGroup(groupAddress);
+                client.Close();
+                //Останавливаем поток, получающий сообщения
+                done = true;
 
-            MessageField.IsReadOnly = false;
+                ListsDB.chart.Clear();
+                ChatView.ItemsSource = ListsDB.chart;
+                MessageField.IsReadOnly = false;
+                Hide();
+                this.Close();
+            }
         }
-
         private void StartChatButton_Click(object sender, RoutedEventArgs e)
         {
+            ListsDB.chart.Clear();
+            ChatView.ItemsSource = null;
             try
             {
                 // Присоединяемся к группе рассылки
                 client = new UdpClient(localPort);
                 client.JoinMulticastGroup(groupAddress, ttl);
 
-                remoteEP = new IPEndPoint(groupAddress, remotePort);
+                remoteEP = new IPEndPoint(groupAddress, ListsDB.members[listviewMembers.SelectedIndex].LocalPort);  //только при условии, если мы выьрали того, с кем общаемся
+                MemberName.Content = ListsDB.members[listviewMembers.SelectedIndex].FirstName;
+                string avt = ListsDB.members[listviewMembers.SelectedIndex].AvatarPicture;
+                string defaultImage = @"C:\Users\CATAT\AutoPark-OOP-Form\WpfApp1\WpfApp1\BLANK.jpg";
+                //Выгрузка изображения и ИН пользователя
+                try
+                {
+                    ImageSource image = new BitmapImage(new Uri(avt, UriKind.Absolute));
+                    MemberAvatar.Source = image;
+                }
+                catch
+                {
+                    ImageSource image = new BitmapImage(new Uri(defaultImage, UriKind.Absolute));
+                    MemberAvatar.Source = image;
+                }
                 // Запускаем поток, получающий сообщения
                 Thread receiver = new Thread(new ThreadStart(Listener));
                 receiver.IsBackground = true;
@@ -188,39 +248,30 @@ namespace WpfApp1
                 EndChatButton.IsEnabled = true;
                 SendButton.IsEnabled = true;
 
-                ////теперь это сообщение нужно добавить в БД
-                //SqlConnection cn = new SqlConnection();     // Объект-соединение
-                //cn.ConnectionString = DataBase.connectionString;
-                //// Открытие подключения
-                //cn.Open();
+                //здесь представлена логика загрузки чата по началу соединения 
+                SqlConnection cn = new SqlConnection();
+                cn.ConnectionString = DataBase.connectionString;
+                cn.Open();
+                string strSelectChart = "Select * From Chart";
+                SqlCommand cmdSelectChart = new SqlCommand(strSelectChart, cn);
 
-                //try
-                //{
-                //    Random qrandomizer = new Random();
-                //    double qrandomNumber = qrandomizer.Next(10000, 99999);
+                SqlDataReader chartDataReader = cmdSelectChart.ExecuteReader();
+                while (chartDataReader.Read())
+                {
+                    int id = chartDataReader.GetInt32(0);
+                    string avatar = chartDataReader.GetString(1);
+                    string message = chartDataReader.GetString(2);
+                    string time = chartDataReader.GetString(3);
 
-                //    int qidOrd = Convert.ToInt32(qrandomNumber);
-                //    string qidCust = Convert.ToString(IDCustPicker.SelectedItem);
-                //    DateTime qstartRent = (DateTime)startRentPicker.SelectedDate;
-                //    DateTime qendRent = (DateTime)endRentPicker.SelectedDate;
-                //    int qidTransp = Convert.ToInt32(ListsDB.transports[TransportPicker.SelectedIndex].RegisterNumberForPark);
-                //    double qbill = ListsDB.orders[0].CalculateBill(qstartRent, qendRent);
+                    string res = time + " " + message;
+                    // Формирование очередного объекта и помещение его в коллекцию
+                    ChatGroupMes chat = new ChatGroupMes(id, avatar, res);
+                    ListsDB.chart.Add(chat);
+                }
 
-                //    // Создание SQL команды ввода
-                //    string strInsertOrder = string.Format("INSERT INTO Chart VALUES ('{0}','{1}','{2}','{3}')", qidOrd, qidCust, qstartRent, qendRent, qidTransp, qbill);
-
-                //    // Создание объекта-команды
-                //    SqlCommand cmdInsertOrder = new SqlCommand(strInsertOrder, cn);
-
-                //    // Исполнение команды ввода
-                //    cmdInsertOrder.ExecuteNonQuery();
-                //}
-                //catch
-                //{
-                //    MessageBox.Show("Some content was wrong or not input");
-                //}
-
-                //cn.Close();
+                // Закрытие соединения
+                cn.Close();
+                ChatView.ItemsSource = ListsDB.chart;
             }
             catch (SocketException ex)
             {
@@ -242,34 +293,18 @@ namespace WpfApp1
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, ex.Message, "Ошибка!");
+                //MessageBox.Show(this, ex.Message, "Ошибка!");
             }
         }
         private void DisplayReceivedMessage()
         {
             ChatView.ItemsSource = null;
-            string time = DateTime.Now.ToString("t");
-            string userMessage = time + " " + message + "\r\n" + MessageField.Text;
-            ChatGroupMes chart = new ChatGroupMes(localPort, ListsDB.users[0].AvatarPicture, userMessage);
+            string time = DateTime.Now.ToString("T");
+            string userMessage = ListsDB.members[listviewMembers.SelectedIndex].FirstName + "\n" + " " +  time + " " + message;
+            ChatGroupMes chart = new ChatGroupMes(localPort, ListsDB.members[listviewMembers.SelectedIndex].AvatarPicture, userMessage);
             ListsDB.chart.Add(chart);
             ChatView.ItemsSource = ListsDB.chart;
             //statusBar.Text = "Последнее сообщение " + time;
-        }
-        private void StopListener()
-        {
-            ChatView.ItemsSource = null;
-            //Отправляем группе сообщение о выходе
-            byte[] data = encoding.GetBytes($"{ListsDB.users[0].FirstName} покинул чат");
-            client.Send(data, data.Length, remoteEP);
-            ChatView.ItemsSource = ListsDB.chart;
-            //Покидаем группу
-            client.DropMulticastGroup(groupAddress);
-            client.Close();
-            //Останавливаем поток, получающий сообщения
-            done = true;
-            StartChatButton.IsEnabled = true;
-            EndChatButton.IsEnabled = false;
-            SendButton.IsEnabled = false;
         }
 
         private void ChatView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -322,7 +357,7 @@ namespace WpfApp1
             }
             catch
             {
-                MessageBox.Show("Benda pidor");
+                MessageBox.Show("Benda daun");
             }
         }
     }
